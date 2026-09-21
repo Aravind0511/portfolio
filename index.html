@@ -740,7 +740,12 @@
 
         <div class="process-steps" id="process-steps">
           <div class="process-step process-step-discuss reveal-card spotlight-card" id="step-discuss">
-            <span class="discuss-step-badge">Starting Point</span>
+            <div class="step-badge-wrap">
+              <span class="discuss-step-badge">
+                <span class="badge-dot-live" aria-hidden="true"></span>
+                Starting Point
+              </span>
+            </div>
             <div class="step-number" aria-label="Step one">01</div>
             <div class="step-icon discuss-step-icon" aria-hidden="true">💬</div>
             <h3 class="step-title">Discuss</h3>
@@ -749,27 +754,36 @@
 
           <div class="process-connector process-connector-pulse" aria-hidden="true"></div>
 
-          <div class="process-step reveal-card spotlight-card">
+          <div class="process-step reveal-card spotlight-card" id="step-plan">
+            <div class="step-badge-wrap">
+              <span class="step-sub-badge">Phase 02</span>
+            </div>
             <div class="step-number" aria-label="Step two">02</div>
-            <div class="step-icon" aria-hidden="true">📋</div>
+            <div class="step-icon plan-step-icon" aria-hidden="true">📋</div>
             <h3 class="step-title">Plan</h3>
             <p class="step-desc">We map the system flow, select the ideal tech stack, and deliver a detailed scope breakdown, timeline, and fixed project estimate before writing code.</p>
           </div>
 
           <div class="process-connector process-connector-pulse" aria-hidden="true"></div>
 
-          <div class="process-step reveal-card spotlight-card">
+          <div class="process-step reveal-card spotlight-card" id="step-build">
+            <div class="step-badge-wrap">
+              <span class="step-sub-badge">Phase 03</span>
+            </div>
             <div class="step-number" aria-label="Step three">03</div>
-            <div class="step-icon" aria-hidden="true">⚙️</div>
+            <div class="step-icon build-step-icon" aria-hidden="true">⚙️</div>
             <h3 class="step-title">Build</h3>
             <p class="step-desc">Our team develops the application in coordinated sprints with regular demo links, allowing you to test features and provide feedback early.</p>
           </div>
 
           <div class="process-connector process-connector-pulse" aria-hidden="true"></div>
 
-          <div class="process-step reveal-card spotlight-card">
+          <div class="process-step reveal-card spotlight-card" id="step-launch">
+            <div class="step-badge-wrap">
+              <span class="step-sub-badge">Phase 04</span>
+            </div>
             <div class="step-number" aria-label="Step four">04</div>
-            <div class="step-icon" aria-hidden="true">🚀</div>
+            <div class="step-icon launch-step-icon" aria-hidden="true">🚀</div>
             <h3 class="step-title">Launch</h3>
             <p class="step-desc">We handle cloud deployment, domain setup, SSL, and post-launch verification, providing walkthrough guidance and support.</p>
           </div>
@@ -959,14 +973,34 @@
          CONTACT
     ============================================================ -->
     <section class="contact section" id="contact">
+      <div class="discuss-ambient-glow" aria-hidden="true">
+        <div class="discuss-glow-orb orb-1"></div>
+        <div class="discuss-glow-orb orb-2"></div>
+      </div>
       <div class="container">
         <div class="contact-grid">
           <div class="contact-info">
-            <div class="section-label">Get in Touch</div>
-            <h2 class="section-title">Have a Project<br />in Mind?</h2>
+            <div class="section-label">Discuss Project</div>
+            <h2 class="section-title">Let’s Discuss Your<br /><span class="gradient-text">Next Big Build</span></h2>
             <p class="contact-text">
-              Tell us what you're looking to build. We'll analyze your requirements and get back to you with a clear roadmap and estimated budget — no sales fluff.
+              Tell us what you're looking to build. We'll analyze your requirements and get back to you with a clear architecture roadmap and timeline — zero sales fluff.
             </p>
+
+            <!-- Modern Trust Perks -->
+            <div class="discuss-perks">
+              <div class="discuss-perk">
+                <span class="perk-icon">⚡</span>
+                <span class="perk-text">Fast 24-Hour Response</span>
+              </div>
+              <div class="discuss-perk">
+                <span class="perk-icon">🔒</span>
+                <span class="perk-text">NDA & Confidentiality Assured</span>
+              </div>
+              <div class="discuss-perk">
+                <span class="perk-icon">🛠️</span>
+                <span class="perk-text">Direct Senior Developer Access</span>
+              </div>
+            </div>
 
             <div class="contact-methods">
               <a href="https://wa.me/918807006909" class="contact-method spotlight-card" target="_blank" rel="noopener noreferrer" aria-label="Contact via WhatsApp">
@@ -1055,29 +1089,15 @@
                 <textarea id="contact-description" name="description" rows="4" placeholder="Tell us about your business, current challenges, and what you want to build..." required></textarea>
               </div>
 
-              <div class="form-row form-row-2">
-                <div class="form-field">
-                  <label for="contact-budget">Budget Range</label>
-                  <select id="contact-budget" name="budget">
-                    <option value="" disabled selected>Select estimated budget</option>
-                    <option value="under-25k">Under ₹25,000</option>
-                    <option value="25k-50k">₹25,000 – ₹50,000</option>
-                    <option value="50k-1l">₹50,000 – ₹1,00,000</option>
-                    <option value="1l-3l">₹1,00,000 – ₹3,00,000</option>
-                    <option value="over-3l">Above ₹3,00,000</option>
-                    <option value="not-sure">Flexible / Discuss with team</option>
-                  </select>
-                </div>
-                <div class="form-field">
-                  <label for="contact-timeline">Preferred Timeline</label>
-                  <select id="contact-timeline" name="timeline">
-                    <option value="" disabled selected>Select timeline</option>
-                    <option value="asap">Immediate / ASAP</option>
-                    <option value="1-month">Within 1 month</option>
-                    <option value="2-3-months">2–3 months</option>
-                    <option value="flexible">Flexible</option>
-                  </select>
-                </div>
+              <div class="form-field">
+                <label for="contact-timeline">Preferred Timeline</label>
+                <select id="contact-timeline" name="timeline">
+                  <option value="" disabled selected>Select timeline</option>
+                  <option value="asap">Immediate / ASAP</option>
+                  <option value="1-month">Within 1 month</option>
+                  <option value="2-3-months">2–3 months</option>
+                  <option value="flexible">Flexible</option>
+                </select>
               </div>
 
               <button type="submit" class="btn btn-primary btn-full" id="submit-btn">

@@ -478,7 +478,6 @@ const $$ = (sel, ctx = document) => [...ctx.querySelectorAll(sel)];
     const phone = (form.phone && form.phone.value || '').trim();
     const type = (form.project_type && form.project_type.value) || 'Not selected';
     const desc = (form.description && form.description.value || '').trim();
-    const budget = (form.budget && form.budget.value) || 'Not specified';
     const timeline = (form.timeline && form.timeline.value) || 'Not specified';
 
     return {
@@ -488,7 +487,6 @@ const $$ = (sel, ctx = document) => [...ctx.querySelectorAll(sel)];
       phone: phone || 'Not provided',
       project_type: type,
       description: desc || 'Project enquiry',
-      budget: budget,
       timeline: timeline
     };
   };
@@ -506,7 +504,6 @@ const $$ = (sel, ctx = document) => [...ctx.querySelectorAll(sel)];
       `Email: ${data.email}\n` +
       `Phone: ${data.phone}\n` +
       `Requirement: ${data.project_type}\n` +
-      `Budget Range: ${data.budget}\n` +
       `Preferred Timeline: ${data.timeline}\n\n` +
       `--- PROJECT DESCRIPTION ---\n` +
       `${data.description}\n\n` +
@@ -525,7 +522,6 @@ const $$ = (sel, ctx = document) => [...ctx.querySelectorAll(sel)];
       `*Email:* ${data.email}\n` +
       `*Phone:* ${data.phone}\n` +
       `*Requirement:* ${data.project_type}\n` +
-      `*Budget:* ${data.budget}\n` +
       `*Timeline:* ${data.timeline}\n\n` +
       `*Description:*\n${data.description}`
     );
@@ -570,7 +566,6 @@ const $$ = (sel, ctx = document) => [...ctx.querySelectorAll(sel)];
       phone: data.phone,
       project_type: data.project_type,
       description: data.description,
-      budget: data.budget,
       timeline: data.timeline,
       _subject: `New Project Enquiry from ${data.name} (${data.business}) — NovaCraft Studio`,
       _replyto: data.email,

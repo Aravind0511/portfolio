@@ -1622,80 +1622,159 @@ h1, h2, h3, h4 {
 /* ============================================================
    PROCESS
 ============================================================ */
-.process { background: var(--color-bg-2); }
+.process {
+  background: var(--color-bg-2);
+  position: relative;
+  overflow: hidden;
+}
 
 .process-steps {
   display: flex;
-  align-items: flex-start;
+  align-items: stretch;
   gap: 0;
 }
 
 .process-step {
   flex: 1;
   text-align: center;
-  padding: 2.25rem 1.5rem 2rem;
-  background: var(--color-surface);
-  border: 1px solid var(--color-border);
+  padding: 1.75rem 1.4rem 2rem;
+  background: linear-gradient(170deg, rgba(22, 30, 48, 0.7) 0%, rgba(13, 19, 32, 0.85) 100%);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: var(--radius-xl);
-  transition: border-color var(--transition-base), box-shadow var(--transition-base), transform var(--transition-base);
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
   position: relative;
+  box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.4);
+  display: flex;
+  flex-direction: column;
 }
 
 .process-step:hover {
-  border-color: rgba(59, 130, 246, 0.4);
-  box-shadow: var(--shadow-md), 0 0 25px rgba(59, 130, 246, 0.12);
-  transform: translateY(-4px);
+  border-color: rgba(96, 165, 250, 0.45);
+  box-shadow: 0 20px 45px -10px rgba(0, 0, 0, 0.6), 0 0 30px rgba(59, 130, 246, 0.2);
+  transform: translateY(-6px);
 }
 
 /* Step 01 Discuss Highlight */
 .process-step-discuss {
-  border-color: rgba(59, 130, 246, 0.35);
-  background: linear-gradient(180deg, rgba(59, 130, 246, 0.08) 0%, var(--color-surface) 100%);
-  box-shadow: 0 0 32px rgba(59, 130, 246, 0.14);
+  border-color: rgba(96, 165, 250, 0.38);
+  background: linear-gradient(175deg, rgba(30, 45, 75, 0.75) 0%, rgba(13, 19, 32, 0.9) 100%);
+  box-shadow: 0 12px 35px -10px rgba(0, 0, 0, 0.5), 0 0 28px rgba(59, 130, 246, 0.15);
+}
+
+/* Symmetrical Phase Badge Wrappers - Fixes overlap & clipping permanently */
+.step-badge-wrap {
+  min-height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 0.9rem;
 }
 
 .discuss-step-badge {
-  position: absolute;
-  top: -11px;
-  left: 50%;
-  transform: translateX(-50%);
-  background: linear-gradient(90deg, #2563eb, #7c3aed);
-  color: #ffffff;
-  font-size: 0.65rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  background: linear-gradient(135deg, rgba(37, 99, 235, 0.3), rgba(124, 58, 237, 0.3));
+  border: 1px solid rgba(96, 165, 250, 0.6);
+  color: #93c5fd;
+  font-size: 0.68rem;
   font-weight: 700;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  padding: 0.22rem 0.7rem;
-  border-radius: 100px;
-  box-shadow: 0 2px 10px rgba(59, 130, 246, 0.45);
+  padding: 0.28rem 0.8rem;
+  border-radius: 9999px;
+  box-shadow: 0 0 16px rgba(59, 130, 246, 0.35);
   white-space: nowrap;
   animation: badgeGlowPulse 2.8s ease-in-out infinite alternate;
 }
 
-@keyframes badgeGlowPulse {
-  0% { box-shadow: 0 2px 8px rgba(59, 130, 246, 0.4); transform: translateX(-50%) scale(1); }
-  100% { box-shadow: 0 2px 16px rgba(124, 58, 237, 0.6); transform: translateX(-50%) scale(1.04); }
+.discuss-step-badge .badge-dot-live {
+  width: 7px;
+  height: 7px;
+  background: #38bdf8;
+  box-shadow: 0 0 8px #38bdf8;
+  border-radius: 50%;
+  animation: pulseLiveDot 1.4s ease-in-out infinite;
+  flex-shrink: 0;
 }
 
+.step-sub-badge {
+  display: inline-flex;
+  align-items: center;
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #64748b;
+  padding: 0.22rem 0.65rem;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 9999px;
+  transition: all 0.3s ease;
+}
+
+.process-step:hover .step-sub-badge {
+  color: #94a3b8;
+  border-color: rgba(96, 165, 250, 0.3);
+  background: rgba(59, 130, 246, 0.08);
+}
+
+@keyframes badgeGlowPulse {
+  0% { box-shadow: 0 0 10px rgba(59, 130, 246, 0.3); transform: scale(1); }
+  100% { box-shadow: 0 0 20px rgba(124, 58, 237, 0.55); transform: scale(1.03); }
+}
+
+/* Step Icons with Distinct Dynamic Animations */
 .discuss-step-icon {
   display: inline-block;
   animation: discussIconBounce 3.2s ease-in-out infinite;
 }
-
 @keyframes discussIconBounce {
   0%, 100% { transform: translateY(0) scale(1); }
-  50% { transform: translateY(-6px) scale(1.1); }
+  50% { transform: translateY(-7px) scale(1.1); filter: drop-shadow(0 4px 14px rgba(59, 130, 246, 0.5)); }
+}
+
+.plan-step-icon {
+  display: inline-block;
+  animation: planIconPulse 3.6s ease-in-out infinite;
+}
+@keyframes planIconPulse {
+  0%, 100% { transform: rotate(0deg) scale(1); }
+  30% { transform: rotate(-5deg) scale(1.08); }
+  70% { transform: rotate(5deg) scale(1.08); }
+}
+
+.build-step-icon {
+  display: inline-block;
+  animation: buildGearTurn 8s linear infinite;
+  transform-origin: center;
+}
+@keyframes buildGearTurn {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.launch-step-icon {
+  display: inline-block;
+  animation: launchRocketFloat 3s ease-in-out infinite;
+}
+@keyframes launchRocketFloat {
+  0%, 100% { transform: translateY(0) translateX(0) scale(1); }
+  50% { transform: translateY(-7px) translateX(3px) scale(1.12); filter: drop-shadow(-3px 6px 14px rgba(244, 63, 94, 0.45)); }
 }
 
 .process-connector {
-  width: 40px;
-  height: 2px;
-  background: rgba(59, 130, 246, 0.2);
+  width: 36px;
+  height: 3px;
+  background: rgba(255, 255, 255, 0.08);
   align-self: center;
   flex-shrink: 0;
-  margin-top: -3px;
+  margin-top: 15px;
   position: relative;
   overflow: hidden;
+  border-radius: 2px;
 }
 
 .process-connector-pulse::after {
@@ -1705,8 +1784,8 @@ h1, h2, h3, h4 {
   left: -100%;
   width: 100%;
   height: 100%;
-  background: linear-gradient(90deg, transparent, #60a5fa, #c084fc, transparent);
-  animation: connectorFlow 2.6s ease-in-out infinite;
+  background: linear-gradient(90deg, transparent, #38bdf8 40%, #818cf8 80%, transparent);
+  animation: connectorFlow 2.2s ease-in-out infinite;
 }
 
 @keyframes connectorFlow {
@@ -1716,33 +1795,44 @@ h1, h2, h3, h4 {
 
 .step-number {
   font-family: var(--font-display);
-  font-size: 0.7rem;
+  font-size: 0.72rem;
   font-weight: 800;
   letter-spacing: 0.1em;
-  color: var(--color-accent);
-  background: var(--color-accent-dim);
-  width: 36px;
-  height: 36px;
+  color: #60a5fa;
+  background: rgba(59, 130, 246, 0.12);
+  width: 38px;
+  height: 38px;
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  margin: 0 auto 1rem;
-  border: 1px solid rgba(59, 130, 246, 0.2);
+  margin: 0 auto 1.1rem;
+  border: 1px solid rgba(96, 165, 250, 0.3);
+  box-shadow: 0 0 12px rgba(59, 130, 246, 0.2);
+  transition: all 0.3s ease;
+  flex-shrink: 0;
 }
 
-.step-icon { font-size: 1.8rem; margin-bottom: 0.75rem; }
-.step-title { font-size: 1.05rem; margin-bottom: 0.5rem; }
-.step-desc { font-size: 0.88rem; color: var(--color-text-muted); line-height: 1.65; }
+.process-step:hover .step-number {
+  color: #ffffff;
+  background: #2563eb;
+  border-color: #60a5fa;
+  box-shadow: 0 0 20px rgba(59, 130, 246, 0.6);
+  transform: scale(1.1);
+}
+
+.step-icon { font-size: 1.85rem; margin-bottom: 0.75rem; }
+.step-title { font-size: 1.1rem; margin-bottom: 0.5rem; color: #ffffff; }
+.step-desc { font-size: 0.88rem; color: var(--color-text-muted); line-height: 1.65; margin: 0; }
 
 @media (max-width: 900px) {
   .process-steps { flex-direction: column; align-items: center; }
-  .process-connector { width: 2px; height: 30px; background: rgba(59,130,246,0.2); margin: 0; }
+  .process-connector { width: 3px; height: 30px; margin: 0; }
   .process-connector-pulse::after {
     width: 100%;
     height: 100%;
-    background: linear-gradient(180deg, transparent, #60a5fa, #c084fc, transparent);
-    animation: connectorFlowV 2.6s ease-in-out infinite;
+    background: linear-gradient(180deg, transparent, #38bdf8 40%, #818cf8 80%, transparent);
+    animation: connectorFlowV 2.2s ease-in-out infinite;
   }
   @keyframes connectorFlowV {
     0% { top: -100%; left: 0; }
@@ -1848,65 +1938,224 @@ h1, h2, h3, h4 {
 @media (max-width: 768px) { .pricing-inner { grid-template-columns: 1fr; } }
 
 /* ============================================================
-   CONTACT
+   DISCUSS PROJECT / CONTACT (Modernized)
 ============================================================ */
-.contact { background: var(--color-bg); }
+.contact {
+  position: relative;
+  background: var(--color-bg);
+  overflow: hidden;
+  padding: 6rem 0;
+}
+
+/* Ambient glow orbs in the background */
+.discuss-ambient-glow {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+  overflow: hidden;
+}
+
+.discuss-glow-orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(90px);
+  opacity: 0.4;
+  animation: orbFloat 14s ease-in-out infinite alternate;
+}
+
+.discuss-glow-orb.orb-1 {
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, rgba(59, 130, 246, 0.2) 0%, transparent 70%);
+  top: -120px;
+  left: -100px;
+}
+
+.discuss-glow-orb.orb-2 {
+  width: 450px;
+  height: 450px;
+  background: radial-gradient(circle, rgba(168, 85, 247, 0.16) 0%, transparent 70%);
+  bottom: -80px;
+  right: -80px;
+  animation-duration: 18s;
+  animation-delay: -5s;
+}
+
+@keyframes orbFloat {
+  0% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(45px, 35px) scale(1.08); }
+  100% { transform: translate(-35px, 50px) scale(0.94); }
+}
+
+.contact .container {
+  position: relative;
+  z-index: 2;
+}
 
 .contact-grid {
   display: grid;
-  grid-template-columns: 420px 1fr;
+  grid-template-columns: 440px 1fr;
   gap: 4rem;
   align-items: start;
 }
 
-.contact-text { font-size: 1rem; color: var(--color-text-muted); line-height: 1.75; margin-bottom: 2rem; }
+.contact-text {
+  font-size: 1rem;
+  color: var(--color-text-muted);
+  line-height: 1.75;
+  margin-bottom: 1.75rem;
+}
 
+/* Modern Trust Perks */
+.discuss-perks {
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+  margin-bottom: 2rem;
+}
+
+.discuss-perk {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.65rem 1rem;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  border-radius: 12px;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.discuss-perk:hover {
+  background: rgba(255, 255, 255, 0.06);
+  border-color: rgba(96, 165, 250, 0.35);
+  transform: translateX(4px);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+}
+
+.perk-icon {
+  font-size: 1.15rem;
+  flex-shrink: 0;
+}
+
+.perk-text {
+  font-size: 0.85rem;
+  color: #cbd5e1;
+  font-weight: 500;
+}
+
+/* Modern Contact Action Cards */
 .contact-methods {
   display: flex;
   flex-direction: column;
-  gap: 0.75rem;
+  gap: 0.85rem;
   margin-bottom: 1.75rem;
 }
 
 .contact-method {
   display: flex;
   align-items: center;
-  gap: 0.85rem;
-  padding: 0.9rem 1rem;
-  background: var(--color-surface);
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-md);
-  transition: border-color var(--transition-base), background var(--transition-fast), transform var(--transition-fast);
+  gap: 1rem;
+  padding: 1rem 1.25rem;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.04) 0%, rgba(255, 255, 255, 0.015) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: var(--radius-lg);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  position: relative;
+  overflow: hidden;
+  text-decoration: none;
+}
+
+.contact-method::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 60%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+  transform: skewX(-20deg);
+  transition: left 0.65s ease;
+  pointer-events: none;
+}
+
+.contact-method:hover::before {
+  left: 140%;
 }
 
 .contact-method:hover {
-  border-color: var(--color-border-hover);
-  background: var(--color-surface-2);
-  transform: translateX(3px);
+  border-color: rgba(96, 165, 250, 0.45);
+  background: rgba(255, 255, 255, 0.06);
+  transform: translateX(5px);
+  box-shadow: 0 12px 28px -6px rgba(0, 0, 0, 0.35), 0 0 25px rgba(59, 130, 246, 0.15);
 }
 
 .contact-method-icon {
-  width: 42px;
-  height: 42px;
-  border-radius: var(--radius-sm);
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
+  transition: transform 0.3s ease;
 }
 
-.whatsapp-icon { background: rgba(74, 222, 128, 0.1); color: var(--color-green); border: 1px solid rgba(74, 222, 128, 0.2); }
-.email-icon { background: var(--color-accent-dim); color: var(--color-accent-light); border: 1px solid rgba(59, 130, 246, 0.2); }
+.contact-method:hover .contact-method-icon {
+  transform: scale(1.08);
+}
 
-.contact-method-label { font-size: 0.72rem; color: var(--color-text-dim); text-transform: uppercase; letter-spacing: 0.06em; }
-.contact-method-value { font-size: 0.9rem; font-weight: 600; color: var(--color-white); }
+.whatsapp-icon {
+  background: rgba(74, 222, 128, 0.12);
+  color: var(--color-green);
+  border: 1px solid rgba(74, 222, 128, 0.3);
+  box-shadow: 0 0 16px rgba(74, 222, 128, 0.2);
+}
+
+.email-icon {
+  background: rgba(59, 130, 246, 0.12);
+  color: var(--color-accent-light);
+  border: 1px solid rgba(59, 130, 246, 0.3);
+  box-shadow: 0 0 16px rgba(59, 130, 246, 0.2);
+}
+
+.contact-method-label {
+  font-size: 0.72rem;
+  color: var(--color-text-dim);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin-bottom: 0.2rem;
+}
+
+.contact-method-value {
+  font-size: 0.94rem;
+  font-weight: 600;
+  color: var(--color-white);
+}
 
 .contact-availability {
   display: inline-flex;
   align-items: center;
-  gap: 0.5rem;
+  gap: 0.6rem;
   font-size: 0.85rem;
-  color: var(--color-green);
+  color: #86efac;
+  background: rgba(74, 222, 128, 0.08);
+  border: 1px solid rgba(74, 222, 128, 0.2);
+  padding: 0.4rem 0.85rem;
+  border-radius: 9999px;
+}
+
+.contact-availability .availability-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #4ade80;
+  box-shadow: 0 0 8px #4ade80;
+  animation: pulseLiveDot 1.4s ease-in-out infinite;
 }
 
 /* Contact Form */
