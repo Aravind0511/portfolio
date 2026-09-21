@@ -213,6 +213,7 @@ const $$ = (sel, ctx = document) => [...ctx.querySelectorAll(sel)];
       timeline: data.timeline,
       _subject: `New Project Enquiry from ${data.name} (${data.business}) — NovaCraft Studio`,
       _replyto: data.email,
+      _autoresponse: 'Thank you for reaching out to NovaCraft Studio! We have received your project enquiry and our team will review your requirement and get back to you within 24 hours.',
       _template: 'table',
       _captcha: 'false'
     };
@@ -236,7 +237,8 @@ const $$ = (sel, ctx = document) => [...ctx.querySelectorAll(sel)];
 
         showFormStatus(form, 'success', {
           title: 'Enquiry Delivered Successfully!',
-          message: 'Your project details have been sent directly to our team inbox at <strong>aravindvjm2004@gmail.com</strong>. We will review your requirement and reply within 24 hours.'
+          message: 'Your project details have been sent directly to our team at <strong>aravindvjm2004@gmail.com</strong>.<br/><small style="display:inline-block;margin-top:0.4rem;color:#94a3b8;">Tip: If checking Gmail, make sure to also check the <strong>Updates</strong> or <strong>Spam</strong> folder and mark as "Not Spam" so subsequent enquiries land in your Primary tab.</small>',
+          showActions: true
         });
 
         setTimeout(() => {
@@ -245,7 +247,7 @@ const $$ = (sel, ctx = document) => [...ctx.querySelectorAll(sel)];
           btn.style.opacity = '';
           btn.style.background = '';
           if (btnText) btnText.textContent = original;
-        }, 6000);
+        }, 8000);
 
       } else if (resJson.message && resJson.message.toLowerCase().includes('activation')) {
         // Needs 1-time activation by email owner
@@ -271,13 +273,10 @@ const $$ = (sel, ctx = document) => [...ctx.querySelectorAll(sel)];
       btn.style.opacity = '';
 
       showFormStatus(form, 'fallback', {
-        title: 'Send via Your Email App',
-        message: 'Click below to send this enquiry directly from your email app (Gmail / Outlook) or WhatsApp:',
+        title: 'Connection Notice — Send Directly via App',
+        message: 'Direct submission was interrupted (often caused by an adblocker or network privacy filter). You can still send this enquiry immediately using your preferred app:',
         showActions: true
       });
-
-      // Automatically trigger email client
-      openMailto();
     }
   });
 
