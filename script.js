@@ -619,8 +619,10 @@ const $$ = (sel, ctx = document) => [...ctx.querySelectorAll(sel)];
                 </svg>
               </div>
               <div class="success-badge-pill">
-                <span class="badge-dot-live"></span>
-                Sent to <strong>aravindvjm2004@gmail.com</strong> successfully!
+                <span class="badge-dot-live" aria-hidden="true"></span>
+                <span class="badge-pill-text">
+                  Sent to <strong class="success-target-email">aravindvjm2004@gmail.com</strong> successfully!
+                </span>
               </div>
               <h3 class="success-heading">Enquiry Received!</h3>
               <p class="success-message">
