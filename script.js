@@ -600,26 +600,69 @@ const $$ = (sel, ctx = document) => [...ctx.querySelectorAll(sel)];
       if (response.ok && (resJson.success === 'true' || resJson.success === true)) {
         // Successful live email delivery
         cleanupButton();
-        if (btnText) btnText.textContent = '✓ Enquiry Delivered!';
-        btn.style.background = 'var(--color-green)';
 
         // Trigger celebratory confetti burst
         fireConfetti();
 
-        showFormStatus(form, 'success', {
-          title: 'Enquiry Delivered Successfully!',
-          message: 'Your project details have been sent directly to our team at <strong>aravindvjm2004@gmail.com</strong>.<br/><small style="display:inline-block;margin-top:0.4rem;color:#94a3b8;">Tip: If checking Gmail, make sure to also check the <strong>Updates</strong> or <strong>Spam</strong> folder and mark as "Not Spam" so subsequent enquiries land in your Primary tab.</small>',
-          showActions: true
-        });
+        const successContainer = document.getElementById('form-success-container');
+        if (successContainer) {
+          form.classList.add('form-hidden');
+          const safeName = (data.name || 'Interested Client').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+          const safeType = (data.project_type || 'Custom Software').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+          const safeTimeline = (data.timeline || 'Flexible').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+          const waPrefill = encodeURIComponent(`Hello NovaCraft Studio! I just submitted an enquiry for ${safeType}. Name: ${safeName}`);
 
-        setTimeout(() => {
-          form.reset();
-          btn.disabled = false;
-          btn.style.opacity = '';
-          btn.style.background = '';
-          if (btnText) btnText.textContent = original;
-        }, 8000);
+          successContainer.innerHTML = `
+            <div class="form-success-overlay" role="alert">
+              <div class="success-glow-halo" aria-hidden="true"></div>
+              <div class="success-icon-wrap">
+                <span class="success-ring-ripple" aria-hidden="true"></span>
+                <span class="success-ring-ripple delay" aria-hidden="true"></span>
+                <svg class="success-checkmark-svg" viewBox="0 0 52 52" aria-hidden="true">
+                  <circle class="checkmark-circle" cx="26" cy="26" r="24"/>
+                  <path class="checkmark-check" fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8"/>
+                </svg>
+              </div>
+              <div class="success-badge-pill">
+                <span class="badge-dot-live"></span>
+                Sent to <strong>aravindvjm2004@gmail.com</strong> successfully!
+              </div>
+              <h3 class="success-heading">Enquiry Received!</h3>
+              <p class="success-message">
+                Thank you, <strong>${safeName}</strong>! We have received your project details. Our engineering team will analyze your requirements and get back to you within <strong>24 hours</strong>.
+              </p>
+              <div class="success-client-summary">
+                <div class="summary-chip">Requirement: <strong>${safeType}</strong></div>
+                <div class="summary-chip">Timeline: <strong>${safeTimeline}</strong></div>
+              </div>
+              <div class="success-actions">
+                <a href="https://wa.me/918807006909?text=${waPrefill}" target="_blank" rel="noopener noreferrer" class="btn btn-success-wa">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/>
+                  </svg>
+                  <span>Chat on WhatsApp</span>
+                </a>
+                <button type="button" class="btn btn-reset-form" id="btn-reset-form">
+                  Send Another Enquiry
+                </button>
+              </div>
+            </div>
+          `;
 
+          // Handle "Send Another Enquiry" button
+          const btnReset = successContainer.querySelector('#btn-reset-form');
+          if (btnReset) {
+            btnReset.addEventListener('click', () => {
+              successContainer.innerHTML = '';
+              form.reset();
+              form.classList.remove('form-hidden');
+              btn.disabled = false;
+              btn.style.opacity = '';
+              btn.style.background = '';
+              if (btnText) btnText.textContent = original;
+            });
+          }
+        }
       } else if (resJson.message && resJson.message.toLowerCase().includes('activation')) {
         // Needs 1-time activation by email owner
         cleanupButton();
@@ -660,7 +703,7 @@ const $$ = (sel, ctx = document) => [...ctx.querySelectorAll(sel)];
     const ctx = canvas.getContext('2d');
     if (!ctx) return;
 
-    const rect = canvas.getBoundingClientRect();
+    const rect = canvas.parentElement ? canvas.parentElement.getBoundingClientRect() : canvas.getBoundingClientRect();
     canvas.width = rect.width;
     canvas.height = rect.height;
 
