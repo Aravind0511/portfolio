@@ -81,38 +81,49 @@
          HERO
     ============================================================ -->
     <section class="hero" id="home">
+      <canvas id="hero-particles" class="hero-particles-canvas" aria-hidden="true"></canvas>
       <div class="hero-bg-grid" aria-hidden="true"></div>
       <div class="hero-glow hero-glow-1" aria-hidden="true"></div>
       <div class="hero-glow hero-glow-2" aria-hidden="true"></div>
 
       <div class="container hero-content">
-        <div class="availability-badge">
+        <div class="availability-badge hero-entry-item" style="--delay: 0.08s">
           <span class="availability-dot" aria-hidden="true"></span>
+          <span class="availability-beacon" aria-hidden="true"></span>
           <span>A focused 2–3 person dev team • Open for selected projects</span>
         </div>
 
-        <h1 class="hero-headline">
-          Your Business.<br />
-          Your Idea.<br />
-          <span class="headline-accent">Built Digitally.</span>
+        <h1 class="hero-headline hero-entry-item" style="--delay: 0.2s">
+          <span class="headline-line">Your Business.</span><br />
+          <span class="headline-line">Your Idea.</span><br />
+          <span class="headline-rotator-container">
+            <span class="headline-prefix">Built </span>
+            <span class="headline-rotator" id="headline-rotator" aria-live="polite">
+              <span class="rotator-word active headline-accent">Digitally.</span>
+              <span class="rotator-word headline-accent">For Growth.</span>
+              <span class="rotator-word headline-accent">To Scale.</span>
+              <span class="rotator-word headline-accent">With Precision.</span>
+            </span>
+          </span>
         </h1>
 
-        <p class="hero-subheadline">
+        <p class="hero-subheadline hero-entry-item" style="--delay: 0.35s">
           We build professional websites and custom software solutions<br class="desktop-break" />
           designed around your exact business requirements.
         </p>
 
-        <div class="hero-cta-group">
-          <a href="#contact" class="btn btn-primary">
-            Discuss Your Project
-            <svg class="btn-icon" width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+        <div class="hero-cta-group hero-entry-item" style="--delay: 0.5s">
+          <a href="#contact" class="btn btn-primary btn-hero-discuss magnetic-btn" id="hero-discuss-btn">
+            <span class="btn-glow-pulse" aria-hidden="true"></span>
+            <span class="btn-text">Discuss Your Project</span>
+            <svg class="btn-icon btn-arrow-icon" width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
               <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
             </svg>
           </a>
           <a href="#projects" class="btn btn-secondary">View Our Work</a>
         </div>
 
-        <div class="hero-tech-strip">
+        <div class="hero-tech-strip hero-entry-item" style="--delay: 0.65s">
           <span>React</span>
           <span class="tech-divider" aria-hidden="true">·</span>
           <span>Next.js</span>
@@ -727,15 +738,16 @@
           </p>
         </div>
 
-        <div class="process-steps">
-          <div class="process-step reveal-card spotlight-card">
+        <div class="process-steps" id="process-steps">
+          <div class="process-step process-step-discuss reveal-card spotlight-card" id="step-discuss">
+            <span class="discuss-step-badge">Starting Point</span>
             <div class="step-number" aria-label="Step one">01</div>
-            <div class="step-icon" aria-hidden="true">💬</div>
+            <div class="step-icon discuss-step-icon" aria-hidden="true">💬</div>
             <h3 class="step-title">Discuss</h3>
             <p class="step-desc">You explain your business goals and operational needs. We listen closely and ask the right technical questions to uncover what you truly require.</p>
           </div>
 
-          <div class="process-connector" aria-hidden="true"></div>
+          <div class="process-connector process-connector-pulse" aria-hidden="true"></div>
 
           <div class="process-step reveal-card spotlight-card">
             <div class="step-number" aria-label="Step two">02</div>
@@ -744,7 +756,7 @@
             <p class="step-desc">We map the system flow, select the ideal tech stack, and deliver a detailed scope breakdown, timeline, and fixed project estimate before writing code.</p>
           </div>
 
-          <div class="process-connector" aria-hidden="true"></div>
+          <div class="process-connector process-connector-pulse" aria-hidden="true"></div>
 
           <div class="process-step reveal-card spotlight-card">
             <div class="step-number" aria-label="Step three">03</div>
@@ -753,7 +765,7 @@
             <p class="step-desc">Our team develops the application in coordinated sprints with regular demo links, allowing you to test features and provide feedback early.</p>
           </div>
 
-          <div class="process-connector" aria-hidden="true"></div>
+          <div class="process-connector process-connector-pulse" aria-hidden="true"></div>
 
           <div class="process-step reveal-card spotlight-card">
             <div class="step-number" aria-label="Step four">04</div>
@@ -957,8 +969,9 @@
             </p>
 
             <div class="contact-methods">
-              <a href="https://wa.me/918807006909" class="contact-method" target="_blank" rel="noopener noreferrer" aria-label="Contact via WhatsApp">
+              <a href="https://wa.me/918807006909" class="contact-method spotlight-card" target="_blank" rel="noopener noreferrer" aria-label="Contact via WhatsApp">
                 <div class="contact-method-icon whatsapp-icon">
+                  <span class="beacon-pulse-wa" aria-hidden="true"></span>
                   <svg width="22" height="22" viewBox="0 0 22 22" fill="none" aria-hidden="true">
                     <path d="M11 2C6.03 2 2 6.03 2 11c0 1.61.43 3.12 1.17 4.44L2 20l4.72-1.14C8 19.57 9.47 20 11 20c4.97 0 9-4.03 9-9s-4.03-9-9-9z" stroke="currentColor" stroke-width="1.6"/>
                     <path d="M8 9.5c0-.28.22-.5.5-.5h.5c.28 0 .5.22.5.5v.5c0 1.1.9 2 2 2h.5c.28 0 .5.22.5.5v.5c0 .28-.22.5-.5.5H11c-1.66 0-3-1.34-3-3V9.5z" fill="currentColor"/>
@@ -970,7 +983,7 @@
                 </div>
               </a>
 
-              <a href="mailto:aravindvjm2004@gmail.com?subject=Project%20Enquiry%20%E2%80%94%20NovaCraft%20Studio" class="contact-method" aria-label="Send us an email">
+              <a href="mailto:aravindvjm2004@gmail.com?subject=Project%20Enquiry%20%E2%80%94%20NovaCraft%20Studio" class="contact-method spotlight-card" aria-label="Send us an email">
                 <div class="contact-method-icon email-icon">
                   <svg width="22" height="22" viewBox="0 0 22 22" fill="none" aria-hidden="true">
                     <rect x="2" y="5" width="18" height="13" rx="2" stroke="currentColor" stroke-width="1.6"/>
@@ -991,6 +1004,7 @@
           </div>
 
           <div class="contact-form-wrapper spotlight-card">
+            <div class="form-ambient-aura" aria-hidden="true"></div>
             <canvas id="confetti-canvas" class="confetti-canvas" aria-hidden="true"></canvas>
             <form class="contact-form" id="contact-form" action="https://formsubmit.co/aravindvjm2004@gmail.com" method="POST" novalidate>
               <!-- FormSubmit configuration -->

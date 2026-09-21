@@ -220,6 +220,223 @@ const $$ = (sel, ctx = document) => [...ctx.querySelectorAll(sel)];
   observer.observe(dashboard);
 })();
 
+// ─── Hero Particle Constellation ─────────────────────────────
+(function initHeroParticles() {
+  const canvas = document.getElementById('hero-particles');
+  if (!canvas || !canvas.parentElement) return;
+  const ctx = canvas.getContext('2d');
+  if (!ctx) return;
+
+  const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (prefersReduced) return;
+
+  let width = (canvas.width = canvas.parentElement.offsetWidth);
+  let height = (canvas.height = canvas.parentElement.offsetHeight);
+
+  const particles = [];
+  const particleCount = Math.min(Math.floor(width / 26), 48);
+  const colors = ['#3b82f6', '#60a5fa', '#818cf8', '#38bdf8'];
+
+  let mouse = { x: -9999, y: -9999, active: false };
+
+  class Particle {
+    constructor() {
+      this.reset(true);
+    }
+    reset(initial = false) {
+      this.x = Math.random() * width;
+      this.y = initial ? Math.random() * height : height + 10;
+      this.vx = (Math.random() - 0.5) * 0.4;
+      this.vy = -(Math.random() * 0.35 + 0.12);
+      this.radius = Math.random() * 1.5 + 0.8;
+      this.color = colors[Math.floor(Math.random() * colors.length)];
+      this.alpha = Math.random() * 0.45 + 0.2;
+    }
+    update() {
+      this.x += this.vx;
+      this.y += this.vy;
+
+      if (this.x < 0) this.x = width;
+      if (this.x > width) this.x = 0;
+      if (this.y < 0) this.reset();
+    }
+    draw() {
+      ctx.beginPath();
+      ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+      ctx.fillStyle = this.color;
+      ctx.globalAlpha = this.alpha;
+      ctx.fill();
+    }
+  }
+
+  for (let i = 0; i < particleCount; i++) {
+    particles.push(new Particle());
+  }
+
+  let isVisible = true;
+  const obs = new IntersectionObserver(([entry]) => {
+    isVisible = entry.isIntersecting;
+  }, { threshold: 0.05 });
+  obs.observe(canvas.parentElement);
+
+  const onResize = () => {
+    if (!canvas.parentElement) return;
+    width = canvas.width = canvas.parentElement.offsetWidth;
+    height = canvas.height = canvas.parentElement.offsetHeight;
+  };
+  window.addEventListener('resize', onResize, { passive: true });
+
+  const heroSection = canvas.parentElement;
+  heroSection.addEventListener('pointermove', e => {
+    const rect = canvas.getBoundingClientRect();
+    mouse.x = e.clientX - rect.left;
+    mouse.y = e.clientY - rect.top;
+    mouse.active = true;
+  }, { passive: true });
+
+  heroSection.addEventListener('pointerleave', () => {
+    mouse.active = false;
+  }, { passive: true });
+
+  const animate = () => {
+    if (isVisible) {
+      ctx.clearRect(0, 0, width, height);
+
+      // Draw particle connections
+      for (let i = 0; i < particles.length; i++) {
+        const p1 = particles[i];
+        p1.update();
+        p1.draw();
+
+        for (let j = i + 1; j < particles.length; j++) {
+          const p2 = particles[j];
+          const dx = p1.x - p2.x;
+          const dy = p1.y - p2.y;
+          const dist = Math.sqrt(dx * dx + dy * dy);
+
+          if (dist < 95) {
+            ctx.beginPath();
+            ctx.moveTo(p1.x, p1.y);
+            ctx.lineTo(p2.x, p2.y);
+            ctx.strokeStyle = '#60a5fa';
+            ctx.globalAlpha = (1 - dist / 95) * 0.16;
+            ctx.lineWidth = 0.75;
+            ctx.stroke();
+          }
+        }
+
+        // Connect with mouse cursor
+        if (mouse.active) {
+          const mdx = p1.x - mouse.x;
+          const mdy = p1.y - mouse.y;
+          const mdist = Math.sqrt(mdx * mdx + mdy * mdy);
+
+          if (mdist < 135) {
+            ctx.beginPath();
+            ctx.moveTo(p1.x, p1.y);
+            ctx.lineTo(mouse.x, mouse.y);
+            ctx.strokeStyle = '#38bdf8';
+            ctx.globalAlpha = (1 - mdist / 135) * 0.35;
+            ctx.lineWidth = 1;
+            ctx.stroke();
+          }
+        }
+      }
+    }
+    requestAnimationFrame(animate);
+  };
+
+  animate();
+})();
+
+// ─── Kinetic Word Rotator ─────────────────────────────────────
+(function initWordRotator() {
+  const rotator = document.getElementById('headline-rotator');
+  if (!rotator) return;
+
+  const words = [...rotator.querySelectorAll('.rotator-word')];
+  if (words.length <= 1) return;
+
+  const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (prefersReduced) return;
+
+  let currentIndex = 0;
+  let timer = null;
+
+  const rotate = () => {
+    const currentWord = words[currentIndex];
+    const nextIndex = (currentIndex + 1) % words.length;
+    const nextWord = words[nextIndex];
+
+    currentWord.classList.remove('active');
+    currentWord.classList.add('exit');
+
+    setTimeout(() => {
+      currentWord.classList.remove('exit');
+    }, 600);
+
+    nextWord.classList.add('active');
+    currentIndex = nextIndex;
+  };
+
+  const startTimer = () => {
+    if (!timer) timer = setInterval(rotate, 3100);
+  };
+
+  const stopTimer = () => {
+    if (timer) {
+      clearInterval(timer);
+      timer = null;
+    }
+  };
+
+  startTimer();
+
+  document.addEventListener('visibilitychange', () => {
+    document.hidden ? stopTimer() : startTimer();
+  });
+})();
+
+// ─── Magnetic Button Micro-Interaction ────────────────────────
+(function initMagneticButtons() {
+  const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (prefersReduced) return;
+
+  const buttons = $$('.magnetic-btn');
+  if (!buttons.length) return;
+
+  buttons.forEach(btn => {
+    btn.addEventListener('pointermove', e => {
+      const rect = btn.getBoundingClientRect();
+      const x = (e.clientX - (rect.left + rect.width / 2)) * 0.22;
+      const y = (e.clientY - (rect.top + rect.height / 2)) * 0.22;
+      btn.style.transform = `translate(${x}px, ${y}px)`;
+    }, { passive: true });
+
+    btn.addEventListener('pointerleave', () => {
+      btn.style.transform = 'translate(0px, 0px)';
+    }, { passive: true });
+  });
+})();
+
+// ─── Process Timeline Sequential Focus ────────────────────────
+(function initProcessTimeline() {
+  const processSteps = document.getElementById('process-steps');
+  if (!processSteps) return;
+
+  const stepDiscuss = document.getElementById('step-discuss');
+  if (!stepDiscuss) return;
+
+  const obs = new IntersectionObserver(([entry]) => {
+    if (entry.isIntersecting) {
+      stepDiscuss.classList.add('active-focus');
+      obs.unobserve(entry.target);
+    }
+  }, { threshold: 0.3 });
+
+  obs.observe(processSteps);
+})();
+
 // ─── Active nav link on scroll ───────────────────────────────
 (function initActiveNav() {
   const sections = $$('section[id]');

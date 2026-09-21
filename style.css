@@ -495,6 +495,17 @@ h1, h2, h3, h4 {
   overflow: hidden;
 }
 
+/* Hero Canvas Constellation */
+.hero-particles-canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.85;
+}
+
 /* Background grid */
 .hero-bg-grid {
   position: absolute;
@@ -552,21 +563,49 @@ h1, h2, h3, h4 {
   padding-bottom: 2rem;
 }
 
+/* Hero Staggered Cinematic Entrance */
+.hero-entry-item {
+  animation: heroFadeUp 0.85s cubic-bezier(0.16, 1, 0.3, 1) var(--delay, 0s) backwards;
+}
+
+@keyframes heroFadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(22px);
+    filter: blur(4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+  }
+}
+
 .availability-badge {
+  position: relative;
   display: inline-flex;
   align-items: center;
   gap: 0.55rem;
-  background: rgba(74, 222, 128, 0.08);
-  border: 1px solid rgba(74, 222, 128, 0.2);
-  padding: 0.4rem 0.9rem;
+  background: rgba(13, 24, 20, 0.7);
+  border: 1px solid rgba(74, 222, 128, 0.28);
+  padding: 0.4rem 0.95rem;
   border-radius: 100px;
   font-size: 0.82rem;
   font-weight: 500;
   color: var(--color-green);
   margin-bottom: 1.75rem;
+  backdrop-filter: blur(8px);
+  transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+.availability-badge:hover {
+  border-color: rgba(74, 222, 128, 0.6);
+  box-shadow: 0 0 20px rgba(74, 222, 128, 0.25);
+  transform: translateY(-1px);
 }
 
 .availability-dot {
+  position: relative;
   width: 8px;
   height: 8px;
   background: var(--color-green);
@@ -575,21 +614,95 @@ h1, h2, h3, h4 {
   flex-shrink: 0;
 }
 
+.availability-beacon {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--color-green);
+  left: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  animation: beaconPing 2.4s cubic-bezier(0, 0, 0.2, 1) infinite;
+  pointer-events: none;
+}
+
+@keyframes beaconPing {
+  0% { transform: translateY(-50%) scale(1); opacity: 0.8; }
+  75%, 100% { transform: translateY(-50%) scale(2.8); opacity: 0; }
+}
+
 @keyframes pulse-dot {
   0%, 100% { box-shadow: 0 0 0 0 rgba(74, 222, 128, 0.6); }
   50% { box-shadow: 0 0 0 5px rgba(74, 222, 128, 0); }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .availability-dot { animation: none; }
+  .availability-dot,
+  .availability-beacon,
+  .hero-entry-item {
+    animation: none;
+  }
 }
 
 .hero-headline {
   font-size: clamp(2.6rem, 6vw, 4.8rem);
-  line-height: 1.08;
+  line-height: 1.1;
   letter-spacing: -0.03em;
   margin-bottom: 1.5rem;
-  max-width: 700px;
+  max-width: 780px;
+}
+
+.headline-line {
+  display: inline-block;
+}
+
+/* Kinetic Word Rotator */
+.headline-rotator-container {
+  display: inline-flex;
+  align-items: baseline;
+  flex-wrap: nowrap;
+}
+
+.headline-prefix {
+  white-space: pre;
+}
+
+.headline-rotator {
+  display: inline-block;
+  position: relative;
+  height: 1.18em;
+  vertical-align: bottom;
+  overflow: hidden;
+  min-width: 270px;
+}
+
+.rotator-word {
+  display: inline-block;
+  position: absolute;
+  left: 0;
+  top: 0;
+  white-space: nowrap;
+  opacity: 0;
+  transform: translateY(110%) rotateX(-55deg);
+  transform-origin: 50% 100%;
+  filter: blur(6px);
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1), filter 0.5s ease;
+  will-change: transform, opacity, filter;
+}
+
+.rotator-word.active {
+  opacity: 1;
+  transform: translateY(0%) rotateX(0deg);
+  filter: blur(0);
+  position: relative;
+}
+
+.rotator-word.exit {
+  opacity: 0;
+  transform: translateY(-110%) rotateX(55deg);
+  transform-origin: 50% 0%;
+  filter: blur(6px);
 }
 
 .headline-accent {
@@ -609,7 +722,7 @@ h1, h2, h3, h4 {
 .hero-subheadline {
   font-size: clamp(1rem, 2.2vw, 1.2rem);
   color: var(--color-text-muted);
-  max-width: 520px;
+  max-width: 540px;
   line-height: 1.7;
   margin-bottom: 2.25rem;
 }
@@ -617,11 +730,47 @@ h1, h2, h3, h4 {
 .hero-cta-group {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.85rem;
+  align-items: center;
+  gap: 0.95rem;
   margin-bottom: 2.5rem;
 }
 
 .hero-cta-group .btn { font-size: 1rem; padding: 0.85rem 1.75rem; }
+
+/* Discuss Your Project Magnetic Glowing Button */
+.btn-hero-discuss {
+  position: relative;
+  z-index: 1;
+  box-shadow: 0 0 24px rgba(59, 130, 246, 0.45), 0 4px 18px rgba(0, 0, 0, 0.35);
+  transition: transform 0.25s cubic-bezier(0.2, 0, 0, 1), box-shadow 0.25s ease, background-color 0.2s ease;
+}
+
+.btn-glow-pulse {
+  position: absolute;
+  inset: -4px;
+  border-radius: inherit;
+  background: radial-gradient(circle, rgba(96, 165, 250, 0.55), transparent 70%);
+  animation: btnPulseAura 2.6s ease-in-out infinite alternate;
+  z-index: -1;
+  pointer-events: none;
+}
+
+@keyframes btnPulseAura {
+  0% { opacity: 0.4; transform: scale(0.96); }
+  100% { opacity: 0.95; transform: scale(1.08); }
+}
+
+.btn-hero-discuss .btn-arrow-icon {
+  transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.btn-hero-discuss:hover .btn-arrow-icon {
+  transform: translateX(5px);
+}
+
+.btn-hero-discuss:hover {
+  box-shadow: 0 0 38px rgba(59, 130, 246, 0.7), 0 6px 24px rgba(0, 0, 0, 0.45);
+}
 
 .hero-tech-strip {
   display: flex;
@@ -1484,26 +1633,85 @@ h1, h2, h3, h4 {
 .process-step {
   flex: 1;
   text-align: center;
-  padding: 2rem 1.5rem;
+  padding: 2.25rem 1.5rem 2rem;
   background: var(--color-surface);
   border: 1px solid var(--color-border);
   border-radius: var(--radius-xl);
   transition: border-color var(--transition-base), box-shadow var(--transition-base), transform var(--transition-base);
+  position: relative;
 }
 
 .process-step:hover {
-  border-color: rgba(59, 130, 246, 0.3);
-  box-shadow: var(--shadow-md);
-  transform: translateY(-3px);
+  border-color: rgba(59, 130, 246, 0.4);
+  box-shadow: var(--shadow-md), 0 0 25px rgba(59, 130, 246, 0.12);
+  transform: translateY(-4px);
+}
+
+/* Step 01 Discuss Highlight */
+.process-step-discuss {
+  border-color: rgba(59, 130, 246, 0.35);
+  background: linear-gradient(180deg, rgba(59, 130, 246, 0.08) 0%, var(--color-surface) 100%);
+  box-shadow: 0 0 32px rgba(59, 130, 246, 0.14);
+}
+
+.discuss-step-badge {
+  position: absolute;
+  top: -11px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: linear-gradient(90deg, #2563eb, #7c3aed);
+  color: #ffffff;
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 0.22rem 0.7rem;
+  border-radius: 100px;
+  box-shadow: 0 2px 10px rgba(59, 130, 246, 0.45);
+  white-space: nowrap;
+  animation: badgeGlowPulse 2.8s ease-in-out infinite alternate;
+}
+
+@keyframes badgeGlowPulse {
+  0% { box-shadow: 0 2px 8px rgba(59, 130, 246, 0.4); transform: translateX(-50%) scale(1); }
+  100% { box-shadow: 0 2px 16px rgba(124, 58, 237, 0.6); transform: translateX(-50%) scale(1.04); }
+}
+
+.discuss-step-icon {
+  display: inline-block;
+  animation: discussIconBounce 3.2s ease-in-out infinite;
+}
+
+@keyframes discussIconBounce {
+  0%, 100% { transform: translateY(0) scale(1); }
+  50% { transform: translateY(-6px) scale(1.1); }
 }
 
 .process-connector {
   width: 40px;
   height: 2px;
-  background: linear-gradient(90deg var(--in-oklch), rgba(59, 130, 246, 0.4), rgba(59, 130, 246, 0.1));
+  background: rgba(59, 130, 246, 0.2);
   align-self: center;
   flex-shrink: 0;
   margin-top: -3px;
+  position: relative;
+  overflow: hidden;
+}
+
+.process-connector-pulse::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, #60a5fa, #c084fc, transparent);
+  animation: connectorFlow 2.6s ease-in-out infinite;
+}
+
+@keyframes connectorFlow {
+  0% { left: -100%; }
+  100% { left: 200%; }
 }
 
 .step-number {
@@ -1529,7 +1737,17 @@ h1, h2, h3, h4 {
 
 @media (max-width: 900px) {
   .process-steps { flex-direction: column; align-items: center; }
-  .process-connector { width: 2px; height: 30px; background: linear-gradient(180deg, rgba(59,130,246,0.4), rgba(59,130,246,0.1)); margin: 0; }
+  .process-connector { width: 2px; height: 30px; background: rgba(59,130,246,0.2); margin: 0; }
+  .process-connector-pulse::after {
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(180deg, transparent, #60a5fa, #c084fc, transparent);
+    animation: connectorFlowV 2.6s ease-in-out infinite;
+  }
+  @keyframes connectorFlowV {
+    0% { top: -100%; left: 0; }
+    100% { top: 200%; left: 0; }
+  }
   .process-step { width: 100%; max-width: 480px; }
 }
 
@@ -2084,6 +2302,50 @@ h1, h2, h3, h4 {
 }
 
 /* ============================================================
+   CONTACT & DISCUSSION AREA ANIMATIONS
+============================================================ */
+.beacon-pulse-wa {
+  position: absolute;
+  inset: -3px;
+  border-radius: inherit;
+  border: 1.5px solid rgba(74, 222, 128, 0.7);
+  animation: waPulse 2.2s cubic-bezier(0, 0, 0.2, 1) infinite;
+  pointer-events: none;
+}
+
+@keyframes waPulse {
+  0% { transform: scale(1); opacity: 0.85; }
+  80%, 100% { transform: scale(1.45); opacity: 0; }
+}
+
+.contact-method {
+  transition: border-color 0.25s ease, background 0.25s ease, transform 0.25s cubic-bezier(0.2, 0, 0, 1), box-shadow 0.25s ease;
+}
+
+.contact-method:hover {
+  border-color: rgba(59, 130, 246, 0.35);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  transform: translateX(4px) translateY(-2px);
+}
+
+.form-ambient-aura {
+  position: absolute;
+  top: -60%;
+  left: -60%;
+  width: 220%;
+  height: 220%;
+  background: radial-gradient(circle at center, rgba(59, 130, 246, 0.07) 0%, transparent 60%);
+  animation: auraDrift 16s linear infinite;
+  pointer-events: none;
+  z-index: 0;
+}
+
+@keyframes auraDrift {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* ============================================================
    ACCESSIBILITY: REDUCED MOTION OVERRIDES
 ============================================================ */
 @media (prefers-reduced-motion: reduce) {
@@ -2098,11 +2360,32 @@ h1, h2, h3, h4 {
   .form-status-card,
   .reveal-card,
   .hero-mockup,
-  .chart-bar {
+  .chart-bar,
+  .hero-entry-item,
+  .availability-beacon,
+  .availability-dot,
+  .btn-glow-pulse,
+  .discuss-step-badge,
+  .discuss-step-icon,
+  .process-connector-pulse::after,
+  .beacon-pulse-wa,
+  .form-ambient-aura {
     animation: none !important;
     transition: none !important;
     transform: none !important;
     opacity: 1 !important;
   }
+
+  .rotator-word {
+    position: static !important;
+    opacity: 1 !important;
+    transform: none !important;
+    filter: none !important;
+  }
+
+  .rotator-word:not(.active) {
+    display: none !important;
+  }
 }
+
 
