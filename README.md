@@ -1,4 +1,4 @@
-# Nexora Studio — Official Website
+# NovaCraft Studio — Official Website
 
 > **Websites & Custom Software Built Around Your Business.**  
 > A focused 2–3 person developer team delivering high-performance business websites, web applications, booking engines, and admin dashboards with transparent, project-based pricing.
