@@ -83,6 +83,143 @@ const $$ = (sel, ctx = document) => [...ctx.querySelectorAll(sel)];
   cards.forEach(card => obs.observe(card));
 })();
 
+// ─── Scroll Progress Bar ─────────────────────────────────────
+(function initScrollProgress() {
+  const bar = $('#scroll-progress');
+  if (!bar) return;
+
+  let ticking = false;
+  const update = () => {
+    const total = document.documentElement.scrollHeight - window.innerHeight;
+    const progress = total > 0 ? (window.scrollY / total) * 100 : 0;
+    bar.style.width = `${Math.min(100, Math.max(0, progress))}%`;
+    ticking = false;
+  };
+
+  window.addEventListener('scroll', () => {
+    if (!ticking) {
+      requestAnimationFrame(update);
+      ticking = true;
+    }
+  }, { passive: true });
+
+  update();
+})();
+
+// ─── Interactive Mouse Spotlight Glow ─────────────────────────
+(function initSpotlight() {
+  const cards = $$('.spotlight-card');
+  if (!cards.length) return;
+
+  cards.forEach(card => {
+    card.addEventListener('pointermove', e => {
+      const rect = card.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+      card.style.setProperty('--mouse-x', `${x}px`);
+      card.style.setProperty('--mouse-y', `${y}px`);
+    }, { passive: true });
+
+    card.addEventListener('pointerleave', () => {
+      card.style.removeProperty('--mouse-x');
+      card.style.removeProperty('--mouse-y');
+    }, { passive: true });
+  });
+})();
+
+// ─── Hero 3D Perspective Tilt ────────────────────────────────
+(function initHeroTilt() {
+  const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (prefersReduced) return;
+
+  const visual = $('.hero-visual-wrapper');
+  const mockup = $('.hero-mockup');
+  if (!visual || !mockup) return;
+
+  let ticking = false;
+  let targetRotX = 0;
+  let targetRotY = 0;
+
+  visual.addEventListener('pointermove', e => {
+    const rect = mockup.getBoundingClientRect();
+    const centerX = rect.left + rect.width / 2;
+    const centerY = rect.top + rect.height / 2;
+    const dx = (e.clientX - centerX) / (rect.width / 2);
+    const dy = (e.clientY - centerY) / (rect.height / 2);
+
+    targetRotX = Math.max(-6, Math.min(6, -dy * 5));
+    targetRotY = Math.max(-6, Math.min(6, dx * 5));
+
+    if (!ticking) {
+      requestAnimationFrame(() => {
+        mockup.style.transform = `perspective(1200px) rotateX(${targetRotX.toFixed(2)}deg) rotateY(${targetRotY.toFixed(2)}deg)`;
+        ticking = false;
+      });
+      ticking = true;
+    }
+  }, { passive: true });
+
+  visual.addEventListener('pointerleave', () => {
+    mockup.style.transform = 'perspective(1200px) rotateX(0deg) rotateY(0deg)';
+  }, { passive: true });
+})();
+
+// ─── Hero Dashboard Number Counters & Chart ─────────────────
+(function initDashboardCounters() {
+  const dashboard = $('.mockup-dashboard');
+  if (!dashboard) return;
+
+  const counters = $$('.counter-num', dashboard);
+  const bars = $$('.chart-bar', dashboard);
+
+  const animateValue = (el, target, duration = 1400) => {
+    const prefix = el.dataset.prefix || '';
+    const isCurrency = el.dataset.format === 'currency';
+    const start = 0;
+    const startTime = performance.now();
+
+    const update = (now) => {
+      const elapsed = now - startTime;
+      const progress = Math.min(elapsed / duration, 1);
+      const ease = 1 - Math.pow(1 - progress, 3);
+      const current = Math.round(start + (target - start) * ease);
+
+      if (isCurrency) {
+        el.textContent = `${prefix}${current.toLocaleString('en-IN')}`;
+      } else {
+        el.textContent = `${prefix}${current}`;
+      }
+
+      if (progress < 1) {
+        requestAnimationFrame(update);
+      }
+    };
+
+    requestAnimationFrame(update);
+  };
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        counters.forEach(c => {
+          const target = parseInt(c.dataset.target, 10);
+          if (!isNaN(target)) animateValue(c, target);
+        });
+
+        bars.forEach((bar, idx) => {
+          setTimeout(() => {
+            bar.classList.add('animated');
+          }, idx * 90 + 200);
+        });
+
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.2 });
+
+  observer.observe(dashboard);
+})();
+
 // ─── Active nav link on scroll ───────────────────────────────
 (function initActiveNav() {
   const sections = $$('section[id]');
@@ -194,10 +331,17 @@ const $$ = (sel, ctx = document) => [...ctx.querySelectorAll(sel)];
     const btnText = btn.querySelector('.btn-text');
     const original = btnText ? btnText.textContent : 'Send Project Enquiry';
 
-    // Loading state
+    // Loading state with animated spinner
     btn.disabled = true;
-    btn.style.opacity = '0.75';
-    if (btnText) btnText.textContent = 'Sending email…';
+    btn.classList.add('btn-submitting');
+    let spinner = btn.querySelector('.btn-spinner');
+    if (!spinner) {
+      spinner = document.createElement('span');
+      spinner.className = 'btn-spinner';
+      spinner.setAttribute('aria-hidden', 'true');
+      btn.prepend(spinner);
+    }
+    if (btnText) btnText.textContent = 'Delivering enquiry…';
 
     removeFormStatus(form);
 
@@ -218,6 +362,12 @@ const $$ = (sel, ctx = document) => [...ctx.querySelectorAll(sel)];
       _captcha: 'false'
     };
 
+    const cleanupButton = () => {
+      btn.classList.remove('btn-submitting');
+      const sp = btn.querySelector('.btn-spinner');
+      if (sp) sp.remove();
+    };
+
     try {
       const response = await fetch('https://formsubmit.co/ajax/aravindvjm2004@gmail.com', {
         method: 'POST',
@@ -232,8 +382,12 @@ const $$ = (sel, ctx = document) => [...ctx.querySelectorAll(sel)];
 
       if (response.ok && (resJson.success === 'true' || resJson.success === true)) {
         // Successful live email delivery
+        cleanupButton();
         if (btnText) btnText.textContent = '✓ Enquiry Delivered!';
         btn.style.background = 'var(--color-green)';
+
+        // Trigger celebratory confetti burst
+        fireConfetti();
 
         showFormStatus(form, 'success', {
           title: 'Enquiry Delivered Successfully!',
@@ -251,6 +405,7 @@ const $$ = (sel, ctx = document) => [...ctx.querySelectorAll(sel)];
 
       } else if (resJson.message && resJson.message.toLowerCase().includes('activation')) {
         // Needs 1-time activation by email owner
+        cleanupButton();
         if (btnText) btnText.textContent = '✓ Activation Sent!';
         btn.style.background = 'var(--color-accent)';
 
@@ -268,6 +423,7 @@ const $$ = (sel, ctx = document) => [...ctx.querySelectorAll(sel)];
       }
     } catch (err) {
       console.warn('Direct HTTP fetch delivery note:', err);
+      cleanupButton();
       if (btnText) btnText.textContent = original;
       btn.disabled = false;
       btn.style.opacity = '';
@@ -280,6 +436,78 @@ const $$ = (sel, ctx = document) => [...ctx.querySelectorAll(sel)];
     }
   });
 
+  // Pure Canvas Confetti Explosion
+  function fireConfetti() {
+    const canvas = document.getElementById('confetti-canvas');
+    if (!canvas) return;
+    const ctx = canvas.getContext('2d');
+    if (!ctx) return;
+
+    const rect = canvas.getBoundingClientRect();
+    canvas.width = rect.width;
+    canvas.height = rect.height;
+
+    const particles = [];
+    const colors = ['#3b82f6', '#60a5fa', '#818cf8', '#a78bfa', '#4ade80', '#34d399', '#fbbf24', '#f472b6'];
+    const count = 75;
+    const originX = canvas.width / 2;
+    const originY = Math.max(canvas.height - 80, canvas.height * 0.75);
+
+    for (let i = 0; i < count; i++) {
+      const angle = -Math.PI / 2 + (Math.random() - 0.5) * 1.7;
+      const speed = 6 + Math.random() * 9;
+      particles.push({
+        x: originX + (Math.random() - 0.5) * 60,
+        y: originY,
+        vx: Math.cos(angle) * speed,
+        vy: Math.sin(angle) * speed,
+        size: 5 + Math.random() * 6,
+        color: colors[Math.floor(Math.random() * colors.length)],
+        rotation: Math.random() * 360,
+        rotationSpeed: (Math.random() - 0.5) * 12,
+        opacity: 1,
+        decay: 0.009 + Math.random() * 0.009,
+        gravity: 0.24,
+        drag: 0.985
+      });
+    }
+
+    let animId;
+    const render = () => {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      let active = 0;
+
+      for (let p of particles) {
+        if (p.opacity <= 0) continue;
+        active++;
+
+        p.vx *= p.drag;
+        p.vy = p.vy * p.drag + p.gravity;
+        p.x += p.vx;
+        p.y += p.vy;
+        p.rotation += p.rotationSpeed;
+        p.opacity -= p.decay;
+
+        ctx.save();
+        ctx.translate(p.x, p.y);
+        ctx.rotate((p.rotation * Math.PI) / 180);
+        ctx.globalAlpha = Math.max(0, p.opacity);
+        ctx.fillStyle = p.color;
+        ctx.fillRect(-p.size / 2, -p.size / 2, p.size, p.size * 0.6);
+        ctx.restore();
+      }
+
+      if (active > 0) {
+        animId = requestAnimationFrame(render);
+      } else {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        cancelAnimationFrame(animId);
+      }
+    };
+
+    render();
+  }
+
   function showFormStatus(form, type, info) {
     removeFormStatus(form);
 
@@ -289,10 +517,12 @@ const $$ = (sel, ctx = document) => [...ctx.querySelectorAll(sel)];
 
     let iconSvg = '';
     if (type === 'success') {
-      iconSvg = `<svg width="22" height="22" viewBox="0 0 20 20" fill="none" aria-hidden="true">
-        <circle cx="10" cy="10" r="9" stroke="#4ade80" stroke-width="1.5"/>
-        <path d="M6.5 10l2.5 2.5 4-4" stroke="#4ade80" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-      </svg>`;
+      iconSvg = `
+        <svg class="success-checkmark-svg" viewBox="0 0 52 52" aria-hidden="true">
+          <circle class="checkmark-circle" cx="26" cy="26" r="24"/>
+          <path class="checkmark-check" fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8"/>
+        </svg>
+      `;
     } else {
       iconSvg = `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#60a5fa" stroke-width="2" aria-hidden="true">
         <circle cx="12" cy="12" r="10"/>
