@@ -1,21 +1,21 @@
-# ✨ NovaCraft Studio — Digital Engineering & Web Development Team
+# ✨ TechNest Studio — Digital Engineering & Web Development Team
 
 <div align="center">
 
-![NovaCraft Studio Banner](assets/logo.svg)
+![TechNest Studio Banner](assets/logo.svg)
 
 ### **Websites & Custom Software Built Around Your Business.**
 *A focused, agile 2–3 person engineering studio creating high-performance business websites, web applications, booking engines, and operations dashboards with transparent, project-based pricing.*
 
 [![Live Website](https://img.shields.io/badge/Live%20Demo-craftedpage.vercel.app-38bdf8?style=for-the-badge&logo=vercel)](https://craftedpage.vercel.app)
 [![WhatsApp Us](https://img.shields.io/badge/WhatsApp-Chat%20Directly-22c55e?style=for-the-badge&logo=whatsapp)](https://wa.me/918807006909)
-[![Email Us](https://img.shields.io/badge/Email-aravindvjm2004%40gmail.com-ea4335?style=for-the-badge&logo=gmail)](mailto:aravindvjm2004@gmail.com)
+[![Email Us](https://img.shields.io/badge/Email-studiotechnest%40gmail.com-ea4335?style=for-the-badge&logo=gmail)](mailto:studiotechnest@gmail.com)
 
 </div>
 
 ---
 
-## 🧭 About NovaCraft Studio
+## 🧭 About TechNest Studio
 
 We are an independent, developer-led engineering team of **2–3 engineers** focused on building practical, reliable, and high-impact digital systems for growing businesses, startups, and operational teams.
 
@@ -125,7 +125,7 @@ Open **`http://localhost:3000`** in your browser.
 Ready to build your website, application, or business automation? Reach out directly to our engineering team:
 
 - **💬 WhatsApp**: [**+91 88070 06909**](https://wa.me/918807006909)
-- **📧 Email**: [**aravindvjm2004@gmail.com**](mailto:aravindvjm2004@gmail.com)
+- **📧 Email**: [**studiotechnest@gmail.com**](mailto:studiotechnest@gmail.com)
 - **🌐 Live Production**: [**https://craftedpage.vercel.app**](https://craftedpage.vercel.app)
 
-*© 2026 NovaCraft Studio. Built for business growth.*
+*© 2026 TechNest Studio. Built for business growth.*

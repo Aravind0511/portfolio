@@ -1,6 +1,6 @@
 /* ============================================================
    script.js — Portfolio Interactive Behaviours
-   Aravind | Independent Freelance Developer
+   TechNest Studio | Digital Engineering Team
    ============================================================ */
 
 'use strict';
@@ -496,7 +496,7 @@ const $$ = (sel, ctx = document) => [...ctx.querySelectorAll(sel)];
     const data = getFormDataFormatted();
     const subject = encodeURIComponent(`Project Enquiry: ${data.project_type} — ${data.name}`);
     const body = encodeURIComponent(
-      `Hello NovaCraft Studio Team,\n\n` +
+      `Hello TechNest Studio Team,\n\n` +
       `I would like to discuss a project with your team.\n\n` +
       `--- CLIENT DETAILS ---\n` +
       `Name: ${data.name}\n` +
@@ -507,16 +507,16 @@ const $$ = (sel, ctx = document) => [...ctx.querySelectorAll(sel)];
       `Preferred Timeline: ${data.timeline}\n\n` +
       `--- PROJECT DESCRIPTION ---\n` +
       `${data.description}\n\n` +
-      `Sent via NovaCraft Studio Website`
+      `Sent via TechNest Studio Website`
     );
-    window.location.href = `mailto:aravindvjm2004@gmail.com?subject=${subject}&body=${body}`;
+    window.location.href = `mailto:studiotechnest@gmail.com?subject=${subject}&body=${body}`;
   };
 
   // Direct WhatsApp link generator
   const openWhatsApp = () => {
     const data = getFormDataFormatted();
     const text = encodeURIComponent(
-      `*New Project Enquiry — NovaCraft Studio*\n\n` +
+      `*New Project Enquiry — TechNest Studio*\n\n` +
       `*Name:* ${data.name}\n` +
       `*Business:* ${data.business}\n` +
       `*Email:* ${data.email}\n` +
@@ -567,9 +567,9 @@ const $$ = (sel, ctx = document) => [...ctx.querySelectorAll(sel)];
       project_type: data.project_type,
       description: data.description,
       timeline: data.timeline,
-      _subject: `New Project Enquiry from ${data.name} (${data.business}) — NovaCraft Studio`,
+      _subject: `New Project Enquiry from ${data.name} (${data.business}) — TechNest Studio`,
       _replyto: data.email,
-      _autoresponse: 'Thank you for reaching out to NovaCraft Studio! We have received your project enquiry and our team will review your requirement and get back to you within 24 hours.',
+      _autoresponse: 'Thank you for reaching out to TechNest Studio! We have received your project enquiry and our team will review your requirement and get back to you within 24 hours.',
       _template: 'table',
       _captcha: 'false'
     };
@@ -581,7 +581,7 @@ const $$ = (sel, ctx = document) => [...ctx.querySelectorAll(sel)];
     };
 
     try {
-      const response = await fetch('https://formsubmit.co/ajax/aravindvjm2004@gmail.com', {
+      const response = await fetch('https://formsubmit.co/ajax/studiotechnest@gmail.com', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -605,7 +605,7 @@ const $$ = (sel, ctx = document) => [...ctx.querySelectorAll(sel)];
           const safeName = (data.name || 'Interested Client').replace(/</g, '&lt;').replace(/>/g, '&gt;');
           const safeType = (data.project_type || 'Custom Software').replace(/</g, '&lt;').replace(/>/g, '&gt;');
           const safeTimeline = (data.timeline || 'Flexible').replace(/</g, '&lt;').replace(/>/g, '&gt;');
-          const waPrefill = encodeURIComponent(`Hello NovaCraft Studio! I just submitted an enquiry for ${safeType}. Name: ${safeName}`);
+          const waPrefill = encodeURIComponent(`Hello TechNest Studio! I just submitted an enquiry for ${safeType}. Name: ${safeName}`);
 
           successContainer.innerHTML = `
             <div class="form-success-overlay" role="alert">
@@ -621,7 +621,7 @@ const $$ = (sel, ctx = document) => [...ctx.querySelectorAll(sel)];
               <div class="success-badge-pill">
                 <span class="badge-dot-live" aria-hidden="true"></span>
                 <span class="badge-pill-text">
-                  Sent to <strong class="success-target-email">aravindvjm2004@gmail.com</strong> successfully!
+                  Sent to <strong class="success-target-email">studiotechnest@gmail.com</strong> successfully!
                 </span>
               </div>
               <h3 class="success-heading">Enquiry Received!</h3>
@@ -668,7 +668,7 @@ const $$ = (sel, ctx = document) => [...ctx.querySelectorAll(sel)];
 
         showFormStatus(form, 'info', {
           title: 'One-Time Activation Link Sent!',
-          message: 'FormSubmit has sent a 1-time confirmation email to <strong>aravindvjm2004@gmail.com</strong>. Open your Gmail and click <strong>"Activate Form"</strong> once to finalize auto-delivery. Your current enquiry can also be sent directly below:',
+          message: 'FormSubmit has sent a 1-time confirmation email to <strong>studiotechnest@gmail.com</strong>. Open your Gmail and click <strong>"Activate Form"</strong> once to finalize auto-delivery. Your current enquiry can also be sent directly below:',
           showActions: true
         });
 
