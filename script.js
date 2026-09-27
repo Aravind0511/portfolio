@@ -349,7 +349,7 @@ const $$ = (sel, ctx = document) => [...ctx.querySelectorAll(sel)];
   animate();
 })();
 
-// ─── Signature Visual Moment: ✨ IMAGINE • BUILD • TRANSFORM ──
+// ─── Signature Visual Moment: ✨ IMAGINE • 🛠️ BUILD • 🚀 TRANSFORM ──
 (function initMagicalWordsSequence() {
   const stage = document.getElementById('signature-magical-stage');
   if (!stage) return;
@@ -373,7 +373,7 @@ const $$ = (sel, ctx = document) => [...ctx.querySelectorAll(sel)];
     return;
   }
 
-  // --- Canvas Particle System for Stage ---
+  // --- Canvas Particle System for Stage (Micro-Particles, Calm & Elegant) ---
   let ctx = null;
   let particles = [];
   let isCanvasActive = true;
@@ -392,17 +392,17 @@ const $$ = (sel, ctx = document) => [...ctx.querySelectorAll(sel)];
     window.addEventListener('resize', resizeCanvas, { passive: true });
 
     class MagicalSparkle {
-      constructor(cx, cy, color, speedScale = 1) {
-        this.x = cx + (Math.random() - 0.5) * 60;
-        this.y = cy + (Math.random() - 0.5) * 20;
+      constructor(cx, cy, color, speedScale = 0.8) {
+        this.x = cx + (Math.random() - 0.5) * 50;
+        this.y = cy + (Math.random() - 0.5) * 16;
         const angle = Math.random() * Math.PI * 2;
-        const speed = (Math.random() * 0.9 + 0.3) * speedScale;
+        const speed = (Math.random() * 0.6 + 0.2) * speedScale;
         this.vx = Math.cos(angle) * speed;
-        this.vy = Math.sin(angle) * speed - 0.2;
-        this.size = Math.random() * 2.2 + 1;
+        this.vy = Math.sin(angle) * speed - 0.15;
+        this.size = Math.random() * 1.6 + 0.8;
         this.color = color;
-        this.alpha = 1;
-        this.decay = Math.random() * 0.02 + 0.015;
+        this.alpha = 0.85;
+        this.decay = Math.random() * 0.02 + 0.016;
       }
       update() {
         this.x += this.vx;
@@ -415,7 +415,7 @@ const $$ = (sel, ctx = document) => [...ctx.querySelectorAll(sel)];
         c.globalAlpha = Math.max(0, this.alpha);
         c.fillStyle = this.color;
         c.shadowColor = this.color;
-        c.shadowBlur = 6;
+        c.shadowBlur = 4;
         c.beginPath();
         c.arc(this.x, this.y, this.size, 0, Math.PI * 2);
         c.fill();
@@ -423,7 +423,7 @@ const $$ = (sel, ctx = document) => [...ctx.querySelectorAll(sel)];
       }
     }
 
-    const emitSparkles = (color, count = 12, speedScale = 1) => {
+    const emitSparkles = (color, count = 7, speedScale = 0.8) => {
       if (!ctx || !stage) return;
       const rect = stage.getBoundingClientRect();
       const cx = (rect.width + 60) / 2;
@@ -455,48 +455,49 @@ const $$ = (sel, ctx = document) => [...ctx.querySelectorAll(sel)];
     animFrameId = requestAnimationFrame(renderLoop);
 
     // --- Sequential Word Timeline ---
+    // Sequence: ✨ IMAGINE → 🛠️ BUILD → 🚀 TRANSFORM
     setTimeout(() => {
-      // Step 1: IMAGINE
+      // Step 1: ✨ IMAGINE
       if (wordImagine) {
         wordImagine.classList.add('active');
-        emitSparkles('#c084fc', 18, 1.2);
-        emitSparkles('#facc15', 6, 0.8);
+        emitSparkles('#c084fc', 8, 0.9);
+        emitSparkles('#facc15', 4, 0.7);
       }
-    }, 300);
+    }, 250);
 
     setTimeout(() => {
-      // Step 2: BUILD
+      // Step 2: 🛠️ BUILD
       if (wordImagine) {
         wordImagine.classList.remove('active');
         wordImagine.classList.add('exit');
       }
       setTimeout(() => {
         if (wordImagine) wordImagine.classList.remove('exit');
-      }, 450);
+      }, 400);
 
       if (wordBuild) {
         wordBuild.classList.add('active');
-        emitSparkles('#38bdf8', 16, 1.1);
-        emitSparkles('#60a5fa', 8, 0.9);
+        emitSparkles('#38bdf8', 8, 0.9);
+        emitSparkles('#60a5fa', 4, 0.8);
       }
-    }, 1650);
+    }, 1450);
 
     setTimeout(() => {
-      // Step 3: TRANSFORM
+      // Step 3: 🚀 TRANSFORM
       if (wordBuild) {
         wordBuild.classList.remove('active');
         wordBuild.classList.add('exit');
       }
       setTimeout(() => {
         if (wordBuild) wordBuild.classList.remove('exit');
-      }, 450);
+      }, 400);
 
       if (wordTransform) {
         wordTransform.classList.add('active');
-        emitSparkles('#a855f7', 20, 1.3);
-        emitSparkles('#38bdf8', 10, 1.1);
+        emitSparkles('#a855f7', 8, 0.9);
+        emitSparkles('#38bdf8', 5, 0.8);
       }
-    }, 3000);
+    }, 2650);
 
     setTimeout(() => {
       // Step 4: Settle into Full Unified Phrase
@@ -506,29 +507,52 @@ const $$ = (sel, ctx = document) => [...ctx.querySelectorAll(sel)];
       }
       setTimeout(() => {
         if (wordTransform) wordTransform.classList.remove('exit');
-      }, 450);
+      }, 400);
 
       if (fullPhrase) {
         fullPhrase.classList.add('active');
-        emitSparkles('#c084fc', 14, 0.8);
-        emitSparkles('#facc15', 8, 0.7);
-        emitSparkles('#38bdf8', 8, 0.7);
+        emitSparkles('#c084fc', 6, 0.7);
+        emitSparkles('#38bdf8', 6, 0.7);
+
+        // Subtle sequential soft glow across the unified phrase words
+        const itemImagine = fullPhrase.querySelector('.phrase-item-imagine');
+        const itemBuild = fullPhrase.querySelector('.phrase-item-build');
+        const itemTransform = fullPhrase.querySelector('.phrase-item-transform');
+
+        setTimeout(() => {
+          if (itemImagine) itemImagine.classList.add('soft-glow-imagine');
+        }, 150);
+
+        setTimeout(() => {
+          if (itemImagine) itemImagine.classList.remove('soft-glow-imagine');
+          if (itemBuild) itemBuild.classList.add('soft-glow-build');
+        }, 550);
+
+        setTimeout(() => {
+          if (itemBuild) itemBuild.classList.remove('soft-glow-build');
+          if (itemTransform) itemTransform.classList.add('soft-glow-transform');
+        }, 950);
+
+        setTimeout(() => {
+          if (itemTransform) itemTransform.classList.remove('soft-glow-transform');
+          // Complete phrase settles into its normal state
+        }, 1400);
       }
 
       setTimeout(() => {
         isCanvasActive = false;
-      }, 3500);
-    }, 4350);
+      }, 2500);
+    }, 3850);
 
     setTimeout(() => {
-      // Step 5: Reveal Tagline with light sweep
+      // Step 5: Reveal Tagline with gentle shimmer sweep
       if (taglineReveal) {
         taglineReveal.classList.add('active');
       }
-    }, 4750);
+    }, 4300);
   }
 
-  // --- Interactive 3D Depth / Parallax on hover ---
+  // --- Interactive 3D Depth / Parallax on hover (Calm & Subtle) ---
   if (card) {
     let cardTicking = false;
     let cardRotX = 0;
@@ -541,15 +565,16 @@ const $$ = (sel, ctx = document) => [...ctx.querySelectorAll(sel)];
       const centerX = rect.width / 2;
       const centerY = rect.height / 2;
 
-      cardRotX = -((y - centerY) / centerY) * 6;
-      cardRotY = ((x - centerX) / centerX) * 8;
+      // Soft tilt: max 4 degrees
+      cardRotX = -((y - centerY) / centerY) * 4;
+      cardRotY = ((x - centerX) / centerX) * 5;
 
       card.style.setProperty('--mouse-x', `${x}px`);
       card.style.setProperty('--mouse-y', `${y}px`);
 
       if (!cardTicking) {
         requestAnimationFrame(() => {
-          card.style.transform = `perspective(800px) rotateX(${cardRotX.toFixed(2)}deg) rotateY(${cardRotY.toFixed(2)}deg) translateZ(6px)`;
+          card.style.transform = `perspective(800px) rotateX(${cardRotX.toFixed(2)}deg) rotateY(${cardRotY.toFixed(2)}deg) translateZ(4px)`;
           cardTicking = false;
         });
         cardTicking = true;
@@ -567,7 +592,7 @@ const $$ = (sel, ctx = document) => [...ctx.querySelectorAll(sel)];
   }
 })();
 
-// ─── Interactive 3D Logo Parallax & Tilt ──────────────────────
+// ─── Interactive 3D Logo Parallax & Tilt (Gentle Specular) ───
 (function init3DLogoInteractions() {
   const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   if (prefersReduced) return;
@@ -590,18 +615,19 @@ const $$ = (sel, ctx = document) => [...ctx.querySelectorAll(sel)];
       const cx = rect.width / 2;
       const cy = rect.height / 2;
 
-      const rotX = -((y - cy) / cy) * 12;
-      const rotY = ((x - cx) / cx) * 14;
+      // Subtle tilt: max 7 degrees
+      const rotX = -((y - cy) / cy) * 7;
+      const rotY = ((x - cx) / cx) * 8;
 
       if (glare) {
-        const px = Math.max(10, Math.min(90, (x / rect.width) * 100));
-        const py = Math.max(10, Math.min(90, (y / rect.height) * 100));
-        glare.style.background = `radial-gradient(circle at ${px}% ${py}%, rgba(255, 255, 255, 0.55) 0%, rgba(192, 132, 252, 0.25) 40%, transparent 70%)`;
+        const px = Math.max(15, Math.min(85, (x / rect.width) * 100));
+        const py = Math.max(15, Math.min(85, (y / rect.height) * 100));
+        glare.style.background = `radial-gradient(circle at ${px}% ${py}%, rgba(255, 255, 255, 0.45) 0%, rgba(192, 132, 252, 0.18) 40%, transparent 70%)`;
       }
 
       if (!ticking) {
         requestAnimationFrame(() => {
-          inner.style.transform = `rotateX(${rotX.toFixed(2)}deg) rotateY(${rotY.toFixed(2)}deg) scale(1.08)`;
+          inner.style.transform = `rotateX(${rotX.toFixed(2)}deg) rotateY(${rotY.toFixed(2)}deg) scale(1.05)`;
           ticking = false;
         });
         ticking = true;
