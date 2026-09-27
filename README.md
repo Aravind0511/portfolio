@@ -2,9 +2,11 @@
 
 <div align="center">
 
-![TechNest Studio Banner](assets/logo.svg)
+<img src="assets/logo-brand.png" alt="TechNest Studio Logo" width="180" style="border-radius: 16px;" />
 
-### **Websites & Custom Software Built Around Your Business.**
+### **✨ Imagine • Build • Transform**
+#### *TechNest Studio — Turning ideas into digital experiences.*
+
 *A focused, agile 2–3 person engineering studio creating high-performance business websites, web applications, booking engines, and operations dashboards with transparent, project-based pricing.*
 
 [![Live Website](https://img.shields.io/badge/Live%20Demo-craftedpage.vercel.app-38bdf8?style=for-the-badge&logo=vercel)](https://craftedpage.vercel.app)
@@ -128,4 +130,5 @@ Ready to build your website, application, or business automation? Reach out dire
 - **📧 Email**: [**studiotechnest@gmail.com**](mailto:studiotechnest@gmail.com)
 - **🌐 Live Production**: [**https://craftedpage.vercel.app**](https://craftedpage.vercel.app)
 
-*© 2026 TechNest Studio. Built for business growth.*
+*✨ Imagine • Build • Transform*  
+*© 2026 TechNest Studio. Turning ideas into digital experiences.*

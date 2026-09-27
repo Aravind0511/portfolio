@@ -326,13 +326,17 @@ h1, h2, h3, h4 {
   width: 36px;
   height: 36px;
   border-radius: 8px;
+  object-fit: cover;
+  border: 1px solid rgba(168, 85, 247, 0.35);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.35);
   flex-shrink: 0;
-  transition: transform var(--transition-base), filter var(--transition-base);
+  transition: transform var(--transition-base), filter var(--transition-base), border-color var(--transition-base);
 }
 
 .nav-logo:hover .brand-logo-img {
-  transform: scale(1.06);
-  filter: drop-shadow(0 0 10px rgba(56, 189, 248, 0.4));
+  transform: scale(1.08);
+  border-color: rgba(192, 132, 252, 0.65);
+  filter: drop-shadow(0 0 12px rgba(168, 85, 247, 0.5));
 }
 
 .logo-badge {
@@ -584,6 +588,14 @@ h1, h2, h3, h4 {
   }
 }
 
+.hero-badges-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 1.75rem;
+}
+
 .availability-badge {
   position: relative;
   display: inline-flex;
@@ -596,9 +608,42 @@ h1, h2, h3, h4 {
   font-size: 0.82rem;
   font-weight: 500;
   color: var(--color-green);
-  margin-bottom: 1.75rem;
   backdrop-filter: blur(8px);
   transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+.brand-motto-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.35rem 0.9rem;
+  background: linear-gradient(135deg, rgba(168, 85, 247, 0.15) 0%, rgba(59, 130, 246, 0.15) 100%);
+  border: 1px solid rgba(168, 85, 247, 0.32);
+  border-radius: 100px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #c084fc;
+  letter-spacing: 0.03em;
+  backdrop-filter: blur(8px);
+  box-shadow: 0 2px 14px rgba(168, 85, 247, 0.15);
+  transition: transform var(--transition-fast), border-color var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.brand-motto-pill:hover {
+  transform: translateY(-1px);
+  border-color: rgba(192, 132, 252, 0.65);
+  box-shadow: 0 4px 18px rgba(168, 85, 247, 0.28);
+}
+
+.brand-motto-pill .motto-sparkle {
+  font-size: 0.92rem;
+  display: inline-block;
+  animation: pulseLiveDot 2s ease-in-out infinite;
+}
+
+.brand-motto-pill .motto-keywords span {
+  color: rgba(255, 255, 255, 0.38);
+  margin: 0 0.2rem;
 }
 
 .availability-badge:hover {
@@ -725,9 +770,21 @@ h1, h2, h3, h4 {
 .hero-subheadline {
   font-size: clamp(1rem, 2.2vw, 1.2rem);
   color: var(--color-text-muted);
-  max-width: 540px;
+  max-width: 580px;
   line-height: 1.7;
   margin-bottom: 2.25rem;
+}
+
+.hero-tagline-lead {
+  display: block;
+  font-weight: 600;
+  font-size: clamp(1.02rem, 2vw, 1.18rem);
+  line-height: 1.5;
+  margin-bottom: 0.5rem;
+  background: linear-gradient(135deg, #ffffff 40%, #c084fc 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
 .hero-cta-group {
@@ -1109,8 +1166,10 @@ h1, h2, h3, h4 {
   width: 44px;
   height: 44px;
   border-radius: 10px;
+  object-fit: cover;
+  border: 1px solid rgba(168, 85, 247, 0.35);
   flex-shrink: 0;
-  box-shadow: 0 4px 14px rgba(56, 189, 248, 0.25);
+  box-shadow: 0 4px 14px rgba(168, 85, 247, 0.25);
 }
 
 .team-title-text {
@@ -1227,6 +1286,32 @@ h1, h2, h3, h4 {
 .tag-icon { font-size: 1.1rem; flex-shrink: 0; }
 .tag-label { font-size: 0.7rem; color: var(--color-text-dim); text-transform: uppercase; letter-spacing: 0.05em; }
 .tag-value { font-size: 0.85rem; font-weight: 600; color: var(--color-white); }
+
+.about-magical-motto {
+  margin: 1.25rem 0 1.5rem;
+  padding: 0.85rem 1.15rem;
+  background: linear-gradient(135deg, rgba(34, 47, 70, 0.55) 0%, rgba(168, 85, 247, 0.1) 100%);
+  border-left: 3px solid #a855f7;
+  border-radius: 0 var(--radius-md) var(--radius-md) 0;
+}
+
+.about-magical-motto .motto-badge-small {
+  display: inline-block;
+  font-size: 0.76rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #c084fc;
+  margin-bottom: 0.25rem;
+}
+
+.about-magical-motto .motto-quote {
+  font-size: 0.96rem;
+  font-weight: 600;
+  color: var(--color-white);
+  line-height: 1.5;
+  margin: 0;
+}
 
 .about-text {
   font-size: 1.05rem;
@@ -2862,7 +2947,20 @@ h1, h2, h3, h4 {
   margin-bottom: 2rem;
 }
 
-.footer-tagline { font-size: 0.85rem; color: var(--color-text-dim); margin-top: 0.6rem; }
+.footer-tagline { 
+  font-size: 0.85rem; 
+  color: var(--color-text-dim); 
+  margin-top: 0.6rem;
+  line-height: 1.6;
+}
+
+.footer-motto-phrase {
+  display: inline-block;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #c084fc;
+  margin-bottom: 0.2rem;
+}
 
 .footer-links ul { display: flex; gap: 1.5rem; }
 .footer-links a {
