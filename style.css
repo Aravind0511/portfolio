@@ -1628,7 +1628,9 @@ footer .brand-logo-img {
   width: 44px;
   height: 44px;
   border-radius: 10px;
-  object-fit: cover;
+  object-fit: contain;
+  background: rgba(168, 85, 247, 0.08);
+  padding: 2px;
   border: 1px solid rgba(168, 85, 247, 0.35);
   flex-shrink: 0;
   box-shadow: 0 4px 14px rgba(168, 85, 247, 0.25);
