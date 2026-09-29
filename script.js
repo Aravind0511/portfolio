@@ -22,25 +22,44 @@ const $$ = (sel, ctx = document) => [...ctx.querySelectorAll(sel)];
   window.addEventListener('scroll', toggle, { passive: true });
 })();
 
-// ─── Mobile Menu ─────────────────────────────────────────────
+// ─── Mobile Menu & Navigation Drawer ──────────────────────────
 (function initMobileMenu() {
-  const btn   = $('.mobile-menu-btn');
-  const menu  = $('#mobile-menu');
+  const btn = $('#mobile-menu-btn') || $('.mobile-menu-btn');
+  const backdrop = $('#mobile-menu-backdrop');
+  const drawer = $('#mobile-menu');
+  const closeBtn = $('#mobile-drawer-close');
   const links = $$('.mobile-nav-link');
-  if (!btn || !menu) return;
+  const drawerLogo = $('.mobile-drawer-logo');
+  const main = $('main');
+  if (!btn || !drawer) return;
 
-  const open  = () => {
+  const open = () => {
     btn.setAttribute('aria-expanded', 'true');
-    menu.setAttribute('aria-hidden', 'false');
-    menu.classList.add('open');
+    drawer.setAttribute('aria-hidden', 'false');
+    if (backdrop) {
+      backdrop.setAttribute('aria-hidden', 'false');
+      backdrop.classList.add('active');
+    }
+    drawer.classList.add('open');
+    document.body.classList.add('mobile-nav-open');
     document.body.style.overflow = 'hidden';
+    if (main) main.inert = true;
+    if (closeBtn) {
+      setTimeout(() => closeBtn.focus(), 100);
+    }
   };
 
   const close = () => {
     btn.setAttribute('aria-expanded', 'false');
-    menu.setAttribute('aria-hidden', 'true');
-    menu.classList.remove('open');
+    drawer.setAttribute('aria-hidden', 'true');
+    if (backdrop) {
+      backdrop.setAttribute('aria-hidden', 'true');
+      backdrop.classList.remove('active');
+    }
+    drawer.classList.remove('open');
+    document.body.classList.remove('mobile-nav-open');
     document.body.style.overflow = '';
+    if (main) main.inert = false;
   };
 
   btn.addEventListener('click', () => {
@@ -48,12 +67,41 @@ const $$ = (sel, ctx = document) => [...ctx.querySelectorAll(sel)];
     isOpen ? close() : open();
   });
 
-  links.forEach(link => link.addEventListener('click', close));
+  if (closeBtn) {
+    closeBtn.addEventListener('click', () => {
+      close();
+      btn.focus();
+    });
+  }
+
+  if (backdrop) {
+    backdrop.addEventListener('click', close);
+  }
+
+  links.forEach(link => {
+    link.addEventListener('click', () => {
+      close();
+    });
+  });
+
+  if (drawerLogo) {
+    drawerLogo.addEventListener('click', close);
+  }
 
   // Close on Escape
   document.addEventListener('keydown', e => {
-    if (e.key === 'Escape' && menu.classList.contains('open')) close();
+    if (e.key === 'Escape' && drawer.classList.contains('open')) {
+      close();
+      btn.focus();
+    }
   });
+
+  // Close when resized to desktop viewport
+  window.addEventListener('resize', () => {
+    if (window.innerWidth > 768 && drawer.classList.contains('open')) {
+      close();
+    }
+  }, { passive: true });
 })();
 
 // ─── Scroll-reveal animations ────────────────────────────────
@@ -1122,7 +1170,9 @@ const $$ = (sel, ctx = document) => [...ctx.querySelectorAll(sel)];
 (function initSmoothScroll() {
   document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', e => {
-      const target = document.querySelector(anchor.getAttribute('href'));
+      const href = anchor.getAttribute('href');
+      if (!href || href === '#') return;
+      const target = document.querySelector(href);
       if (!target) return;
       e.preventDefault();
       target.scrollIntoView({ behavior: 'smooth', block: 'start' });
