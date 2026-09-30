@@ -283,7 +283,7 @@ h1, h2, h3, h4 {
 }
 
 /* ============================================================
-   NAVIGATION
+   NAVIGATION & HEADER ANIMATIONS
 ============================================================ */
 .site-header {
   position: fixed;
@@ -295,13 +295,19 @@ h1, h2, h3, h4 {
   background: rgba(22, 31, 48, 0);
   backdrop-filter: blur(0px);
   border-bottom: 1px solid transparent;
-  transition: background var(--transition-slow), backdrop-filter var(--transition-slow), border-color var(--transition-slow);
+  transition: height 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+              background 0.35s ease,
+              backdrop-filter 0.35s ease,
+              border-color 0.35s ease,
+              box-shadow 0.35s ease;
 }
 
 .site-header.scrolled {
-  background: rgba(22, 31, 48, 0.88);
-  backdrop-filter: blur(16px);
+  height: calc(var(--header-height) - 8px);
+  background: rgba(22, 31, 48, 0.92);
+  backdrop-filter: blur(20px);
   border-bottom-color: var(--color-border);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.35), 0 0 15px rgba(59, 130, 246, 0.06);
 }
 
 .nav {
@@ -309,6 +315,11 @@ h1, h2, h3, h4 {
   align-items: center;
   justify-content: space-between;
   height: var(--header-height);
+  transition: height 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.site-header.scrolled .nav {
+  height: calc(var(--header-height) - 8px);
 }
 
 .nav-logo {
@@ -320,11 +331,12 @@ h1, h2, h3, h4 {
   font-size: 1.15rem;
   color: var(--color-white);
   transition: color var(--transition-fast);
+  text-decoration: none;
 }
 
 .nav-logo:hover { color: var(--color-accent-light); }
 
-/* ─── 3D Brand Logo Treatment ─── */
+/* ─── 3D Brand Logo Treatment & Animations ─── */
 .brand-logo-3d {
   perspective: 750px;
   display: inline-flex;
@@ -332,6 +344,32 @@ h1, h2, h3, h4 {
   justify-content: center;
   flex-shrink: 0;
   vertical-align: middle;
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Header logo entrance animation: scale 0.88 -> 1 with ease-out */
+.site-header .brand-logo-3d {
+  animation: headerLogoEntrance 0.85s cubic-bezier(0.16, 1, 0.3, 1) 0s forwards;
+  will-change: transform, opacity;
+}
+
+.site-header.scrolled .brand-logo-3d {
+  transform: scale(0.94);
+}
+
+@keyframes headerLogoEntrance {
+  0% {
+    opacity: 0;
+    transform: scale(0.88);
+  }
+  60% {
+    opacity: 1;
+    transform: scale(1.02);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
 }
 
 .logo-3d-inner {
@@ -340,9 +378,8 @@ h1, h2, h3, h4 {
   align-items: center;
   justify-content: center;
   transform-style: preserve-3d;
-  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), filter 0.4s ease;
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), filter 0.35s ease;
   will-change: transform, filter;
-  animation: logoFloatSoft 5.5s ease-in-out infinite alternate;
 }
 
 /* Ambient cyber glow aura behind circular emblem */
@@ -351,12 +388,50 @@ h1, h2, h3, h4 {
   position: absolute;
   inset: -3px;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(0, 160, 255, 0.45) 0%, rgba(99, 102, 241, 0.22) 55%, transparent 75%);
+  background: radial-gradient(circle, rgba(56, 189, 248, 0.45) 0%, rgba(37, 99, 235, 0.25) 55%, transparent 75%);
   filter: blur(5px);
   z-index: -1;
   pointer-events: none;
-  opacity: 0.65;
-  animation: logoAuraPulse 4s ease-in-out infinite alternate;
+  opacity: 0.4;
+  animation: headerAuraEntrance 1.1s cubic-bezier(0.16, 1, 0.3, 1) 0s 1 forwards,
+             logoAuraIdle 6.5s ease-in-out 1.1s infinite alternate;
+}
+
+@keyframes headerAuraEntrance {
+  0% {
+    opacity: 0;
+    transform: scale(0.85);
+    filter: blur(2px);
+  }
+  45% {
+    opacity: 0.85;
+    transform: scale(1.1);
+    filter: blur(7px);
+  }
+  100% {
+    opacity: 0.45;
+    transform: scale(1);
+    filter: blur(5px);
+  }
+}
+
+/* Continuous micro-animation: slow 6.5s breathing idle pulse */
+@keyframes logoAuraIdle {
+  0% {
+    opacity: 0.32;
+    transform: scale(0.98);
+    filter: blur(4px);
+  }
+  50% {
+    opacity: 0.55;
+    transform: scale(1.04);
+    filter: blur(6px);
+  }
+  100% {
+    opacity: 0.32;
+    transform: scale(0.98);
+    filter: blur(4px);
+  }
 }
 
 /* Specular diagonal metallic sheen sweep across the circular emblem */
@@ -365,51 +440,26 @@ h1, h2, h3, h4 {
   position: absolute;
   inset: 0;
   border-radius: 50%;
-  background: linear-gradient(135deg, transparent 38%, rgba(255, 255, 255, 0.48) 50%, transparent 62%);
+  background: linear-gradient(135deg, transparent 38%, rgba(255, 255, 255, 0.5) 50%, transparent 62%);
   background-size: 260% 260%;
-  background-position: 200% 200%;
+  background-position: 210% 210%;
   pointer-events: none;
   mix-blend-mode: screen;
   z-index: 2;
-  animation: logoSheenSweep 7.5s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+  animation: headerSheenEntrance 1.25s cubic-bezier(0.25, 1, 0.5, 1) 0.1s 1 forwards;
 }
 
-@keyframes logoFloatSoft {
+@keyframes headerSheenEntrance {
   0% {
-    transform: translateY(0px) rotateX(0deg) rotateY(0deg);
-  }
-  50% {
-    transform: translateY(-2.2px) rotateX(2.5deg) rotateY(-2.5deg);
-  }
-  100% {
-    transform: translateY(0.5px) rotateX(-1.5deg) rotateY(1.5deg);
-  }
-}
-
-@keyframes logoAuraPulse {
-  0% {
-    opacity: 0.45;
-    transform: scale(0.96);
-    filter: blur(4px);
-  }
-  100% {
-    opacity: 0.85;
-    transform: scale(1.06);
-    filter: blur(6px);
-  }
-}
-
-@keyframes logoSheenSweep {
-  0%, 72% {
     background-position: 210% 210%;
     opacity: 0;
   }
-  76% {
-    opacity: 0.75;
+  30% {
+    opacity: 0.8;
   }
-  90% {
+  85% {
     background-position: -50% -50%;
-    opacity: 0.75;
+    opacity: 0.8;
   }
   100% {
     background-position: -50% -50%;
@@ -426,7 +476,7 @@ h1, h2, h3, h4 {
   background: transparent;
   flex-shrink: 0;
   filter: drop-shadow(0 3px 8px rgba(0, 0, 0, 0.55)) drop-shadow(0 0 10px rgba(0, 150, 255, 0.35));
-  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), filter 0.4s ease;
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), filter 0.35s ease;
   image-rendering: -webkit-optimize-contrast;
   display: block;
 }
@@ -439,32 +489,117 @@ h1, h2, h3, h4 {
   background: radial-gradient(circle at 32% 26%, rgba(255, 255, 255, 0.55) 0%, rgba(56, 189, 248, 0.25) 42%, transparent 70%);
   mix-blend-mode: screen;
   opacity: 0;
-  transform: translateZ(10px) scale(0.95);
-  transition: opacity 0.4s ease, transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  transform: translateZ(6px) scale(0.98);
+  transition: opacity 0.35s ease, transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
   z-index: 3;
 }
 
-.nav-logo:hover .logo-3d-inner {
-  animation-play-state: paused;
-  transform: rotateY(12deg) rotateX(-6deg) scale(1.08) translateZ(8px);
-  filter: drop-shadow(0 6px 18px rgba(0, 0, 0, 0.6)) drop-shadow(0 0 18px rgba(0, 150, 255, 0.55)) drop-shadow(0 0 10px rgba(99, 102, 241, 0.4));
+/* ─── Logo Hover Animation ─── */
+.site-header .nav-logo:hover .brand-logo-3d {
+  transform: scale(1.04);
 }
 
-.nav-logo:hover .logo-3d-glare {
-  opacity: 0.8;
-  transform: translateZ(12px) scale(1.04);
+.site-header.scrolled .nav-logo:hover .brand-logo-3d {
+  transform: scale(0.98);
 }
 
-.mobile-drawer-logo .brand-logo-img {
-  width: 36px;
-  height: 36px;
+.site-header .nav-logo:hover .logo-3d-inner {
+  filter: brightness(1.12) drop-shadow(0 2px 10px rgba(0, 0, 0, 0.45)) drop-shadow(0 0 14px rgba(56, 189, 248, 0.5)) drop-shadow(0 0 22px rgba(37, 99, 235, 0.35));
 }
 
-footer .brand-logo-img {
-  width: 34px;
-  height: 34px;
+.site-header .nav-logo:hover .logo-3d-inner::after {
+  animation: logoHoverSheen 0.75s cubic-bezier(0.2, 0.8, 0.2, 1) 1 forwards;
 }
 
+@keyframes logoHoverSheen {
+  0% {
+    background-position: 210% 210%;
+    opacity: 0;
+  }
+  30% {
+    opacity: 0.85;
+  }
+  100% {
+    background-position: -50% -50%;
+    opacity: 0;
+  }
+}
+
+.site-header .nav-logo:hover .logo-3d-glare {
+  opacity: 0.75;
+  transform: translateZ(6px) scale(1.02);
+}
+
+/* ─── TechNest Text Animation & Light Sweep ─── */
+.logo-title {
+  display: inline-flex;
+  align-items: baseline;
+  position: relative;
+}
+
+.site-header .logo-title {
+  opacity: 0;
+  animation: techNestEntrance 0.7s cubic-bezier(0.16, 1, 0.3, 1) 0.15s forwards,
+             techNestLightSweep 1.15s cubic-bezier(0.2, 0.8, 0.25, 1) 0.5s 1 forwards;
+  will-change: transform, opacity;
+  background: linear-gradient(
+    115deg,
+    #ffffff 0%,
+    #ffffff 36%,
+    #7dd3fc 46%,
+    #ffffff 52%,
+    #38bdf8 58%,
+    #ffffff 68%,
+    #ffffff 100%
+  );
+  background-size: 260% 100%;
+  background-position: 100% 0;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: var(--color-white);
+  transition: filter 0.3s ease;
+}
+
+@keyframes techNestEntrance {
+  0% {
+    opacity: 0;
+    transform: translateX(-8px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes techNestLightSweep {
+  0% {
+    background-position: 100% 0;
+  }
+  100% {
+    background-position: -60% 0;
+  }
+}
+
+.site-header .nav-logo:hover .logo-title {
+  filter: drop-shadow(0 0 10px rgba(56, 189, 248, 0.4));
+}
+
+.logo-dot {
+  color: var(--color-accent);
+}
+
+.site-header .logo-dot {
+  -webkit-text-fill-color: var(--color-accent);
+  display: inline-block;
+  transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+.site-header .nav-logo:hover .logo-dot {
+  filter: drop-shadow(0 0 8px var(--color-accent));
+}
+
+/* ─── STUDIO Badge Entrance & Hover ─── */
 .logo-badge {
   font-size: 0.65rem;
   font-weight: 700;
@@ -477,6 +612,55 @@ footer .brand-logo-img {
   border-radius: 6px;
   margin-left: 0.4rem;
   vertical-align: middle;
+}
+
+.site-header .logo-badge {
+  display: inline-block;
+  opacity: 0;
+  animation: studioBadgeEntrance 0.75s cubic-bezier(0.16, 1, 0.3, 1) 0.3s forwards;
+  will-change: transform, opacity, box-shadow, border-color;
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1),
+              border-color 0.25s ease,
+              box-shadow 0.25s ease,
+              color 0.25s ease;
+}
+
+@keyframes studioBadgeEntrance {
+  0% {
+    opacity: 0;
+    transform: translateY(5px);
+    box-shadow: 0 0 0 rgba(56, 189, 248, 0);
+    border-color: rgba(59, 130, 246, 0.15);
+  }
+  60% {
+    opacity: 1;
+    transform: translateY(-0.5px);
+    box-shadow: 0 0 10px rgba(56, 189, 248, 0.4), inset 0 0 6px rgba(56, 189, 248, 0.15);
+    border-color: rgba(56, 189, 248, 0.55);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+    box-shadow: 0 0 0 rgba(0, 0, 0, 0);
+    border-color: rgba(59, 130, 246, 0.25);
+  }
+}
+
+.site-header .nav-logo:hover .logo-badge {
+  border-color: rgba(56, 189, 248, 0.65);
+  box-shadow: 0 0 10px rgba(59, 130, 246, 0.35), inset 0 0 6px rgba(56, 189, 248, 0.2);
+  transform: scale(1.04);
+  color: var(--color-white);
+}
+
+.mobile-drawer-logo .brand-logo-img {
+  width: 36px;
+  height: 36px;
+}
+
+footer .brand-logo-img {
+  width: 34px;
+  height: 34px;
 }
 
 .logo-mark {
@@ -849,6 +1033,29 @@ body.mobile-nav-open {
 @media (max-width: 768px) {
   .nav-links { display: none !important; }
   .mobile-menu-btn { display: flex !important; }
+
+  @keyframes techNestEntrance {
+    0% {
+      opacity: 0;
+      transform: translateX(-4px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  .site-header.scrolled {
+    height: var(--header-height);
+  }
+
+  .site-header.scrolled .nav {
+    height: var(--header-height);
+  }
+
+  .site-header.scrolled .brand-logo-3d {
+    transform: scale(0.96);
+  }
 }
 
 @media (max-width: 380px) {
@@ -4285,10 +4492,26 @@ body.mobile-nav-open {
   .idea-light-emitter,
   .footer-badge-wrap a,
   .mobile-menu-backdrop,
-  .mobile-nav-drawer {
+  .mobile-nav-drawer,
+  .site-header .brand-logo-3d,
+  .site-header .logo-3d-inner,
+  .site-header .logo-3d-inner::before,
+  .site-header .logo-3d-inner::after,
+  .site-header .logo-title,
+  .site-header .logo-badge {
     animation: none !important;
-    transition: none !important;
     transform: none !important;
+    opacity: 1 !important;
+    transition: opacity 0.2s ease !important;
+  }
+
+  .site-header.scrolled .brand-logo-3d {
+    transform: none !important;
+  }
+
+  .site-header .logo-title {
+    background-position: -60% 0 !important;
+    -webkit-text-fill-color: var(--color-white) !important;
   }
 
   .magical-word-item {

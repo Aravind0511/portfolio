@@ -46,7 +46,7 @@ const $$ = (sel, ctx = document) => [...ctx.querySelectorAll(sel)];
     currentRotY += (targetRotY - currentRotY) * 0.18;
 
     if (isHovered) {
-      inner.style.transform = `rotateX(${currentRotX.toFixed(2)}deg) rotateY(${currentRotY.toFixed(2)}deg) scale(1.08) translateZ(8px)`;
+      inner.style.transform = `rotateX(${currentRotX.toFixed(2)}deg) rotateY(${currentRotY.toFixed(2)}deg) scale(1.04) translateZ(3px)`;
       rafId = requestAnimationFrame(update);
     } else {
       if (Math.abs(currentRotX) > 0.08 || Math.abs(currentRotY) > 0.08) {
@@ -63,9 +63,9 @@ const $$ = (sel, ctx = document) => [...ctx.querySelectorAll(sel)];
     const rect = logoWrapper.getBoundingClientRect();
     const x = e.clientX - (rect.left + rect.width / 2);
     const y = e.clientY - (rect.top + rect.height / 2);
-    // Subtle tilt within ±12deg
-    targetRotY = Math.max(-12, Math.min(12, (x / 24) * 12));
-    targetRotX = Math.max(-12, Math.min(12, (-y / 24) * 12));
+    // Ultra-subtle tilt within ±3deg (prevents distortion)
+    targetRotY = Math.max(-3, Math.min(3, (x / 24) * 3));
+    targetRotX = Math.max(-3, Math.min(3, (-y / 24) * 3));
 
     if (!isHovered) {
       isHovered = true;
