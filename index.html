@@ -1254,7 +1254,8 @@
               <div class="form-row form-row-2">
                 <div class="form-field">
                   <label for="contact-name">Your Name <span class="required" aria-hidden="true">*</span></label>
-                  <input type="text" id="contact-name" name="name" placeholder="John Smith" required autocomplete="name" />
+                  <input type="text" id="contact-name" name="name" placeholder="John Smith" required autocomplete="name" aria-describedby="contact-name-error" />
+                  <div class="field-error-msg" id="contact-name-error" role="alert" aria-live="polite"></div>
                 </div>
                 <div class="form-field">
                   <label for="contact-business">Business Name</label>
@@ -1265,17 +1266,19 @@
               <div class="form-row form-row-2">
                 <div class="form-field">
                   <label for="contact-email">Email <span class="required" aria-hidden="true">*</span></label>
-                  <input type="email" id="contact-email" name="email" placeholder="john@example.com" required autocomplete="email" />
+                  <input type="email" id="contact-email" name="email" placeholder="john@example.com" required autocomplete="email" aria-describedby="contact-email-error" />
+                  <div class="field-error-msg" id="contact-email-error" role="alert" aria-live="polite"></div>
                 </div>
                 <div class="form-field">
                   <label for="contact-phone">Phone / WhatsApp</label>
-                  <input type="tel" id="contact-phone" name="phone" placeholder="+91 98765 43210" autocomplete="tel" />
+                  <input type="tel" id="contact-phone" name="phone" placeholder="+91 98765 43210" autocomplete="tel" inputmode="tel" aria-describedby="contact-phone-error" />
+                  <div class="field-error-msg" id="contact-phone-error" role="alert" aria-live="polite"></div>
                 </div>
               </div>
 
               <div class="form-field">
                 <label for="contact-type">What do you need? <span class="required" aria-hidden="true">*</span></label>
-                <select id="contact-type" name="project_type" required>
+                <select id="contact-type" name="project_type" required aria-describedby="contact-type-error">
                   <option value="" disabled selected>Select project type</option>
                   <option value="business-website">Business Website / Web Development</option>
                   <option value="app-development">Application Development</option>
@@ -1285,11 +1288,13 @@
                   <option value="maintenance-support">Maintenance & Support</option>
                   <option value="other">Other / Not Sure Yet</option>
                 </select>
+                <div class="field-error-msg" id="contact-type-error" role="alert" aria-live="polite"></div>
               </div>
 
               <div class="form-field">
                 <label for="contact-description">Project Description <span class="required" aria-hidden="true">*</span></label>
-                <textarea id="contact-description" name="description" rows="4" placeholder="Tell us about your business, current challenges, and what you want to build..." required></textarea>
+                <textarea id="contact-description" name="description" rows="4" placeholder="Tell us about your business, current challenges, and what you want to build..." required aria-describedby="contact-description-error"></textarea>
+                <div class="field-error-msg" id="contact-description-error" role="alert" aria-live="polite"></div>
               </div>
 
               <div class="form-field">

@@ -869,6 +869,275 @@ const $$ = (sel, ctx = document) => [...ctx.querySelectorAll(sel)];
   const btnEmailApp = $('#btn-prefill-email');
   const btnWhatsApp = $('#btn-prefill-whatsapp');
 
+  const nameInput = form.querySelector('[name="name"]');
+  const emailInput = form.querySelector('[name="email"]');
+  const phoneInput = form.querySelector('[name="phone"]');
+  const typeSelect = form.querySelector('[name="project_type"]');
+  const descInput = form.querySelector('[name="description"]');
+
+  const warningSvg = `<svg width="14" height="14" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z" clip-rule="evenodd"/></svg>`;
+
+  const setFieldError = (field, message) => {
+    if (!field) return;
+    field.classList.add('input-error');
+    field.classList.remove('input-valid');
+    field.setAttribute('aria-invalid', 'true');
+    field.setCustomValidity(message || 'Invalid value');
+
+    const errorId = field.getAttribute('aria-describedby');
+    const errorEl = errorId ? document.getElementById(errorId) : null;
+    if (errorEl) {
+      errorEl.innerHTML = `${warningSvg}<span>${message}</span>`;
+      errorEl.classList.add('visible');
+    }
+  };
+
+  const setFieldValid = (field) => {
+    if (!field) return;
+    field.classList.remove('input-error');
+    field.classList.add('input-valid');
+    field.removeAttribute('aria-invalid');
+    field.setCustomValidity('');
+
+    const errorId = field.getAttribute('aria-describedby');
+    const errorEl = errorId ? document.getElementById(errorId) : null;
+    if (errorEl) {
+      errorEl.textContent = '';
+      errorEl.classList.remove('visible');
+    }
+  };
+
+  const clearFieldStatus = (field) => {
+    if (!field) return;
+    field.classList.remove('input-error');
+    field.classList.remove('input-valid');
+    field.removeAttribute('aria-invalid');
+    field.setCustomValidity('');
+
+    const errorId = field.getAttribute('aria-describedby');
+    const errorEl = errorId ? document.getElementById(errorId) : null;
+    if (errorEl) {
+      errorEl.textContent = '';
+      errorEl.classList.remove('visible');
+    }
+  };
+
+  const resetAllFieldStatuses = () => {
+    [nameInput, emailInput, phoneInput, typeSelect, descInput].forEach(f => {
+      if (f) clearFieldStatus(f);
+    });
+  };
+
+  const validateEmail = (field, isLive = true) => {
+    if (!field) return true;
+    const value = field.value.trim();
+
+    if (!value) {
+      if (!isLive) {
+        setFieldError(field, 'Please enter your email address.');
+        return false;
+      }
+      clearFieldStatus(field);
+      return false;
+    }
+
+    if (!value.includes('@')) {
+      setFieldError(field, "Email must contain an '@' (e.g. name@domain.com).");
+      return false;
+    }
+
+    const atIndex = value.indexOf('@');
+    const localPart = value.slice(0, atIndex);
+    const domainPart = value.slice(atIndex + 1);
+
+    if (!localPart) {
+      setFieldError(field, "Enter username before '@' (e.g. name@domain.com).");
+      return false;
+    }
+
+    if (!domainPart) {
+      setFieldError(field, "Enter domain after '@' (e.g. domain.com).");
+      return false;
+    }
+
+    if (!domainPart.includes('.')) {
+      setFieldError(field, "Email domain must contain a dot (e.g. domain.com).");
+      return false;
+    }
+
+    const emailRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)+$/;
+    if (!emailRegex.test(value)) {
+      setFieldError(field, 'Please enter a valid email address (e.g. name@example.com).');
+      return false;
+    }
+
+    setFieldValid(field);
+    return true;
+  };
+
+  const validatePhone = (field, isLive = true) => {
+    if (!field) return true;
+    const rawValue = field.value.trim();
+
+    if (!rawValue) {
+      clearFieldStatus(field);
+      return true;
+    }
+
+    // Letters check (e.g. fbvdwc342)
+    if (/[a-zA-Z]/.test(rawValue)) {
+      setFieldError(field, 'Mobile number cannot contain letters. Numbers only.');
+      return false;
+    }
+
+    const invalidSymbols = rawValue.replace(/[0-9+\-()\s]/g, '');
+    if (invalidSymbols.length > 0) {
+      setFieldError(field, 'Invalid characters in phone number. Use digits, + or spaces.');
+      return false;
+    }
+
+    const digits = rawValue.replace(/\D/g, '');
+
+    if (digits.length === 0) {
+      setFieldError(field, 'Please enter a valid mobile number with digits.');
+      return false;
+    }
+
+    // 9 digits check: explicit rule
+    if (digits.length === 9) {
+      setFieldError(field, 'Mobile number must be at least 10 digits (9 of 10 entered).');
+      return false;
+    }
+
+    if (digits.length < 9) {
+      setFieldError(field, `Mobile number must be at least 10 digits (${digits.length} of 10 entered).`);
+      return false;
+    }
+
+    if (digits.length > 15) {
+      setFieldError(field, 'Mobile number is too long (maximum 15 digits).');
+      return false;
+    }
+
+    setFieldValid(field);
+    return true;
+  };
+
+  const validateName = (field, isLive = true) => {
+    if (!field) return true;
+    const value = field.value.trim();
+    if (!value) {
+      if (!isLive) {
+        setFieldError(field, 'Please enter your name.');
+        return false;
+      }
+      clearFieldStatus(field);
+      return false;
+    }
+    if (value.length < 2) {
+      setFieldError(field, 'Name must be at least 2 characters.');
+      return false;
+    }
+    setFieldValid(field);
+    return true;
+  };
+
+  const validateType = (field, isLive = true) => {
+    if (!field) return true;
+    const value = field.value;
+    if (!value) {
+      if (!isLive) {
+        setFieldError(field, 'Please select a project type.');
+        return false;
+      }
+      clearFieldStatus(field);
+      return false;
+    }
+    setFieldValid(field);
+    return true;
+  };
+
+  const validateDescription = (field, isLive = true) => {
+    if (!field) return true;
+    const value = field.value.trim();
+    if (!value) {
+      if (!isLive) {
+        setFieldError(field, 'Please describe your project requirements.');
+        return false;
+      }
+      clearFieldStatus(field);
+      return false;
+    }
+    if (value.length < 10) {
+      setFieldError(field, 'Please provide a little more detail (at least 10 characters).');
+      return false;
+    }
+    setFieldValid(field);
+    return true;
+  };
+
+  if (emailInput) {
+    emailInput.addEventListener('input', () => {
+      if (emailInput.value.length > 0) {
+        validateEmail(emailInput, true);
+      } else {
+        clearFieldStatus(emailInput);
+      }
+    });
+    emailInput.addEventListener('blur', () => {
+      validateEmail(emailInput, false);
+    });
+  }
+
+  if (phoneInput) {
+    phoneInput.addEventListener('input', () => {
+      if (phoneInput.value.length > 0) {
+        validatePhone(phoneInput, true);
+      } else {
+        clearFieldStatus(phoneInput);
+      }
+    });
+    phoneInput.addEventListener('blur', () => {
+      if (phoneInput.value.length > 0) {
+        validatePhone(phoneInput, false);
+      } else {
+        clearFieldStatus(phoneInput);
+      }
+    });
+  }
+
+  if (nameInput) {
+    nameInput.addEventListener('input', () => {
+      if (nameInput.classList.contains('input-error') || nameInput.classList.contains('input-valid')) {
+        validateName(nameInput, true);
+      }
+    });
+    nameInput.addEventListener('blur', () => {
+      validateName(nameInput, false);
+    });
+  }
+
+  if (typeSelect) {
+    typeSelect.addEventListener('change', () => {
+      validateType(typeSelect, false);
+    });
+  }
+
+  if (descInput) {
+    descInput.addEventListener('input', () => {
+      if (descInput.classList.contains('input-error') || descInput.classList.contains('input-valid')) {
+        validateDescription(descInput, true);
+      }
+    });
+    descInput.addEventListener('blur', () => {
+      validateDescription(descInput, false);
+    });
+  }
+
+  form.addEventListener('reset', () => {
+    resetAllFieldStatuses();
+  });
+
   const getFormDataFormatted = () => {
     const name = (form.name && form.name.value || '').trim();
     const business = (form.business && form.business.value || '').trim();
@@ -933,8 +1202,25 @@ const $$ = (sel, ctx = document) => [...ctx.querySelectorAll(sel)];
   form.addEventListener('submit', async e => {
     e.preventDefault();
 
-    if (!form.checkValidity()) {
-      form.reportValidity();
+    const isNameValid = validateName(nameInput, false);
+    const isEmailValid = validateEmail(emailInput, false);
+    const isPhoneValid = validatePhone(phoneInput, false);
+    const isTypeValid = validateType(typeSelect, false);
+    const isDescValid = validateDescription(descInput, false);
+
+    if (!isNameValid || !isEmailValid || !isPhoneValid || !isTypeValid || !isDescValid) {
+      const allFields = [nameInput, emailInput, phoneInput, typeSelect, descInput];
+      const firstInvalid = allFields.find(f => f && f.classList.contains('input-error'));
+      if (firstInvalid) {
+        const wrapper = firstInvalid.closest('.form-field');
+        if (wrapper) {
+          wrapper.classList.remove('field-shake');
+          void wrapper.offsetWidth;
+          wrapper.classList.add('field-shake');
+          setTimeout(() => wrapper.classList.remove('field-shake'), 450);
+        }
+        firstInvalid.focus();
+      }
       return;
     }
 
@@ -1050,6 +1336,7 @@ const $$ = (sel, ctx = document) => [...ctx.querySelectorAll(sel)];
             btnReset.addEventListener('click', () => {
               successContainer.innerHTML = '';
               form.reset();
+              resetAllFieldStatuses();
               form.classList.remove('form-hidden');
               btn.disabled = false;
               btn.style.opacity = '';
