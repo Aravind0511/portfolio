@@ -22,6 +22,65 @@ const $$ = (sel, ctx = document) => [...ctx.querySelectorAll(sel)];
   window.addEventListener('scroll', toggle, { passive: true });
 })();
 
+// ─── Brand Logo Interactive 3D Perspective Tilt ───────────────
+(function initBrandLogo3D() {
+  const logoWrapper = $('#nav-brand-logo-3d');
+  const navLogo = $('.nav-logo');
+  if (!logoWrapper || !navLogo) return;
+
+  const inner = logoWrapper.querySelector('.logo-3d-inner');
+  if (!inner) return;
+
+  const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (prefersReduced) return;
+
+  let rafId = null;
+  let targetRotX = 0;
+  let targetRotY = 0;
+  let currentRotX = 0;
+  let currentRotY = 0;
+  let isHovered = false;
+
+  const update = () => {
+    currentRotX += (targetRotX - currentRotX) * 0.18;
+    currentRotY += (targetRotY - currentRotY) * 0.18;
+
+    if (isHovered) {
+      inner.style.transform = `rotateX(${currentRotX.toFixed(2)}deg) rotateY(${currentRotY.toFixed(2)}deg) scale(1.08) translateZ(8px)`;
+      rafId = requestAnimationFrame(update);
+    } else {
+      if (Math.abs(currentRotX) > 0.08 || Math.abs(currentRotY) > 0.08) {
+        inner.style.transform = `rotateX(${currentRotX.toFixed(2)}deg) rotateY(${currentRotY.toFixed(2)}deg)`;
+        rafId = requestAnimationFrame(update);
+      } else {
+        inner.style.transform = '';
+        rafId = null;
+      }
+    }
+  };
+
+  navLogo.addEventListener('pointermove', e => {
+    const rect = logoWrapper.getBoundingClientRect();
+    const x = e.clientX - (rect.left + rect.width / 2);
+    const y = e.clientY - (rect.top + rect.height / 2);
+    // Subtle tilt within ±12deg
+    targetRotY = Math.max(-12, Math.min(12, (x / 24) * 12));
+    targetRotX = Math.max(-12, Math.min(12, (-y / 24) * 12));
+
+    if (!isHovered) {
+      isHovered = true;
+      if (!rafId) rafId = requestAnimationFrame(update);
+    }
+  }, { passive: true });
+
+  navLogo.addEventListener('pointerleave', () => {
+    isHovered = false;
+    targetRotX = 0;
+    targetRotY = 0;
+    if (!rafId) rafId = requestAnimationFrame(update);
+  }, { passive: true });
+})();
+
 // ─── Mobile Menu & Navigation Drawer ──────────────────────────
 (function initMobileMenu() {
   const btn = $('#mobile-menu-btn') || $('.mobile-menu-btn');

@@ -326,7 +326,7 @@ h1, h2, h3, h4 {
 
 /* ─── 3D Brand Logo Treatment ─── */
 .brand-logo-3d {
-  perspective: 700px;
+  perspective: 750px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -342,7 +342,36 @@ h1, h2, h3, h4 {
   transform-style: preserve-3d;
   transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), filter 0.4s ease;
   will-change: transform, filter;
-  animation: logoFloatSoft 6s ease-in-out infinite alternate;
+  animation: logoFloatSoft 5.5s ease-in-out infinite alternate;
+}
+
+/* Ambient cyber glow aura behind circular emblem */
+.logo-3d-inner::before {
+  content: '';
+  position: absolute;
+  inset: -3px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(0, 160, 255, 0.45) 0%, rgba(99, 102, 241, 0.22) 55%, transparent 75%);
+  filter: blur(5px);
+  z-index: -1;
+  pointer-events: none;
+  opacity: 0.65;
+  animation: logoAuraPulse 4s ease-in-out infinite alternate;
+}
+
+/* Specular diagonal metallic sheen sweep across the circular emblem */
+.logo-3d-inner::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: linear-gradient(135deg, transparent 38%, rgba(255, 255, 255, 0.48) 50%, transparent 62%);
+  background-size: 260% 260%;
+  background-position: 200% 200%;
+  pointer-events: none;
+  mix-blend-mode: screen;
+  z-index: 2;
+  animation: logoSheenSweep 7.5s cubic-bezier(0.4, 0, 0.2, 1) infinite;
 }
 
 @keyframes logoFloatSoft {
@@ -350,52 +379,90 @@ h1, h2, h3, h4 {
     transform: translateY(0px) rotateX(0deg) rotateY(0deg);
   }
   50% {
-    transform: translateY(-2px) rotateX(2deg) rotateY(-2deg);
+    transform: translateY(-2.2px) rotateX(2.5deg) rotateY(-2.5deg);
   }
   100% {
-    transform: translateY(0.5px) rotateX(-1deg) rotateY(1deg);
+    transform: translateY(0.5px) rotateX(-1.5deg) rotateY(1.5deg);
+  }
+}
+
+@keyframes logoAuraPulse {
+  0% {
+    opacity: 0.45;
+    transform: scale(0.96);
+    filter: blur(4px);
+  }
+  100% {
+    opacity: 0.85;
+    transform: scale(1.06);
+    filter: blur(6px);
+  }
+}
+
+@keyframes logoSheenSweep {
+  0%, 72% {
+    background-position: 210% 210%;
+    opacity: 0;
+  }
+  76% {
+    opacity: 0.75;
+  }
+  90% {
+    background-position: -50% -50%;
+    opacity: 0.75;
+  }
+  100% {
+    background-position: -50% -50%;
+    opacity: 0;
   }
 }
 
 .brand-logo-img {
-  width: 36px;
-  height: 36px;
+  width: 38px;
+  height: 38px;
   object-fit: contain;
-  border-radius: 0;
+  border-radius: 50%;
   border: none;
   background: transparent;
   flex-shrink: 0;
-  filter: drop-shadow(0 3px 10px rgba(0, 0, 0, 0.55)) drop-shadow(0 0 12px rgba(168, 85, 247, 0.35));
+  filter: drop-shadow(0 3px 8px rgba(0, 0, 0, 0.55)) drop-shadow(0 0 10px rgba(0, 150, 255, 0.35));
   transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), filter 0.4s ease;
   image-rendering: -webkit-optimize-contrast;
+  display: block;
 }
 
 .logo-3d-glare {
   position: absolute;
-  inset: -2px;
+  inset: -1px;
   border-radius: 50%;
   pointer-events: none;
-  background: radial-gradient(circle at 35% 25%, rgba(255, 255, 255, 0.5) 0%, rgba(192, 132, 252, 0.2) 40%, transparent 70%);
+  background: radial-gradient(circle at 32% 26%, rgba(255, 255, 255, 0.55) 0%, rgba(56, 189, 248, 0.25) 42%, transparent 70%);
   mix-blend-mode: screen;
   opacity: 0;
   transform: translateZ(10px) scale(0.95);
   transition: opacity 0.4s ease, transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  z-index: 3;
 }
 
 .nav-logo:hover .logo-3d-inner {
   animation-play-state: paused;
   transform: rotateY(12deg) rotateX(-6deg) scale(1.08) translateZ(8px);
-  filter: drop-shadow(0 6px 18px rgba(0, 0, 0, 0.6)) drop-shadow(0 0 16px rgba(168, 85, 247, 0.45)) drop-shadow(0 0 8px rgba(56, 189, 248, 0.35));
+  filter: drop-shadow(0 6px 18px rgba(0, 0, 0, 0.6)) drop-shadow(0 0 18px rgba(0, 150, 255, 0.55)) drop-shadow(0 0 10px rgba(99, 102, 241, 0.4));
 }
 
 .nav-logo:hover .logo-3d-glare {
-  opacity: 0.7;
+  opacity: 0.8;
   transform: translateZ(12px) scale(1.04);
 }
 
+.mobile-drawer-logo .brand-logo-img {
+  width: 36px;
+  height: 36px;
+}
+
 footer .brand-logo-img {
-  width: 32px;
-  height: 32px;
+  width: 34px;
+  height: 34px;
 }
 
 .logo-badge {
@@ -1865,13 +1932,19 @@ body.mobile-nav-open {
 .team-emblem-small {
   width: 44px;
   height: 44px;
-  border-radius: 10px;
+  border-radius: 50%;
   object-fit: contain;
-  background: rgba(168, 85, 247, 0.08);
-  padding: 2px;
-  border: 1px solid rgba(168, 85, 247, 0.35);
+  background: transparent;
+  padding: 0;
+  border: 1px solid rgba(0, 150, 255, 0.4);
   flex-shrink: 0;
-  box-shadow: 0 4px 14px rgba(168, 85, 247, 0.25);
+  box-shadow: 0 4px 14px rgba(0, 114, 255, 0.3), 0 0 10px rgba(56, 189, 248, 0.2);
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease;
+}
+
+.team-card-visual:hover .team-emblem-small {
+  transform: scale(1.08) rotate(3deg);
+  box-shadow: 0 6px 20px rgba(0, 150, 255, 0.5), 0 0 16px rgba(56, 189, 248, 0.35);
 }
 
 .team-title-text {
