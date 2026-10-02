@@ -169,25 +169,41 @@ const $$ = (sel, ctx = document) => [...ctx.querySelectorAll(sel)];
   if (prefersReduced) return;
 
   const cards = $$('.reveal-card');
-  if (!cards.length) return;
+  if (cards.length) {
+    const obs = new IntersectionObserver(
+      entries => {
+        entries.forEach((entry, i) => {
+          if (entry.isIntersecting) {
+            // Stagger siblings in same parent
+            const siblings = $$('.reveal-card', entry.target.parentElement);
+            const idx = siblings.indexOf(entry.target);
+            const delay = Math.min(idx * 80, 400);
+            setTimeout(() => entry.target.classList.add('revealed'), delay);
+            obs.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.12, rootMargin: '0px 0px -40px 0px' }
+    );
+    cards.forEach(card => obs.observe(card));
+  }
 
-  const obs = new IntersectionObserver(
-    entries => {
-      entries.forEach((entry, i) => {
-        if (entry.isIntersecting) {
-          // Stagger siblings in same parent
-          const siblings = $$('.reveal-card', entry.target.parentElement);
-          const idx = siblings.indexOf(entry.target);
-          const delay = Math.min(idx * 80, 400);
-          setTimeout(() => entry.target.classList.add('revealed'), delay);
-          obs.unobserve(entry.target);
-        }
-      });
-    },
-    { threshold: 0.12, rootMargin: '0px 0px -40px 0px' }
-  );
-
-  cards.forEach(card => obs.observe(card));
+  // Footer section micro-reveal
+  const footerItems = $$('.footer-reveal');
+  if (footerItems.length) {
+    const footerObs = new IntersectionObserver(
+      entries => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('revealed');
+            footerObs.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.08, rootMargin: '0px 0px -20px 0px' }
+    );
+    footerItems.forEach(el => footerObs.observe(el));
+  }
 })();
 
 // ─── Scroll Progress Bar ─────────────────────────────────────
