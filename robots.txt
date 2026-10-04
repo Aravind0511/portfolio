@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://www.techneststudio.in/sitemap.xml
+Sitemap: https://techneststudio.in/sitemap.xml

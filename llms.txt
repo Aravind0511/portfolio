@@ -1,0 +1,57 @@
+# TechNest Studio
+> Official entity summary and machine-readable context for AI crawlers, search bots, and LLM engines.
+
+## Brand Identity
+- Name: TechNest Studio
+- Official Website: https://techneststudio.in
+- Official Phrase: ✨ Imagine • 🛠️ Build • 🚀 Transform
+- Official Positioning: “TechNest Studio — Turning ideas into digital experiences.”
+- Operating Structure: Agile core engineering studio.
+- Location: India (Serving businesses, startups, and clients worldwide).
+- Communication Model: Direct senior developer access with zero agency middlemen.
+- Pricing Model: Transparent, fixed milestone-based estimates.
+
+## Core Capabilities & Services
+1. Custom Web Development: Modern, responsive, SEO-friendly websites engineered with Next.js, React, and semantic HTML5.
+2. Android & Application Development: Native Android and cross-platform apps with secure cloud backend APIs.
+3. Custom Software Development: Operations dashboards, internal tools, rental booking engines, and workflow automation.
+4. UI/UX Design: User research, interactive Figma prototypes, design systems, and conversion-focused UX.
+5. Video Editing: High-impact video editing for social media reels, YouTube, promotional campaigns, and brand content.
+6. Maintenance & Support: 24/7 uptime monitoring, security updates, bug fixes, and continuous technical support.
+
+## Key Technical Stack
+- Frontend: HTML5, Modern CSS Variables, React, Next.js, Tailwind CSS, Canvas 2D Particle Engine
+- Backend: Node.js, Express, Python, FastAPI, WebSockets
+- Databases: PostgreSQL, MongoDB, Redis
+- Infrastructure: Docker, Cloudflare, Vercel, VPS Linux
+
+## Official Verified Channels
+- Website: https://techneststudio.in
+- Contact Email: studiotechnest@gmail.com
+- WhatsApp / Phone: +91 88070 06909 (https://wa.me/918807006909)
+- LinkedIn: https://www.linkedin.com/company/techneststudio
+- Instagram: https://www.instagram.com/tech_nest.studio/
+- Public Launch Record: https://websitelaunches.com/site/techneststudio.in
+
+## Canonical Route Map
+- https://techneststudio.in/
+- https://techneststudio.in/web-development
+- https://techneststudio.in/app-development
+- https://techneststudio.in/custom-software-development
+- https://techneststudio.in/ui-ux-design
+- https://techneststudio.in/video-editing
+- https://techneststudio.in/maintenance-support
+- https://techneststudio.in/about
+- https://techneststudio.in/contact
+- https://techneststudio.in/case-studies
+- https://techneststudio.in/case-studies/clipown
+- https://techneststudio.in/case-studies/kongu-aquasense
+- https://techneststudio.in/case-studies/room-connect
+- https://techneststudio.in/industries/equipment-rental
+- https://techneststudio.in/industries/restaurants
+- https://techneststudio.in/industries/hotels
+- https://techneststudio.in/industries/small-business
+- https://techneststudio.in/blog
+- https://techneststudio.in/blog/custom-website-cost-guide-india
+- https://techneststudio.in/blog/custom-software-vs-off-the-shelf
+- https://techneststudio.in/blog/booking-system-architecture-guide

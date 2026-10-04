@@ -7,7 +7,7 @@
 ### **✨ Imagine • Build • Transform**
 #### *TechNest Studio — Turning ideas into digital experiences.*
 
-*A focused, agile 2–3 person engineering studio creating high-performance business websites, web applications, booking engines, and operations dashboards with transparent, project-based pricing.*
+*A focused, agile engineering studio creating high-performance business websites, web applications, booking engines, and operations dashboards with transparent, project-based pricing.*
 
 [![Live Website](https://img.shields.io/badge/Live%20Demo-craftedpage.vercel.app-38bdf8?style=for-the-badge&logo=vercel)](https://craftedpage.vercel.app)
 [![WhatsApp Us](https://img.shields.io/badge/WhatsApp-Chat%20Directly-22c55e?style=for-the-badge&logo=whatsapp)](https://wa.me/918807006909)
