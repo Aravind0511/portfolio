@@ -22,16 +22,16 @@
   <meta name="color-scheme" content="dark" />
 
   <!-- Canonical URL -->
-  <link rel="canonical" href="https://techneststudio.in/404" />
+  <link rel="canonical" href="https://techneststudio.in/404.html" />
 
   <!-- Search Engine Crawling Directives -->
-  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
-  <meta name="googlebot" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+  <meta name="robots" content="noindex, follow" />
+  <meta name="googlebot" content="noindex, follow" />
 
   <!-- Open Graph / Facebook -->
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="TechNest Studio" />
-  <meta property="og:url" content="https://techneststudio.in/404" />
+  <meta property="og:url" content="https://techneststudio.in/404.html" />
   <meta property="og:title" content="Page Not Found (404) | TechNest Studio" />
   <meta property="og:description" content="The page you were looking for could not be found. Explore our web development and custom software services or return to TechNest Studio homepage." />
   <meta property="og:image" content="https://techneststudio.in/assets/logo-brand.png" />
@@ -40,7 +40,7 @@
 
   <!-- Twitter / X Card -->
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:url" content="https://techneststudio.in/404" />
+  <meta name="twitter:url" content="https://techneststudio.in/404.html" />
   <meta name="twitter:title" content="Page Not Found (404) | TechNest Studio" />
   <meta name="twitter:description" content="The page you were looking for could not be found. Explore our web development and custom software services or return to TechNest Studio homepage." />
   <meta name="twitter:image" content="https://techneststudio.in/assets/logo-brand.png" />
@@ -53,8 +53,8 @@
   "@graph": [
     {
       "@type": "WebPage",
-      "@id": "https://techneststudio.in/404#webpage",
-      "url": "https://techneststudio.in/404",
+      "@id": "https://techneststudio.in/404.html#webpage",
+      "url": "https://techneststudio.in/404.html",
       "name": "Page Not Found (404) | TechNest Studio",
       "description": "The page you were looking for could not be found. Explore our web development and custom software services or return to TechNest Studio homepage.",
       "isPartOf": {
@@ -62,24 +62,25 @@
         "@id": "https://techneststudio.in/#website",
         "url": "https://techneststudio.in/",
         "name": "TechNest Studio"
-      },
-      "breadcrumb": {
-        "@type": "BreadcrumbList",
-        "itemListElement": [
-          {
-            "@type": "ListItem",
-            "position": 1,
-            "name": "Home",
-            "item": "https://techneststudio.in/"
-          },
-          {
-            "@type": "ListItem",
-            "position": 2,
-            "name": "404",
-            "item": "https://techneststudio.in/404"
-          }
-        ]
       }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://techneststudio.in/404.html#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://techneststudio.in/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "404",
+          "item": "https://techneststudio.in/404.html"
+        }
+      ]
     }
   ]
 }
