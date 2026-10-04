@@ -42,7 +42,7 @@ TechNest Studio is an agile technology and software engineering studio based in 
 
 ## Brand & Operating Model
 
-**TechNest Studio**  
+**TechNest Studio**
 **✨ Imagine • 🛠️ Build • 🚀 Transform**
 
 - Operating Model: Agile core engineering studio with direct senior developer communication and zero agency middlemen.
