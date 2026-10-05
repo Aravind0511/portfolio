@@ -857,17 +857,26 @@ const $$ = (sel, ctx = document) => [...ctx.querySelectorAll(sel)];
   const navLinks = $$('.nav-link');
   if (!sections.length || !navLinks.length) return;
 
+  const hasHashLinks = Array.from(navLinks).some(link => {
+    const href = link.getAttribute('href') || '';
+    return href.startsWith('#') && href.length > 1;
+  });
+  if (!hasHashLinks) return;
+
   const obs = new IntersectionObserver(
     entries => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
           const id = entry.target.id;
-          navLinks.forEach(link => {
-            link.classList.toggle(
-              'active',
-              link.getAttribute('href') === `#${id}`
-            );
-          });
+          const matching = Array.from(navLinks).find(l => l.getAttribute('href') === `#${id}`);
+          if (matching) {
+            navLinks.forEach(link => {
+              link.classList.toggle(
+                'active',
+                link === matching
+              );
+            });
+          }
         }
       });
     },
