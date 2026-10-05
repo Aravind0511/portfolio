@@ -479,93 +479,377 @@
 
         <div class="services-grid">
           <!-- 1. Software Development -->
-          <div class="service-card reveal-card spotlight-card">
-            <div class="service-icon" aria-hidden="true">💻</div>
-            <h3 class="service-title">Software Development</h3>
-            <p class="service-desc">
-              Custom software solutions designed around business requirements, workflows and goals. Built for reliability, high availability, and long-term scalability.
-            </p>
-            <div class="service-tags">
-              <span>Custom Software</span>
-              <span>Internal Tools</span>
-              <span>Business Workflows</span>
+          <div class="service-card reveal-card spotlight-card" data-service="software">
+            <div class="card-tech-header">
+              <div class="card-tech-meta">
+                <span class="card-tech-id">SYS // 01</span>
+                <span class="card-tech-status"><span class="tech-ping-wrap"><span class="tech-ping-beacon"></span><span class="tech-ping-dot"></span></span> ARCHITECTED</span>
+              </div>
+              <div class="card-tech-icon-box" aria-hidden="true">
+                <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="16 18 22 12 16 6"></polyline>
+                  <polyline points="8 6 2 12 8 18"></polyline>
+                  <line x1="14" y1="4" x2="10" y2="20"></line>
+                </svg>
+              </div>
             </div>
-            <a href="/custom-software-development" class="service-link-arrow">Explore Service →</a>
+
+            <!-- Animated Tech Showcase -->
+            <div class="card-showcase-viewport showcase-software" aria-hidden="true">
+              <div class="showcase-terminal-bar">
+                <span class="term-dot dot-red"></span>
+                <span class="term-dot dot-amber"></span>
+                <span class="term-dot dot-green"></span>
+                <span class="term-file">core.runtime.ts</span>
+              </div>
+              <div class="showcase-terminal-code">
+                <div class="code-line"><span class="tok-kw">const</span> <span class="tok-fn">engine</span> = <span class="tok-kw">new</span> <span class="tok-type">SystemRuntime</span>();</div>
+                <div class="code-line"><span class="tok-fn">engine</span>.<span class="tok-fn">mount</span>({ <span class="tok-prop">scale</span>: <span class="tok-str">"infinite"</span> });</div>
+                <div class="code-line"><span class="tok-ok">✓ READY</span> <span class="tok-dim">• 0.04ms latency</span><span class="term-cursor">_</span></div>
+              </div>
+              <div class="showcase-scanline"></div>
+            </div>
+
+            <div class="card-content-block">
+              <h3 class="service-title">Software Development</h3>
+              <p class="service-desc">
+                Custom software solutions designed around business requirements, workflows and goals. Built for reliability, high availability, and long-term scalability.
+              </p>
+              <div class="service-tags">
+                <span>Custom Software</span>
+                <span>Internal Tools</span>
+                <span>Business Workflows</span>
+              </div>
+            </div>
+
+            <a href="/custom-software-development" class="service-link-arrow">
+              <span>Explore Service</span>
+              <span class="service-arrow-circle" aria-hidden="true">
+                <svg width="14" height="14" viewBox="0 0 16 16" fill="none">
+                  <path d="M3.333 8h9.334M8.667 4l4 4-4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </span>
+            </a>
           </div>
 
           <!-- 2. Web Development -->
-          <div class="service-card reveal-card spotlight-card">
-            <div class="service-icon" aria-hidden="true">🌐</div>
-            <h3 class="service-title">Web Development</h3>
-            <p class="service-desc">
-              Modern responsive websites and powerful web applications built for performance, conversion and scalability using React, Next.js, and modern APIs.
-            </p>
-            <div class="service-tags">
-              <span>Web Applications</span>
-              <span>Modern Websites</span>
-              <span>High Performance</span>
+          <div class="service-card reveal-card spotlight-card" data-service="web">
+            <div class="card-tech-header">
+              <div class="card-tech-meta">
+                <span class="card-tech-id">WEB // 02</span>
+                <span class="card-tech-status"><span class="tech-ping-wrap"><span class="tech-ping-beacon"></span><span class="tech-ping-dot"></span></span> REACT &bull; SSR</span>
+              </div>
+              <div class="card-tech-icon-box" aria-hidden="true">
+                <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="12" cy="12" r="10"></circle>
+                  <line x1="2" y1="12" x2="22" y2="12"></line>
+                  <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+                </svg>
+              </div>
             </div>
-            <a href="/web-development" class="service-link-arrow">Explore Service →</a>
+
+            <!-- Animated Tech Showcase -->
+            <div class="card-showcase-viewport showcase-web" aria-hidden="true">
+              <div class="showcase-browser-bar">
+                <span class="browser-lock">
+                  <svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+                </span>
+                <span class="browser-url">app.technest.in</span>
+                <span class="browser-tag-fast">60 FPS</span>
+              </div>
+              <div class="showcase-web-wireframe">
+                <div class="wireframe-hero-block">
+                  <div class="wireframe-pill-gradient"></div>
+                  <div class="wireframe-sub-line"></div>
+                </div>
+                <div class="wireframe-cards-row">
+                  <div class="wireframe-micro-card"></div>
+                  <div class="wireframe-micro-card"></div>
+                  <div class="wireframe-micro-card"></div>
+                </div>
+              </div>
+              <div class="showcase-web-beam"></div>
+            </div>
+
+            <div class="card-content-block">
+              <h3 class="service-title">Web Development</h3>
+              <p class="service-desc">
+                Modern responsive websites and powerful web applications built for performance, conversion and scalability using React, Next.js, and modern APIs.
+              </p>
+              <div class="service-tags">
+                <span>Web Applications</span>
+                <span>Modern Websites</span>
+                <span>High Performance</span>
+              </div>
+            </div>
+
+            <a href="/web-development" class="service-link-arrow">
+              <span>Explore Service</span>
+              <span class="service-arrow-circle" aria-hidden="true">
+                <svg width="14" height="14" viewBox="0 0 16 16" fill="none">
+                  <path d="M3.333 8h9.334M8.667 4l4 4-4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </span>
+            </a>
           </div>
 
           <!-- 3. Mobile App Development -->
-          <div class="service-card reveal-card spotlight-card">
-            <div class="service-icon" aria-hidden="true">📱</div>
-            <h3 class="service-title">Mobile App Development</h3>
-            <p class="service-desc">
-              Modern Android and cross-platform applications with intuitive interfaces, reliable offline support, and smooth end-to-end functionality.
-            </p>
-            <div class="service-tags">
-              <span>Android Apps</span>
-              <span>Cross-Platform</span>
-              <span>Intuitive UX</span>
+          <div class="service-card reveal-card spotlight-card" data-service="mobile">
+            <div class="card-tech-header">
+              <div class="card-tech-meta">
+                <span class="card-tech-id">APP // 03</span>
+                <span class="card-tech-status"><span class="tech-ping-wrap"><span class="tech-ping-beacon"></span><span class="tech-ping-dot"></span></span> NATIVE &bull; HYBRID</span>
+              </div>
+              <div class="card-tech-icon-box" aria-hidden="true">
+                <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                  <rect x="5" y="2" width="14" height="20" rx="3" ry="3"></rect>
+                  <line x1="12" y1="18" x2="12.01" y2="18"></line>
+                </svg>
+              </div>
             </div>
-            <a href="/app-development" class="service-link-arrow">Explore Service →</a>
+
+            <!-- Animated Tech Showcase -->
+            <div class="card-showcase-viewport showcase-mobile" aria-hidden="true">
+              <div class="showcase-mobile-device">
+                <div class="mobile-island"></div>
+                <div class="mobile-screen-content">
+                  <div class="mobile-stat-row">
+                    <span class="mobile-stat-bar"></span>
+                    <span class="mobile-badge-live">LIVE</span>
+                  </div>
+                  <div class="mobile-active-card">
+                    <div class="mobile-card-line"></div>
+                    <div class="mobile-card-chip"></div>
+                  </div>
+                  <div class="mobile-touch-target">
+                    <span class="touch-ring ring-1"></span>
+                    <span class="touch-ring ring-2"></span>
+                    <span class="touch-dot"></span>
+                  </div>
+                </div>
+              </div>
+              <div class="showcase-metric-pill"><span>iOS &bull; Android<br/>120Hz Ultra UX</span></div>
+            </div>
+
+            <div class="card-content-block">
+              <h3 class="service-title">Mobile App Development</h3>
+              <p class="service-desc">
+                Modern Android and cross-platform applications with intuitive interfaces, reliable offline support, and smooth end-to-end functionality.
+              </p>
+              <div class="service-tags">
+                <span>Android Apps</span>
+                <span>Cross-Platform</span>
+                <span>Intuitive UX</span>
+              </div>
+            </div>
+
+            <a href="/app-development" class="service-link-arrow">
+              <span>Explore Service</span>
+              <span class="service-arrow-circle" aria-hidden="true">
+                <svg width="14" height="14" viewBox="0 0 16 16" fill="none">
+                  <path d="M3.333 8h9.334M8.667 4l4 4-4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </span>
+            </a>
           </div>
 
           <!-- 4. Backend & API Architecture -->
-          <div class="service-card reveal-card spotlight-card">
-            <div class="service-icon" aria-hidden="true">⚙️</div>
-            <h3 class="service-title">Backend &amp; API Architecture</h3>
-            <p class="service-desc">
-              Custom RESTful APIs, secure database architecture, server-side data workflows, and seamless integrations that power robust digital products.
-            </p>
-            <div class="service-tags">
-              <span>Custom APIs</span>
-              <span>Database Design</span>
-              <span>Scalable Architecture</span>
+          <div class="service-card reveal-card spotlight-card" data-service="backend">
+            <div class="card-tech-header">
+              <div class="card-tech-meta">
+                <span class="card-tech-id">API // 04</span>
+                <span class="card-tech-status"><span class="tech-ping-wrap"><span class="tech-ping-beacon"></span><span class="tech-ping-dot"></span></span> LOW LATENCY</span>
+              </div>
+              <div class="card-tech-icon-box" aria-hidden="true">
+                <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                  <rect x="2" y="2" width="20" height="8" rx="2" ry="2"></rect>
+                  <rect x="2" y="14" width="20" height="8" rx="2" ry="2"></rect>
+                  <line x1="6" y1="6" x2="6.01" y2="6"></line>
+                  <line x1="6" y1="18" x2="6.01" y2="6"></line>
+                </svg>
+              </div>
             </div>
-            <a href="/custom-software-development" class="service-link-arrow">Explore Service →</a>
+
+            <!-- Animated Tech Showcase -->
+            <div class="card-showcase-viewport showcase-backend" aria-hidden="true">
+              <div class="showcase-telemetry-strip">
+                <span class="telemetry-method">POST</span>
+                <span class="telemetry-endpoint">/v1/dispatch</span>
+                <span class="telemetry-status">200 OK</span>
+                <span class="telemetry-latency">12ms</span>
+              </div>
+              <div class="showcase-pipeline-diagram">
+                <div class="pipeline-node node-client">
+                  <span class="node-label">GATEWAY</span>
+                </div>
+                <div class="pipeline-connector">
+                  <div class="pipeline-pulse-stream"></div>
+                </div>
+                <div class="pipeline-node node-core">
+                  <span class="node-label">ENGINE</span>
+                </div>
+                <div class="pipeline-connector">
+                  <div class="pipeline-pulse-stream stream-2"></div>
+                </div>
+                <div class="pipeline-node node-db">
+                  <span class="node-label">STORAGE</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="card-content-block">
+              <h3 class="service-title">Backend &amp; API Architecture</h3>
+              <p class="service-desc">
+                Custom RESTful APIs, secure database architecture, server-side data workflows, and seamless integrations that power robust digital products.
+              </p>
+              <div class="service-tags">
+                <span>Custom APIs</span>
+                <span>Database Design</span>
+                <span>Scalable Architecture</span>
+              </div>
+            </div>
+
+            <a href="/custom-software-development" class="service-link-arrow">
+              <span>Explore Service</span>
+              <span class="service-arrow-circle" aria-hidden="true">
+                <svg width="14" height="14" viewBox="0 0 16 16" fill="none">
+                  <path d="M3.333 8h9.334M8.667 4l4 4-4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </span>
+            </a>
           </div>
 
           <!-- 5. UI/UX Design -->
-          <div class="service-card reveal-card spotlight-card">
-            <div class="service-icon" aria-hidden="true">🎨</div>
-            <h3 class="service-title">UI/UX Design</h3>
-            <p class="service-desc">
-              Clean, intuitive and engaging interfaces designed around real users, tested workflows, and crisp interactive prototypes that elevate digital products.
-            </p>
-            <div class="service-tags">
-              <span>Product Design</span>
-              <span>Design Systems</span>
-              <span>Interactive Prototyping</span>
+          <div class="service-card reveal-card spotlight-card" data-service="uiux">
+            <div class="card-tech-header">
+              <div class="card-tech-meta">
+                <span class="card-tech-id">UX // 05</span>
+                <span class="card-tech-status"><span class="tech-ping-wrap"><span class="tech-ping-beacon"></span><span class="tech-ping-dot"></span></span> INTERACTIVE</span>
+              </div>
+              <div class="card-tech-icon-box" aria-hidden="true">
+                <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M12 19l7-7 3 3-7 7-3-3z"></path>
+                  <path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"></path>
+                  <path d="M2 2l7.586 7.586"></path>
+                  <circle cx="11" cy="11" r="2"></circle>
+                </svg>
+              </div>
             </div>
-            <a href="/ui-ux-design" class="service-link-arrow">Explore Service →</a>
+
+            <!-- Animated Tech Showcase -->
+            <div class="card-showcase-viewport showcase-uiux" aria-hidden="true">
+              <div class="showcase-design-metrics">
+                <span class="design-coord">X: 124 Y: 88</span>
+                <span class="design-token">radius: 16px</span>
+                <span class="design-spring">spring(180)</span>
+              </div>
+              <div class="showcase-vector-canvas">
+                <svg class="vector-curve-svg" viewBox="0 0 160 48" fill="none">
+                  <path d="M 10 38 C 45 38, 65 10, 100 10 C 130 10, 140 38, 155 38" stroke="url(#curveGrad)" stroke-width="2.5" stroke-linecap="round"/>
+                  <defs>
+                    <linearGradient id="curveGrad" x1="0" y1="0" x2="160" y2="0" gradientUnits="userSpaceOnUse">
+                      <stop stop-color="#38bdf8"/>
+                      <stop offset="0.5" stop-color="#818cf8"/>
+                      <stop offset="1" stop-color="#c084fc"/>
+                    </linearGradient>
+                  </defs>
+                  <circle class="vector-handle-point" cx="100" cy="10" r="4" fill="#38bdf8" stroke="#fff" stroke-width="1.5"/>
+                  <line x1="75" y1="10" x2="125" y2="10" stroke="#38bdf8" stroke-width="1" stroke-dasharray="2 2"/>
+                  <circle cx="75" cy="10" r="2" fill="#fff"/>
+                  <circle cx="125" cy="10" r="2" fill="#fff"/>
+                </svg>
+                <div class="vector-interactive-switch">
+                  <span class="switch-knob"></span>
+                </div>
+              </div>
+            </div>
+
+            <div class="card-content-block">
+              <h3 class="service-title">UI/UX Design</h3>
+              <p class="service-desc">
+                Clean, intuitive and engaging interfaces designed around real users, tested workflows, and crisp interactive prototypes that elevate digital products.
+              </p>
+              <div class="service-tags">
+                <span>Product Design</span>
+                <span>Design Systems</span>
+                <span>Interactive Prototyping</span>
+              </div>
+            </div>
+
+            <a href="/ui-ux-design" class="service-link-arrow">
+              <span>Explore Service</span>
+              <span class="service-arrow-circle" aria-hidden="true">
+                <svg width="14" height="14" viewBox="0 0 16 16" fill="none">
+                  <path d="M3.333 8h9.334M8.667 4l4 4-4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </span>
+            </a>
           </div>
 
           <!-- 6. Cloud, Hosting & Deployment -->
-          <div class="service-card reveal-card spotlight-card">
-            <div class="service-icon" aria-hidden="true">☁️</div>
-            <h3 class="service-title">Cloud, Hosting &amp; Deployment</h3>
-            <p class="service-desc">
-              Application deployment, secure hosting, APIs, database architecture, continuous integration and cloud maintenance to ensure 99.9% uptime.
-            </p>
-            <div class="service-tags">
-              <span>Cloud Infrastructure</span>
-              <span>API Integration</span>
-              <span>Maintenance &amp; Support</span>
+          <div class="service-card reveal-card spotlight-card" data-service="cloud">
+            <div class="card-tech-header">
+              <div class="card-tech-meta">
+                <span class="card-tech-id">OPS // 06</span>
+                <span class="card-tech-status"><span class="tech-ping-wrap"><span class="tech-ping-beacon"></span><span class="tech-ping-dot"></span></span> CLOUD ACTIVE</span>
+              </div>
+              <div class="card-tech-icon-box" aria-hidden="true">
+                <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"></path>
+                </svg>
+              </div>
             </div>
-            <a href="/maintenance-support" class="service-link-arrow">Explore Service →</a>
+
+            <!-- Animated Tech Showcase -->
+            <div class="card-showcase-viewport showcase-cloud" aria-hidden="true">
+              <div class="showcase-cloud-status">
+                <span class="cloud-health-badge"><span class="cloud-radar-pulse"></span> GLOBAL EDGE</span>
+                <span class="cloud-uptime">99.99% UPTIME</span>
+              </div>
+              <div class="showcase-ci-pipeline">
+                <div class="ci-stage stage-build">
+                  <div class="ci-stage-badge">
+                    <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+                  </div>
+                  <span class="ci-stage-name">BUILD</span>
+                </div>
+                <div class="ci-connector"><div class="ci-beam beam-1"></div></div>
+                <div class="ci-stage stage-test">
+                  <div class="ci-stage-badge">
+                    <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+                  </div>
+                  <span class="ci-stage-name">TEST</span>
+                </div>
+                <div class="ci-connector"><div class="ci-beam beam-2"></div></div>
+                <div class="ci-stage stage-deploy">
+                  <div class="ci-stage-badge badge-active">
+                    <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+                  </div>
+                  <span class="ci-stage-name">DEPLOY</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="card-content-block">
+              <h3 class="service-title">Cloud, Hosting &amp; Deployment</h3>
+              <p class="service-desc">
+                Application deployment, secure hosting, APIs, database architecture, continuous integration and cloud maintenance to ensure 99.9% uptime.
+              </p>
+              <div class="service-tags">
+                <span>Cloud Infrastructure</span>
+                <span>API Integration</span>
+                <span>Maintenance &amp; Support</span>
+              </div>
+            </div>
+
+            <a href="/maintenance-support" class="service-link-arrow">
+              <span>Explore Service</span>
+              <span class="service-arrow-circle" aria-hidden="true">
+                <svg width="14" height="14" viewBox="0 0 16 16" fill="none">
+                  <path d="M3.333 8h9.334M8.667 4l4 4-4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </span>
+            </a>
           </div>
         </div>
 
