@@ -2918,6 +2918,149 @@ body.mobile-nav-open {
   100% { transform: translateX(300%); }
 }
 
+/* ─── Showcase Video: Video Editing Timeline & Multi-Track Cut ─── */
+.showcase-video {
+  padding: 0.65rem 0.85rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.showcase-video-strip {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 0.35rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  font-family: ui-monospace, SFMono-Regular, monospace;
+  font-size: 0.67rem;
+}
+
+.video-timecode {
+  color: #fb923c;
+  font-weight: 700;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.video-rec-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #ef4444;
+  box-shadow: 0 0 6px #ef4444;
+  animation: recDotBlink 1.2s infinite ease-in-out;
+}
+
+@keyframes recDotBlink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.25; }
+}
+
+.video-format-tag {
+  color: var(--color-text-dim);
+  background: rgba(255, 255, 255, 0.05);
+  padding: 0.1rem 0.35rem;
+  border-radius: 3px;
+  font-size: 0.62rem;
+}
+
+.video-render-status {
+  color: #4ade80;
+  font-weight: 700;
+}
+
+.showcase-timeline-tracks {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  position: relative;
+  overflow: hidden;
+  padding-top: 0.25rem;
+}
+
+.timeline-playhead {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: #fb923c;
+  box-shadow: 0 0 8px #fb923c;
+  z-index: 2;
+  animation: playheadSweep 3s linear infinite;
+}
+
+@keyframes playheadSweep {
+  0% { left: 0%; }
+  100% { left: 100%; }
+}
+
+.timeline-track-v1,
+.timeline-track-a1 {
+  display: flex;
+  gap: 0.35rem;
+  height: 15px;
+}
+
+.timeline-clip {
+  border-radius: 3px;
+  position: relative;
+  overflow: hidden;
+  font-family: ui-monospace, monospace;
+  font-size: 0.56rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  padding: 0 0.35rem;
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.clip-intro {
+  flex: 1.2;
+  background: linear-gradient(90deg, rgba(249, 115, 22, 0.35), rgba(251, 146, 60, 0.2));
+  border: 1px solid rgba(251, 146, 60, 0.45);
+}
+
+.clip-main {
+  flex: 2;
+  background: linear-gradient(90deg, rgba(168, 85, 247, 0.35), rgba(129, 140, 248, 0.25));
+  border: 1px solid rgba(168, 85, 247, 0.45);
+}
+
+.clip-outro {
+  flex: 1.1;
+  background: linear-gradient(90deg, rgba(56, 189, 248, 0.35), rgba(45, 212, 191, 0.25));
+  border: 1px solid rgba(56, 189, 248, 0.45);
+}
+
+.clip-audio {
+  flex: 1;
+  background: rgba(16, 185, 129, 0.12);
+  border: 1px solid rgba(52, 211, 153, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  padding: 0 0.5rem;
+}
+
+.audio-bar {
+  width: 2px;
+  background: #34d399;
+  border-radius: 1px;
+}
+.audio-bar:nth-child(1) { height: 4px; animation: audioWave 1s ease infinite alternate; }
+.audio-bar:nth-child(2) { height: 10px; animation: audioWave 1.2s ease infinite alternate 0.2s; }
+.audio-bar:nth-child(3) { height: 6px; animation: audioWave 0.9s ease infinite alternate 0.4s; }
+.audio-bar:nth-child(4) { height: 12px; animation: audioWave 1.3s ease infinite alternate 0.1s; }
+.audio-bar:nth-child(5) { height: 5px; animation: audioWave 0.8s ease infinite alternate 0.3s; }
+.audio-bar:nth-child(6) { height: 9px; animation: audioWave 1.1s ease infinite alternate 0.5s; }
+
+@keyframes audioWave {
+  0% { transform: scaleY(0.4); }
+  100% { transform: scaleY(1); }
+}
+
 /* ─── 5. Showcase UI/UX: Interactive Vector Canvas & Tokens ─── */
 .showcase-design-metrics {
   display: flex;
