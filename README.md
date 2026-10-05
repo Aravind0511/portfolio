@@ -9,7 +9,7 @@
 
 *A focused, agile engineering studio creating high-performance business websites, web applications, booking engines, and operations dashboards with transparent, project-based pricing.*
 
-[![Live Website](https://img.shields.io/badge/Live%20Demo-craftedpage.vercel.app-38bdf8?style=for-the-badge&logo=vercel)](https://craftedpage.vercel.app)
+[![Live Website](https://img.shields.io/badge/Live%20Website-techneststudio.in-38bdf8?style=for-the-badge&logo=google-chrome)](https://techneststudio.in)
 [![WhatsApp Us](https://img.shields.io/badge/WhatsApp-Chat%20Directly-22c55e?style=for-the-badge&logo=whatsapp)](https://wa.me/918807006909)
 [![Email Us](https://img.shields.io/badge/Email-studiotechnest%40gmail.com-ea4335?style=for-the-badge&logo=gmail)](mailto:studiotechnest@gmail.com)
 
@@ -19,44 +19,48 @@
 
 ## 🧭 About TechNest Studio
 
-We are an independent, developer-led engineering team of **2–3 engineers** focused on building practical, reliable, and high-impact digital systems for growing businesses, startups, and operational teams.
+TechNest Studio is an independent, developer-led digital engineering team of **2–3 core developers** building practical software, websites, applications, and creative digital experiences for businesses, startups, and operational teams.
 
-### 🌟 Why Clients Choose Our Team
-* **Zero Middlemen / Direct Senior Access**: You communicate directly with the engineers designing and writing the code. No agency account managers, no telephone game.
-* **Modern & Clean Engineering**: Lightweight, lightning-fast architecture with zero dependency bloat. We prioritize load speed, clean mobile UX, and SEO.
+### 🌟 Why Clients Work Directly With Our Team
+* **Zero Middlemen / Direct Senior Access**: You communicate directly with the developers writing your code. No bureaucracy, account managers, or junior handoffs.
+* **Modern & Clean Engineering**: High-performance, lightweight architecture with zero dependency bloat. We prioritize load speed, clean mobile UX, and SEO.
 * **Milestone & Fixed Pricing**: Clear scope, fixed estimates, and transparent deliverable timelines before any code is written.
-* **Rapid Turnaround**: Coordinated agile sprints with live staging demo links throughout development.
+* **Direct Dev-to-Client Communication**: Rapid feedback loops via WhatsApp and video calls throughout development.
 
 ---
 
-## 🛠️ Core Services & Solutions
+## 🛠️ Core Services & Deliverables
 
-| Service | Focus & Deliverables | Tech Highlights |
-| :--- | :--- | :--- |
-| **🌐 High-Conversion Business Websites** | Professional online presence, branding, SEO structure, mobile optimization, lead capture forms. | HTML5, CSS3, Vanilla JS, Responsive Design |
-| **📅 Booking & Rental Management Systems** | Direct reservation calendars, WhatsApp instant booking, automated receipts, vehicle/villa rentals. | Node.js, REST APIs, Webhooks, Instant Notifications |
-| **📊 Operations & Admin Dashboards** | Internal business portals, live inventory tracking, employee task delegation, financial charts. | Real-time state management, SVG charts, CSV exports |
-| **⚡ Workflow Automation & Integration** | Custom CRM sync, email triggers, payment links, WhatsApp bot alerts, database migration. | Cloud Functions, Third-party APIs, Zapier/Custom |
+| Service | Focus & Scope | Deliverables & Highlights | Route |
+| :--- | :--- | :--- | :--- |
+| **🌐 Web Development** | Modern, responsive, SEO-friendly websites. | Business websites, landing pages, responsive web design, technical SEO. | [`/services/web-development`](https://techneststudio.in/services/web-development) |
+| **📱 Application Development** | Reliable, intuitive, user-focused digital experiences. | Android applications, mobile solutions, interactive applications. | [`/services/application-development`](https://techneststudio.in/services/application-development) |
+| **⚙️ Custom Software** | Scalable business software & workflow tools. | Internal portals, workflow tools, operational dashboards, custom solutions. | [`/services/custom-software`](https://techneststudio.in/services/custom-software) |
+| **🎨 UI/UX Design** | Clean, user-centered digital interfaces. | Wireframing, interactive prototyping, design systems, responsive interfaces. | [`/services/ui-ux-design`](https://techneststudio.in/services/ui-ux-design) |
+| **🎬 Video Editing** | Engaging, polished video content for brands. | Reels & shorts, promotional videos, corporate videos, cinematic editing. | [`/video-editing`](https://techneststudio.in/video-editing) |
+| **🛠️ Maintenance & Support** | Continuous product reliability & upkeep. | Website updates, bug fixes, technical support, ongoing performance tuning. | [`/services/maintenance-support`](https://techneststudio.in/services/maintenance-support) |
 
 ---
 
-## 🔄 Our 4-Stage Development Process
+## 🔄 How We Work (7-Step Process)
 
 ```mermaid
 flowchart LR
-    A["01. DISCUSS<br/>Scope & Requirements"] --> B["02. PLAN<br/>Flows & Architecture"]
-    B --> C["03. BUILD<br/>Agile Sprints & Staging"]
-    C --> D["04. LAUNCH<br/>Cloud & Support"]
+    A["01. Understand"] --> B["02. Plan"]
+    B --> C["03. Design"]
+    C --> D["04. Build"]
+    D --> E["05. Test"]
+    E --> F["06. Deliver"]
+    F --> G["07. Support"]
 ```
 
-1. **💬 01. Discuss (Starting Point)**:
-   We listen closely to your business operational goals, asking the right technical questions to uncover what your business truly requires.
-2. **📋 02. Plan**:
-   We map user journeys, select the ideal architecture, and deliver a detailed scope breakdown, timeline, and fixed estimate.
-3. **⚙️ 03. Build**:
-   We engineer the product in coordinated sprints, sharing regular staging links so you can test features and provide feedback early.
-4. **🚀 04. Launch**:
-   We handle cloud deployment, domain DNS setup, SSL certificates, performance verification, and provide post-launch walkthrough support.
+1. **01 — Understand**: Understand your goals, requirements, and ideas.
+2. **02 — Plan**: Define the right technology, structure, and experience.
+3. **03 — Design**: Create an intuitive interface and experience.
+4. **04 — Build**: Develop the solution with attention to quality and performance.
+5. **05 — Test**: Validate functionality, responsiveness, and reliability.
+6. **06 — Deliver**: Deploy the finished digital product.
+7. **07 — Support**: Provide ongoing improvements and technical support.
 
 ---
 
@@ -91,14 +95,26 @@ flowchart LR
 ## 📁 Repository Structure
 
 ```text
-craftedpage/
-├── assets/
-│   ├── favicon.svg          # High-DPI geometric favicon
-│   └── logo.svg             # Brand vector emblem (Nexus N)
-├── index.html               # Main semantic HTML5 markup
-├── style.css                # Master stylesheet (dark theme & micro-animations)
-├── script.js                # Interactive logic & form handling
-├── .gitignore               # Ignored development files
+techneststudio/
+├── assets/                  # Brand logos, icons, badges
+├── index.html               # Homepage (Overview, Services preview, Process, Video preview)
+├── services.html            # Core Services Hub (/services)
+├── video-editing.html       # Dedicated Video Editing (/video-editing)
+├── what-we-build.html       # Deliverables Catalog (/what-we-build)
+├── process.html             # 7-Step Engineering Timeline (/process)
+├── about.html               # About Studio & Developer Core (/about)
+├── contact.html             # Consultation & Inquiry Form (/contact)
+├── web-development.html     # Deep dive: Web Development
+├── app-development.html     # Deep dive: Application Development
+├── custom-software-development.html # Deep dive: Custom Software
+├── ui-ux-design.html        # Deep dive: UI/UX Design
+├── maintenance-support.html # Deep dive: Maintenance & Support
+├── case-studies.html        # Real-World Projects Hub
+├── style.css                # Master dark theme & micro-animations
+├── script.js                # Interactive logic, 3D tilt, drawers, & forms
+├── sitemap.xml              # Search engine index map
+├── robots.txt               # Crawler directives
+├── llms.txt                 # LLM context & architecture index
 └── README.md                # Studio overview & documentation
 ```
 
@@ -108,8 +124,8 @@ craftedpage/
 
 ```bash
 # Clone the repository
-git clone https://github.com/Aravind0511/craftedpage.git
-cd craftedpage
+git clone https://github.com/Aravind0511/portfolio.git
+cd portfolio
 
 # Run with Python
 python -m http.server 3000
@@ -128,7 +144,7 @@ Ready to build your website, application, or business automation? Reach out dire
 
 - **💬 WhatsApp**: [**+91 88070 06909**](https://wa.me/918807006909)
 - **📧 Email**: [**studiotechnest@gmail.com**](mailto:studiotechnest@gmail.com)
-- **🌐 Live Production**: [**https://craftedpage.vercel.app**](https://craftedpage.vercel.app)
+- **🌐 Official Website**: [**https://techneststudio.in**](https://techneststudio.in)
 
 *✨ Imagine • Build • Transform*  
 *© 2026 TechNest Studio. Turning ideas into digital experiences.*

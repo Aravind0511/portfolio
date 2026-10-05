@@ -14,10 +14,10 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <title>About TechNest Studio | Focused Web & Software Engineering Team</title>
-  <meta name="description" content="Learn about TechNest Studio: our engineering philosophy, direct client communication model, technical stack, and commitment to practical, scalable digital solutions." />
+  <title>About TechNest Studio | Digital Technology Studio</title>
+  <meta name="description" content="TechNest Studio is a technology-focused digital studio building practical software, websites, applications and creative digital experiences." />
   <meta name="author" content="TechNest Studio" />
-  <meta name="keywords" content="about TechNest Studio, agile dev team India, web development studio, custom software engineers" />
+  <meta name="keywords" content="about TechNest Studio, agile dev team India, web development studio, custom software engineers, digital technology studio" />
   <meta name="theme-color" content="#161f30" />
   <meta name="color-scheme" content="dark" />
 
@@ -32,58 +32,65 @@
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="TechNest Studio" />
   <meta property="og:url" content="https://techneststudio.in/about" />
-  <meta property="og:title" content="About TechNest Studio | Focused Web & Software Engineering Team" />
-  <meta property="og:description" content="Learn about TechNest Studio: our engineering philosophy, direct client communication model, technical stack, and commitment to practical, scalable digital solutions." />
+  <meta property="og:title" content="About TechNest Studio | Digital Technology Studio" />
+  <meta property="og:description" content="TechNest Studio is a technology-focused digital studio building practical software, websites, applications and creative digital experiences." />
   <meta property="og:image" content="https://techneststudio.in/assets/logo-brand.png" />
-  <meta property="og:image:alt" content="About TechNest Studio | Focused Web & Software Engineering Team" />
+  <meta property="og:image:alt" content="About TechNest Studio — Digital Technology Studio" />
   <meta property="og:locale" content="en_US" />
 
   <!-- Twitter / X Card -->
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:url" content="https://techneststudio.in/about" />
-  <meta name="twitter:title" content="About TechNest Studio | Focused Web & Software Engineering Team" />
-  <meta name="twitter:description" content="Learn about TechNest Studio: our engineering philosophy, direct client communication model, technical stack, and commitment to practical, scalable digital solutions." />
+  <meta name="twitter:title" content="About TechNest Studio | Digital Technology Studio" />
+  <meta name="twitter:description" content="TechNest Studio is a technology-focused digital studio building practical software, websites, applications and creative digital experiences." />
   <meta name="twitter:image" content="https://techneststudio.in/assets/logo-brand.png" />
-  <meta name="twitter:image:alt" content="About TechNest Studio | Focused Web & Software Engineering Team" />
+  <meta name="twitter:image:alt" content="About TechNest Studio — Digital Technology Studio" />
 
   <!-- Structured Data (JSON-LD) -->
   <script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@graph": [
-    {
-      "@type": "WebPage",
-      "@id": "https://techneststudio.in/about#webpage",
-      "url": "https://techneststudio.in/about",
-      "name": "About TechNest Studio | Focused Web & Software Engineering Team",
-      "description": "Learn about TechNest Studio: our engineering philosophy, direct client communication model, technical stack, and commitment to practical, scalable digital solutions.",
-      "isPartOf": {
-        "@type": "WebSite",
-        "@id": "https://techneststudio.in/#website",
-        "url": "https://techneststudio.in/",
-        "name": "TechNest Studio"
-      }
-    },
-    {
-      "@type": "BreadcrumbList",
-      "@id": "https://techneststudio.in/about#breadcrumb",
-      "itemListElement": [
-        {
-          "@type": "ListItem",
-          "position": 1,
-          "name": "Home",
-          "item": "https://techneststudio.in/"
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebPage",
+        "@id": "https://techneststudio.in/about#webpage",
+        "url": "https://techneststudio.in/about",
+        "name": "About TechNest Studio | Digital Technology Studio",
+        "description": "TechNest Studio is a technology-focused digital studio building practical software, websites, applications and creative digital experiences.",
+        "isPartOf": {
+          "@type": "WebSite",
+          "@id": "https://techneststudio.in/#website",
+          "url": "https://techneststudio.in/",
+          "name": "TechNest Studio"
         },
-        {
-          "@type": "ListItem",
-          "position": 2,
-          "name": "About Us",
-          "item": "https://techneststudio.in/about"
+        "breadcrumb": {
+          "@type": "BreadcrumbList",
+          "@id": "https://techneststudio.in/about#breadcrumb",
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "name": "Home",
+              "item": "https://techneststudio.in/"
+            },
+            {
+              "@type": "ListItem",
+              "position": 2,
+              "name": "About",
+              "item": "https://techneststudio.in/about"
+            }
+          ]
         }
-      ]
-    }
-  ]
-}
+      },
+      {
+        "@type": "Organization",
+        "@id": "https://techneststudio.in/#organization",
+        "name": "TechNest Studio",
+        "url": "https://techneststudio.in/",
+        "logo": "https://techneststudio.in/assets/logo-brand.png"
+      }
+    ]
+  }
   </script>
 
   <!-- Favicon / Browser & Search Icons -->
@@ -105,13 +112,12 @@
   <!-- Scroll Progress Indicator -->
   <div class="scroll-progress-bar" id="scroll-progress" aria-hidden="true"></div>
 
-  
   <!-- ============================================================
        NAVIGATION
   ============================================================ -->
   <header class="site-header" id="site-header">
     <nav class="nav container" aria-label="Main navigation">
-      <a href="/#home" class="nav-logo" aria-label="TechNest Studio — home">
+      <a href="/" class="nav-logo" aria-label="TechNest Studio — home">
         <div class="brand-logo-3d" id="nav-brand-logo-3d">
           <div class="logo-3d-inner">
             <img src="/assets/logo.png" alt="TechNest Studio Logo" class="brand-logo-img" width="38" height="38" />
@@ -122,12 +128,13 @@
       </a>
 
       <ul class="nav-links" role="list">
-        <li><a href="/about" class="nav-link active">About Us</a></li>
-        <li><a href="/#services" class="nav-link">Services</a></li>
-        <li><a href="/case-studies" class="nav-link ">Case Studies</a></li>
-        <li><a href="/video-editing" class="nav-link ">Video Editing</a></li>
-        <li><a href="/blog" class="nav-link ">Blog</a></li>
-        <li><a href="/contact" class="nav-link nav-cta ">Discuss Project</a></li>
+        <li><a href="/" class="nav-link">Home</a></li>
+        <li><a href="/services" class="nav-link">Services</a></li>
+        <li><a href="/video-editing" class="nav-link">Video Editing</a></li>
+        <li><a href="/what-we-build" class="nav-link">What We Build</a></li>
+        <li><a href="/process" class="nav-link">Process</a></li>
+        <li><a href="/about" class="nav-link active" aria-current="page">About</a></li>
+        <li><a href="/contact" class="nav-link nav-cta">Contact</a></li>
       </ul>
 
       <button type="button" class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="mobile-menu">
@@ -142,7 +149,7 @@
   <div class="mobile-menu-backdrop" id="mobile-menu-backdrop" aria-hidden="true"></div>
   <aside class="mobile-nav-drawer" id="mobile-menu" role="dialog" aria-modal="true" aria-label="Mobile Navigation" aria-hidden="true">
     <div class="mobile-drawer-header">
-      <a href="/#home" class="mobile-drawer-logo" aria-label="TechNest Studio — home">
+      <a href="/" class="mobile-drawer-logo" aria-label="TechNest Studio — home">
         <div class="brand-logo-3d">
           <div class="logo-3d-inner">
             <img src="/assets/logo.png" alt="TechNest Studio Logo" class="brand-logo-img" width="36" height="36" />
@@ -162,43 +169,50 @@
     <div class="mobile-drawer-body">
       <ul class="mobile-nav-links" role="list">
         <li>
-          <a href="/about" class="mobile-nav-link">
+          <a href="/" class="mobile-nav-link">
             <span class="mobile-nav-num">01</span>
-            <span class="mobile-nav-text">About Us</span>
+            <span class="mobile-nav-text">Home</span>
             <span class="mobile-nav-arrow" aria-hidden="true">→</span>
           </a>
         </li>
         <li>
-          <a href="/#services" class="mobile-nav-link">
+          <a href="/services" class="mobile-nav-link">
             <span class="mobile-nav-num">02</span>
             <span class="mobile-nav-text">Services</span>
             <span class="mobile-nav-arrow" aria-hidden="true">→</span>
           </a>
         </li>
         <li>
-          <a href="/case-studies" class="mobile-nav-link">
-            <span class="mobile-nav-num">03</span>
-            <span class="mobile-nav-text">Case Studies</span>
-            <span class="mobile-nav-arrow" aria-hidden="true">→</span>
-          </a>
-        </li>
-        <li>
           <a href="/video-editing" class="mobile-nav-link">
-            <span class="mobile-nav-num">04</span>
+            <span class="mobile-nav-num">03</span>
             <span class="mobile-nav-text">Video Editing</span>
             <span class="mobile-nav-arrow" aria-hidden="true">→</span>
           </a>
         </li>
         <li>
-          <a href="/blog" class="mobile-nav-link">
+          <a href="/what-we-build" class="mobile-nav-link">
+            <span class="mobile-nav-num">04</span>
+            <span class="mobile-nav-text">What We Build</span>
+            <span class="mobile-nav-arrow" aria-hidden="true">→</span>
+          </a>
+        </li>
+        <li>
+          <a href="/process" class="mobile-nav-link">
             <span class="mobile-nav-num">05</span>
-            <span class="mobile-nav-text">Blog &amp; Insights</span>
+            <span class="mobile-nav-text">Process</span>
+            <span class="mobile-nav-arrow" aria-hidden="true">→</span>
+          </a>
+        </li>
+        <li>
+          <a href="/about" class="mobile-nav-link active" aria-current="page">
+            <span class="mobile-nav-num">06</span>
+            <span class="mobile-nav-text">About</span>
             <span class="mobile-nav-arrow" aria-hidden="true">→</span>
           </a>
         </li>
         <li>
           <a href="/contact" class="mobile-nav-link mobile-nav-cta">
-            <span>Discuss Your Project</span>
+            <span>Contact Us</span>
             <span class="mobile-nav-arrow" aria-hidden="true">→</span>
           </a>
         </li>
@@ -216,36 +230,40 @@
           <span>+91 88070 06909</span>
         </a>
       </div>
-      <p class="drawer-tagline">✨ Imagine • 🛠️ Build • 🚀 Transform</p>
+      <p class="drawer-tagline">✨ Imagine • Build • Transform</p>
     </div>
   </aside>
 
   <main>
-    
+    <!-- ============================================================
+         HERO SECTION
+    ============================================================ -->
     <section class="page-hero">
       <div class="container hero-content">
-        
-  <nav class="breadcrumb-nav" aria-label="Breadcrumb">
-    <div class="breadcrumb-list">
-      <a href="/">Home</a><span class="breadcrumb-sep" aria-hidden="true">/</span><span>About Us</span>
-    </div>
-  </nav>
+        <nav class="breadcrumb-nav" aria-label="Breadcrumb">
+          <div class="breadcrumb-list">
+            <a href="/">Home</a><span class="breadcrumb-sep" aria-hidden="true">/</span><span>About</span>
+          </div>
+        </nav>
         <div class="availability-badge" style="margin: 0 auto 1.25rem;">
           <span class="availability-dot" aria-hidden="true"></span>
           <span>Focused Dev Team &bull; Direct Senior Access &bull; India to Global</span>
         </div>
         <h1 class="page-hero-title">About <span class="gradient-text">TechNest Studio</span></h1>
         <p class="hero-desc">
-          We are an independent, developer-led engineering team of 2–3 developers. We partner directly with businesses and entrepreneurs to turn ideas and operational needs into dependable, high-impact digital solutions.
+          TechNest Studio is a technology-focused digital studio building practical software, websites, applications and creative digital experiences.
         </p>
         <div class="hero-actions">
-          <a href="#philosophy" class="btn btn-primary">Our Philosophy</a>
+          <a href="#story" class="btn btn-primary">Our Story &amp; Approach</a>
           <a href="/contact" class="btn btn-secondary">Start a Conversation</a>
         </div>
       </div>
     </section>
     
-    <section class="section" id="philosophy">
+    <!-- ============================================================
+         STORY & APPROACH
+    ============================================================ -->
+    <section class="section" id="story">
       <div class="container">
         <div class="about-grid">
           <div class="about-visual">
@@ -287,7 +305,7 @@
                 <span class="tag-icon">👥</span>
                 <div>
                   <div class="tag-label">Team Structure</div>
-                  <div class="tag-value">Agile Engineering Studio</div>
+                  <div class="tag-value">2–3 Person Engineering Core</div>
                 </div>
               </div>
               <div class="about-tag">
@@ -325,10 +343,13 @@
               <p class="motto-quote">TechNest Studio — Turning ideas into digital experiences.</p>
             </div>
             <p class="about-text">
-              We started TechNest Studio with a clear conviction: growing businesses don’t need bloated agency hierarchies, junior handoffs, or markups on pre-packaged templates. They need dedicated developers who listen carefully, understand their business operations, and write clean, maintainable code.
+              TechNest Studio is a technology-focused digital studio building practical software, websites, applications and creative digital experiences.
             </p>
             <p class="about-text">
-              When you collaborate with us, you work directly with the engineers designing the interface and writing the code. Whether you need a modern business website, an Android application, a bespoke rental booking engine, or an operations dashboard, we focus on engineering practical systems that are easy to manage and built to scale.
+              We started TechNest Studio with a clear conviction: growing businesses, startups and individuals don't need agency bureaucracy, account manager runarounds, or bloated templates. They need dedicated engineers who listen carefully, understand their operations, and write clean, dependable code.
+            </p>
+            <p class="about-text">
+              Operating as an agile <strong>2–3 Person Engineering Core</strong>, we don't pretend to be a massive corporation. Instead, we offer what large agencies cannot: direct access to the developers building your software, transparent milestone pricing, and craft-driven attention to detail.
             </p>
 
             <div class="about-tech-grid">
@@ -345,11 +366,11 @@
                 <div class="tech-chips">
                   <span class="chip">Node.js</span>
                   <span class="chip">Python / FastAPI</span>
-                  <span class="chip">REST &amp; WebSockets</span>
+                  <span class="chip">REST APIs</span>
                 </div>
               </div>
               <div class="tech-group">
-                <div class="tech-group-label">Database &amp; DevOps</div>
+                <div class="tech-group-label">Database &amp; Cloud</div>
                 <div class="tech-chips">
                   <span class="chip">PostgreSQL</span>
                   <span class="chip">MongoDB</span>
@@ -361,182 +382,95 @@
         </div>
       </div>
     </section>
-    
-  <!-- ============================================================
-       CONTACT / CONSULTATION SECTION
-  ============================================================ -->
-  <section class="contact section" id="contact">
-    <div class="discuss-ambient-glow" aria-hidden="true">
-      <div class="discuss-glow-orb orb-1"></div>
-      <div class="discuss-glow-orb orb-2"></div>
-    </div>
-    <div class="container">
-      <div class="contact-grid">
-        <div class="contact-info">
-          <div class="contact-header-wrap">
-            <div class="section-label">Discuss Project</div>
-            <div class="contact-availability">
-              <div class="availability-dot" aria-hidden="true"></div>
-              <span>Accepting 2 new client projects</span>
-            </div>
-          </div>
-          <h2 class="section-title">Let’s Start a Conversation<br /><span class="gradient-text">About Your Build</span></h2>
-          <p class="contact-text">
-            Tell us about your business goals and operational needs. We'll evaluate your requirements and get back to you with a transparent architecture plan and milestone estimate — zero agency fluff.
+
+    <!-- ============================================================
+         CORE VALUES & ENGINEERING MINDSET
+    ============================================================ -->
+    <section class="section" id="values">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-label">Our Principles</div>
+          <h2 class="section-title">Design Philosophy &amp; <span class="gradient-text">Engineering Mindset</span></h2>
+          <p class="section-subtitle">
+            How we approach quality standards, technical architecture, and long-term client relationships.
           </p>
-
-          <div class="discuss-perks">
-            <div class="discuss-perk">
-              <span class="perk-icon">⚡</span>
-              <span class="perk-text">Fast 24-Hour Response</span>
-            </div>
-            <div class="discuss-perk">
-              <span class="perk-icon">🔒</span>
-              <span class="perk-text">NDA &amp; Confidentiality Assured</span>
-            </div>
-            <div class="discuss-perk">
-              <span class="perk-icon">🛠️</span>
-              <span class="perk-text">Direct Senior Developer Access</span>
-            </div>
-          </div>
-
-          <div class="contact-methods">
-            <a href="https://wa.me/918807006909" class="contact-method contact-method-wa spotlight-card" target="_blank" rel="noopener noreferrer" aria-label="Contact TechNest Studio on WhatsApp">
-              <div class="contact-method-icon-wa">
-                <span class="wa-ripple-ring" aria-hidden="true"></span>
-                <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-                  <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
-                </svg>
-              </div>
-              <div class="contact-method-text">
-                <div class="contact-method-label">WhatsApp</div>
-                <div class="contact-method-value">+91 88070 06909</div>
-                <div class="contact-method-sub">Chat with us on WhatsApp</div>
-              </div>
-            </a>
-
-            <a href="mailto:studiotechnest@gmail.com?subject=Project%20Enquiry%20%E2%80%94%20TechNest%20Studio" class="contact-method contact-method-email spotlight-card" aria-label="Email TechNest Studio">
-              <div class="contact-method-icon-email">
-                <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                  <rect x="2" y="4" width="20" height="16" rx="2"/>
-                  <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/>
-                </svg>
-              </div>
-              <div class="contact-method-text">
-                <div class="contact-method-label">Email Us</div>
-                <div class="contact-method-value">studiotechnest@gmail.com</div>
-                <div class="contact-method-sub">Send us your project requirements</div>
-              </div>
-            </a>
-          </div>
         </div>
 
-        <div class="contact-form-wrapper" id="contact-form-wrapper">
-          <canvas id="confetti-canvas" class="confetti-canvas" aria-hidden="true"></canvas>
-          <div class="form-success-container" id="form-success-container" aria-live="polite"></div>
-          <form class="contact-form" id="contact-form" action="https://formsubmit.co/studiotechnest@gmail.com" method="POST" novalidate>
-            <input type="hidden" name="_subject" id="form-subject" value="New Project Enquiry — TechNest Studio" />
-            <input type="hidden" name="_captcha" value="false" />
-            <input type="hidden" name="_template" value="table" />
-            <input type="hidden" name="_autoresponse" value="Thank you for reaching out to TechNest Studio! We have received your project enquiry and our engineering team will evaluate your requirements and reply within 24 hours." />
-            <input type="hidden" name="_next" value="https://techneststudio.in/#contact" />
-            <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off" aria-hidden="true" />
-
-            <div class="form-row form-row-2">
-              <div class="form-field">
-                <label for="contact-name">Your Name <span class="required" aria-hidden="true">*</span></label>
-                <input type="text" id="contact-name" name="name" placeholder="John Smith" required autocomplete="name" aria-describedby="contact-name-error" />
-                <div class="field-error-msg" id="contact-name-error" role="alert" aria-live="polite"></div>
-              </div>
-              <div class="form-field">
-                <label for="contact-business">Business Name</label>
-                <input type="text" id="contact-business" name="business" placeholder="Acme Enterprises" autocomplete="organization" />
-              </div>
-            </div>
-
-            <div class="form-row form-row-2">
-              <div class="form-field">
-                <label for="contact-email">Email <span class="required" aria-hidden="true">*</span></label>
-                <input type="email" id="contact-email" name="email" placeholder="john@example.com" required autocomplete="email" aria-describedby="contact-email-error" />
-                <div class="field-error-msg" id="contact-email-error" role="alert" aria-live="polite"></div>
-              </div>
-              <div class="form-field">
-                <label for="contact-phone">Phone / WhatsApp</label>
-                <input type="tel" id="contact-phone" name="phone" placeholder="+91 98765 43210" autocomplete="tel" inputmode="tel" aria-describedby="contact-phone-error" />
-                <div class="field-error-msg" id="contact-phone-error" role="alert" aria-live="polite"></div>
-              </div>
-            </div>
-
-            <div class="form-field">
-              <label for="contact-type">What do you need? <span class="required" aria-hidden="true">*</span></label>
-              <select id="contact-type" name="project_type" required aria-describedby="contact-type-error">
-                <option value="" disabled>Select project type</option>
-                <option value="business-website" >Business Website / Web Development</option>
-                <option value="app-development" >Application Development</option>
-                <option value="custom-software" >Custom Software Development</option>
-                <option value="ui-ux-design" >UI/UX Design</option>
-                <option value="video-editing" >Video Editing (Reels, Promos, Business)</option>
-                <option value="maintenance-support" >Maintenance &amp; Support</option>
-                <option value="other" selected>Other / Not Sure Yet</option>
-              </select>
-              <div class="field-error-msg" id="contact-type-error" role="alert" aria-live="polite"></div>
-            </div>
-
-            <div class="form-field">
-              <label for="contact-description">Project Description <span class="required" aria-hidden="true">*</span></label>
-              <textarea id="contact-description" name="description" rows="4" placeholder="Tell us about your business, current challenges, and what you want to build..." required aria-describedby="contact-description-error"></textarea>
-              <div class="field-error-msg" id="contact-description-error" role="alert" aria-live="polite"></div>
-            </div>
-
-            <div class="form-field">
-              <label for="contact-timeline">Preferred Timeline</label>
-              <select id="contact-timeline" name="timeline">
-                <option value="" disabled selected>Select timeline</option>
-                <option value="asap">Immediate / ASAP</option>
-                <option value="1-month">Within 1 month</option>
-                <option value="2-3-months">2–3 months</option>
-                <option value="flexible">Flexible</option>
-              </select>
-            </div>
-
-            <button type="submit" class="btn btn-primary btn-full" id="submit-btn">
-              <span class="btn-text">Send Project Enquiry</span>
-              <svg class="btn-icon" width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-                <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-              </svg>
-            </button>
-
-            <div class="form-alt-section">
-              <div class="form-alt-label">Prefer to send via your own app?</div>
-              <div class="form-alt-buttons">
-                <button type="button" class="btn btn-sm btn-secondary" id="btn-prefill-email">
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
-                    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
-                    <polyline points="22,6 12,13 2,6"/>
-                  </svg>
-                  Open in Email App
-                </button>
-                <button type="button" class="btn btn-sm btn-secondary" id="btn-prefill-whatsapp">
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#4ade80" stroke-width="2" aria-hidden="true">
-                    <path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z"/>
-                  </svg>
-                  Send via WhatsApp
-                </button>
-              </div>
-            </div>
-
-            <div class="form-note">
-              <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M7 1a6 6 0 100 12A6 6 0 007 1zm0 5v3m0-5.5v.5" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>
-              Delivers directly to studiotechnest@gmail.com • 24hr response time.
-            </div>
-          </form>
+        <div class="services-grid" style="grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));">
+          <div class="service-card reveal-card spotlight-card">
+            <div class="service-icon" aria-hidden="true">⚡</div>
+            <h3 class="service-title">Lightweight &amp; Performant</h3>
+            <p class="service-desc">We avoid dependency bloat. We prioritize lightning-fast page speed, smooth 60fps animations, and clean semantic structure for high SEO scores.</p>
+          </div>
+          <div class="service-card reveal-card spotlight-card">
+            <div class="service-icon" aria-hidden="true">🔒</div>
+            <h3 class="service-title">Dependable &amp; Maintainable</h3>
+            <p class="service-desc">Code is written to last. We adhere to industry standards, modular components, and clear documentation so systems are easy to maintain and scale.</p>
+          </div>
+          <div class="service-card reveal-card spotlight-card">
+            <div class="service-icon" aria-hidden="true">🤝</div>
+            <h3 class="service-title">Zero Telephone Game</h3>
+            <p class="service-desc">You talk directly to the engineers designing and writing the code. No middleman misunderstanding, no delay, and complete technical clarity.</p>
+          </div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
+
+    <!-- ============================================================
+         CONTACT / CONSULTATION SECTION
+    ============================================================ -->
+    <section class="contact section" id="contact">
+      <div class="discuss-ambient-glow" aria-hidden="true">
+        <div class="discuss-glow-orb orb-1"></div>
+        <div class="discuss-glow-orb orb-2"></div>
+      </div>
+      <div class="container">
+        <div class="pricing-inner">
+          <div class="pricing-content">
+            <div class="section-label">Let's Connect</div>
+            <h2 class="section-title">Ready to Partner with Our Team?</h2>
+            <p class="pricing-text">
+              Have an idea, project or digital solution in mind? Tell us what you are looking to build. We'll evaluate your requirements and get back to you with a transparent architecture plan and milestone estimate.
+            </p>
+            <div style="display: flex; gap: 1rem; flex-wrap: wrap; margin-top: 1.5rem;">
+              <a href="/contact" class="btn btn-primary">
+                <span>Contact TechNest Studio</span>
+                <svg class="btn-icon" width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                  <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </a>
+              <a href="https://wa.me/918807006909" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">
+                <span>WhatsApp Us Directly</span>
+              </a>
+            </div>
+          </div>
+
+          <div class="pricing-card reveal-card spotlight-card">
+            <h3 class="pricing-card-title">Direct Studio Channels</h3>
+            <ul class="pricing-checklist">
+              <li>
+                <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true"><circle cx="9" cy="9" r="8" stroke="#4ade80" stroke-width="1.4"/><path d="M5.5 9l2.5 2.5 4-4" stroke="#4ade80" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                <strong>WhatsApp:</strong> +91 88070 06909
+              </li>
+              <li>
+                <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true"><circle cx="9" cy="9" r="8" stroke="#4ade80" stroke-width="1.4"/><path d="M5.5 9l2.5 2.5 4-4" stroke="#4ade80" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                <strong>Email:</strong> studiotechnest@gmail.com
+              </li>
+              <li>
+                <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true"><circle cx="9" cy="9" r="8" stroke="#4ade80" stroke-width="1.4"/><path d="M5.5 9l2.5 2.5 4-4" stroke="#4ade80" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                <strong>Response time:</strong> Within 24 hours guaranteed
+              </li>
+              <li>
+                <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true"><circle cx="9" cy="9" r="8" stroke="#4ade80" stroke-width="1.4"/><path d="M5.5 9l2.5 2.5 4-4" stroke="#4ade80" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                <strong>Engagement:</strong> Fixed milestone estimates
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
   </main>
 
-  
   <!-- ============================================================
        FOOTER
   ============================================================ -->
@@ -545,7 +479,7 @@
       <div class="footer-top">
         <!-- Brand Column -->
         <div class="footer-brand footer-reveal" style="--reveal-delay: 0ms;">
-          <a href="/#home" class="nav-logo" aria-label="TechNest Studio — back to top">
+          <a href="/" class="nav-logo" aria-label="TechNest Studio — back to top">
             <div class="brand-logo-3d">
               <div class="logo-3d-inner">
                 <img src="/assets/logo.png" alt="TechNest Studio Logo" class="brand-logo-img" width="34" height="34" />
@@ -592,10 +526,11 @@
           <div class="footer-nav-col footer-reveal" style="--reveal-delay: 100ms;">
             <div class="footer-heading">Company</div>
             <ul role="list">
-              <li><a href="/about">About Us</a></li>
-              <li><a href="/#services">Services</a></li>
-              <li><a href="/case-studies">Case Studies</a></li>
-              <li><a href="/blog">Blog &amp; Insights</a></li>
+              <li><a href="/about" aria-current="page">About Us</a></li>
+              <li><a href="/services">Services</a></li>
+              <li><a href="/what-we-build">What We Build</a></li>
+              <li><a href="/process">Process</a></li>
+              <li><a href="/contact">Contact</a></li>
             </ul>
           </div>
 
@@ -612,20 +547,12 @@
             </ul>
           </div>
 
-          <!-- Col 3: CONTACT -->
+          <!-- Col 3: CONNECT -->
           <div class="footer-nav-col footer-reveal" style="--reveal-delay: 200ms;">
-            <div class="footer-heading">Contact</div>
+            <div class="footer-heading">Connect</div>
             <ul role="list">
               <li><a href="https://wa.me/918807006909" target="_blank" rel="noopener noreferrer">WhatsApp</a></li>
               <li><a href="mailto:studiotechnest@gmail.com">Email</a></li>
-              <li><a href="/contact">Contact Us</a></li>
-            </ul>
-          </div>
-
-          <!-- Col 4: SOCIAL -->
-          <div class="footer-nav-col footer-reveal" style="--reveal-delay: 250ms;">
-            <div class="footer-heading">Social</div>
-            <ul role="list">
               <li><a href="https://www.linkedin.com/company/techneststudio" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
               <li><a href="https://www.instagram.com/tech_nest.studio/" target="_blank" rel="noopener noreferrer">Instagram</a></li>
             </ul>

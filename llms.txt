@@ -7,8 +7,11 @@ TechNest Studio is an agile technology and software engineering studio based in 
 ## Website & Core
 
 - [TechNest Studio Home](https://techneststudio.in/): Official website and portfolio of TechNest Studio.
-- [About TechNest Studio](https://techneststudio.in/about): Engineering philosophy, agile core structure, and transparent pricing model.
-- [Contact TechNest Studio](https://techneststudio.in/contact): Direct developer consultation, project inquiry form, and milestone estimates.
+- [Services Hub](https://techneststudio.in/services): Comprehensive directory of our 6 core digital engineering and media production services.
+- [What We Build](https://techneststudio.in/what-we-build): Tangible deliverables catalog — Websites, Applications, Business Software, Digital Experiences, and Visual Experiences.
+- [Engineering Process](https://techneststudio.in/process): 7-step transparent development timeline: Understand, Plan, Design, Build, Test, Deliver, and Support.
+- [About TechNest Studio](https://techneststudio.in/about): Engineering philosophy, agile 2–3 person core structure, and transparent pricing model.
+- [Contact TechNest Studio](https://techneststudio.in/contact): Direct developer consultation, project inquiry form, and WhatsApp hotline.
 
 ## Services
 
