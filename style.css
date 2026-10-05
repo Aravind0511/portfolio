@@ -5400,14 +5400,26 @@ body.mobile-nav-open {
   flex-wrap: wrap;
   gap: 0.75rem 1.1rem;
   margin-top: 1.75rem;
-  padding: 0.75rem 1.4rem;
-  background: rgba(22, 31, 48, 0.85);
-  border: 1px solid rgba(56, 189, 248, 0.22);
+  padding: 0.75rem 1.5rem;
+  background: rgba(22, 31, 48, 0.88);
+  border: 1px solid rgba(56, 189, 248, 0.28);
   border-radius: 9999px;
-  backdrop-filter: blur(12px);
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(14px);
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.3), 0 0 25px rgba(56, 189, 248, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.1);
   max-width: fit-content;
   margin-inline: auto;
+  animation: stripGlowPulse 5s ease-in-out infinite alternate;
+}
+
+@keyframes stripGlowPulse {
+  0% {
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25), 0 0 18px rgba(56, 189, 248, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.08);
+    border-color: rgba(56, 189, 248, 0.22);
+  }
+  100% {
+    box-shadow: 0 6px 28px rgba(0, 0, 0, 0.35), 0 0 32px rgba(56, 189, 248, 0.22), inset 0 1px 0 rgba(255, 255, 255, 0.16);
+    border-color: rgba(56, 189, 248, 0.45);
+  }
 }
 
 .compact-tech-pill {
@@ -5417,17 +5429,24 @@ body.mobile-nav-open {
   font-size: 0.88rem;
   font-weight: 600;
   color: var(--color-white);
-  padding: 0.2rem 0.4rem;
-  transition: transform 0.2s ease, color 0.2s ease;
+  padding: 0.25rem 0.55rem;
+  border-radius: 9999px;
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), color 0.25s ease, background 0.25s ease;
 }
 
 .compact-tech-pill:hover {
   color: var(--color-accent-light);
-  transform: translateY(-1px);
+  background: rgba(56, 189, 248, 0.12);
+  transform: translateY(-2px) scale(1.03);
 }
 
 .compact-tech-pill .pill-icon {
   font-size: 1.05rem;
+  transition: transform 0.25s ease;
+}
+
+.compact-tech-pill:hover .pill-icon {
+  transform: scale(1.15) rotate(-3deg);
 }
 
 .compact-tech-divider {
@@ -5448,7 +5467,7 @@ body.mobile-nav-open {
 .projects-portfolio-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 1.75rem;
+  gap: 2rem;
 }
 
 @media (max-width: 860px) {
@@ -5461,12 +5480,12 @@ body.mobile-nav-open {
   background: var(--color-surface);
   border: 1px solid var(--color-border);
   border-radius: var(--radius-xl);
-  padding: 1.85rem;
+  padding: 2rem;
   display: flex;
   flex-direction: column;
   position: relative;
   overflow: hidden;
-  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.3s ease, box-shadow 0.3s ease;
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.3s ease, box-shadow 0.35s ease;
 }
 
 .portfolio-project-card::before {
@@ -5478,17 +5497,18 @@ body.mobile-nav-open {
   height: 3px;
   background: linear-gradient(90deg, #38bdf8, #6366f1, #a855f7);
   opacity: 0.7;
-  transition: opacity 0.3s ease;
+  transition: opacity 0.3s ease, height 0.3s ease;
 }
 
 .portfolio-project-card:hover {
-  transform: translateY(-5px);
-  border-color: rgba(56, 189, 248, 0.4);
-  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.45), 0 0 25px rgba(56, 189, 248, 0.15);
+  transform: translateY(-6px);
+  border-color: rgba(56, 189, 248, 0.45);
+  box-shadow: 0 20px 48px rgba(0, 0, 0, 0.5), 0 0 32px rgba(56, 189, 248, 0.2);
 }
 
 .portfolio-project-card:hover::before {
   opacity: 1;
+  height: 4px;
 }
 
 .project-card-header {
